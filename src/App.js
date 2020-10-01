@@ -1,26 +1,56 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Switch, Route} from 'react-router-dom';
+import Provider from './context/Provider';
 
-function App() {
+//Organisms
+import Header from './components/organisms/Header';
+//Pages
+import HomePage from './pages/HomePage';
+import MealPlan from './pages/MealPlan';
+import WorkoutPlan from './pages/WorkoutPlan';
+
+//data
+import { routes } from './data/routes';
+
+//style
+import './styles/css/style.css'
+
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Provider>
+      <Header routes ={routes} />
+      <Switch>
+          <Route
+            exact path="/"
+            component ={HomePage}
+          />
+          <Route
+            path="/mealplan"
+            component ={MealPlan}
+          />
+          <Route
+            path="/workoutplan"
+            component ={WorkoutPlan}
+          />
+
+      </Switch>
+    </Provider>
+    </>
   );
-}
+};
 
 export default App;
+
+/* Use the router that I created.
+//import Route from './router/Route';
+
+    <>
+      <Header routes ={routes} />
+      <Route path="/"><HomePage /></Route>
+      <Route path="/mealplan">
+      <Provider><MealPlan /></Provider>
+      </Route>
+    </>
+  */
