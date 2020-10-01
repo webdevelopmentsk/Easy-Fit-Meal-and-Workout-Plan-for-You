@@ -9,11 +9,11 @@ export const initialState = {
         height:'',
         weight:'',
         activity:'',
-        unitHeight:'',
-        unitWeight:'',
+        unitHeight:'kg',
+        unitWeight:'cm',
     },
-    goal:{
-        type:'',
+    userGoal:{
+        goalType:'',
         goalWeight:'',
         goalWeeks:'',
     },

@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
 
+import Button from '../atoms/Button';
+
 const UserInformationForm = props =>{
 
-    const content = props.content.userDetail;
+    const content = props.content.userPersonalInfo;
     const [userPersonalInfo,setUserPersonalInfo] = 
     useState({
-        age: 18,
+        age: 0,
         gender: 'male',
-        height:'1',
-        weight:'30',
+        height:0,
+        weight:0,
         activity: 'Light: exercise 1-3 times/week',
         unitHeight:'cm',
         unitWeight:'kg',
     });
-
     
     return(
-        <>
-            <div className="ui action input" style={{display:"flex",flexWrap:"wrap",flexDirection:"column"}}>
+        <div className ="popup">
+            <div className="ui action input popup_inner" style={{display:"flex",flexWrap:"wrap",flexDirection:"column"}}>
+
                 <h2>{content.text}</h2>
-                
                 <div>
                     <label htmlFor={content.age.value}>{content.age.name}</label>
                     <input 
@@ -97,10 +98,10 @@ const UserInformationForm = props =>{
                         <option value={content.activity.options[3]}>{content.activity.options[3]}</option>
                     </select>
                 </div>
-
+                
+                <Button text = {content.submit.buttonText} onClickButton = {() => props.checkInfoComplete('userPersonalInfo',userPersonalInfo)}/>
             </div>
-
-        </>
+        </div>
     );
 };
 

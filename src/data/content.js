@@ -1,37 +1,38 @@
 export const content  = {
   homePage:{
-    userDetail:{
-      text: 'Starting Information',
+    userPersonalInfo:{
+      text: 'User Information',
       age:{name: 'Age',value: 'age'},
       weight:{
         name: 'Weight', 
         value: 'weight', 
-        units: {metric: 'kg',usStandard: 'pounds'}
-      },
+        units: {metric: 'kg',usStandard: 'pounds'}},
       height:{name: 'Height', 
               value: 'height', 
-              units: {metric: 'cm',usStandard: 'inches'}
-              },
+              units: {metric: 'cm',usStandard: 'inches'}},
       gender:{name: 'Gender',
-      value: 'gender',
-      options:{
-        male:{name:'Male', value:'male'},
-        female:{name:'Female', value:'female'}
-      }
-    },
+              value: 'gender',
+              options:{
+                male:{name:'Male', value:'male'},
+                female:{name:'Female', value:'female'}}},
       activity:{
               name: 'Activity', value: 'activity', 
               options:['Light: exercise 1-3 times/week',
                       'Moderate: exercise 4-5 times/week',
                       'Active: Daily exercise or intense exercise 3-4 times/week',
-                      'Very Active: intense exercise 6-7 times/week']
-      }
+                      'Very Active: intense exercise 6-7 times/week']},
+      submit:{
+              buttonText: "Submit",
+              displayComplete: "Complete! You are good to go!",
+              displayInComplete: "Your personal information is incomplete."}
     },
-    selectGoal: {
+    userGoal: {
       text: {
         heading: 'Specify Your Goal',
-        goal:'Goal',
-        target: 'Target'
+        goal:'Goal:',
+        target: 'Target Weight:',
+        weeks: 'I want to reach my goal in (#weeks):',
+        suggestions:'Healthy weight-loss/gain rates are 1-2 pounds/week (0.5 to 1 kg)'  
       },
       options: [
               {name:'Lose Weight', value: 'lose-weight'},
