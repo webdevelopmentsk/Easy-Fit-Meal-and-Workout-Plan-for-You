@@ -6,15 +6,7 @@ const UserInformationForm = props =>{
 
     const content = props.content.userPersonalInfo;
     const [userPersonalInfo,setUserPersonalInfo] = 
-    useState({
-        age: 0,
-        gender: 'male',
-        height:0,
-        weight:0,
-        activity: 'Light: exercise 1-3 times/week',
-        unitHeight:'cm',
-        unitWeight:'kg',
-    });
+    useState(props.state.userPersonalInfo);
     
     return(
         <div className ="popup">
@@ -25,7 +17,7 @@ const UserInformationForm = props =>{
                     <label htmlFor={content.age.value}>{content.age.name}</label>
                     <input 
                     type="range"
-                    min="15" max="90" 
+                    min="15" max="80" 
                     name={content.age.value} 
                     id={content.age.value}
                     value={userPersonalInfo.age}
@@ -37,7 +29,7 @@ const UserInformationForm = props =>{
                     <label htmlFor={content.weight.value}>{content.weight.name}</label>
                     <input 
                     type="range"
-                    min="30" max="500" 
+                    min={userPersonalInfo.unitWeight==='kg'? 35: 70} max={userPersonalInfo.unitWeight==='kg'? 150: 300}
                     name={content.weight.value} 
                     id={content.weight.value}
                     value={userPersonalInfo.weight}
@@ -48,8 +40,17 @@ const UserInformationForm = props =>{
                     className="selection dropdown"
                     onChange = {e => setUserPersonalInfo({...userPersonalInfo, unitWeight:e.target.value})}
                     >
-                        <option className="text">{content.weight.units.metric}</option>
-                        <option value={content.weight.units.usStandard}>{content.weight.units.usStandard}</option>
+                        <option className="text">
+                            {userPersonalInfo.unitWeight}
+                        </option>
+                        {
+                            content.weight.units.map((unit,index) => {
+                                if(unit !== userPersonalInfo.unitWeight){
+                                   return <option key ={index} value={unit}>{unit}</option>
+                                }
+                            })
+                        }
+                        
                     </select>
 
                 </div>
@@ -58,7 +59,7 @@ const UserInformationForm = props =>{
                     <label htmlFor={content.height.value}>{content.height.name}</label>
                     <input 
                     type="range"
-                    min="30" max="500" 
+                    min={userPersonalInfo.unitHeight==='cm'? 100: 40} max={userPersonalInfo.unitHeight==='cm'? 250: 100 }
                     name={content.height.value} 
                     id={content.height.value}
                     value={userPersonalInfo.height}
@@ -69,8 +70,14 @@ const UserInformationForm = props =>{
                     className="selection dropdown"
                     onChange = {e => setUserPersonalInfo({...userPersonalInfo, unitHeight:e.target.value})}
                     >
-                        <option className="text">{content.height.units.metric}</option>
-                        <option value={content.height.units.usStandard}>{content.height.units.usStandard}</option>
+                        <option className="text">{userPersonalInfo.unitHeight}</option>
+                        {
+                            content.height.units.map((unit,index) => {
+                                if(unit !== userPersonalInfo.unitHeight){
+                                   return <option key = {index} value={unit}>{unit}</option>
+                                }
+                            })
+                        }
                     </select>
 
                 </div>
@@ -79,10 +86,16 @@ const UserInformationForm = props =>{
                     <label htmlFor={content.gender.value}>{content.gender.name}</label>
                     <select 
                     className="selection dropdown"
-                    onChange = {e => setUserPersonalInfo({...userPersonalInfo,[content.gender.value]:e.target.value})}
+                    onChange = {e => setUserPersonalInfo({...userPersonalInfo,gender:e.target.value})}
                     >
-                        <option className="text">{content.gender.options.male.value}</option>
-                        <option value={content.gender.options.female.value}>{content.gender.options.female.value}</option>
+                        <option className="text">{userPersonalInfo.gender}</option>
+                        {
+                            content.gender.options.map((option,index) => {
+                                if(option !== userPersonalInfo.gender){
+                                   return <option key = {index} value={option}>{option}</option>
+                                }
+                            })
+                        }
                     </select>
                 </div>
 
@@ -92,10 +105,14 @@ const UserInformationForm = props =>{
                     className="selection dropdown"
                     onChange = {e => setUserPersonalInfo({...userPersonalInfo,[content.activity.value]:e.target.value})}
                     >
-                        <option className="text">{content.activity.options[0]}</option>
-                        <option value={content.activity.options[1]}>{content.activity.options[1]}</option>
-                        <option value={content.activity.options[2]}>{content.activity.options[2]}</option>
-                        <option value={content.activity.options[3]}>{content.activity.options[3]}</option>
+                        <option className="text">{userPersonalInfo.activity}</option>
+                        {
+                            content.activity.options.map((option,index) => {
+                                if(option !== userPersonalInfo.activity){
+                                   return <option key ={index} value={option}>{option}</option>
+                                }
+                            })
+                        }
                     </select>
                 </div>
                 
