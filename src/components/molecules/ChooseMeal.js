@@ -3,9 +3,8 @@ import React from 'react';
 const ChooseMeal = props => {
 
     const renderOptions = props.content.map((meal,index) => 
-    <a 
+    <a  href="#/"
         key={index} 
-        href="#" 
         onClick={ () => props.onClickIconAddFoodRecipe(props.item,meal.value)}
         >
         {meal.name}

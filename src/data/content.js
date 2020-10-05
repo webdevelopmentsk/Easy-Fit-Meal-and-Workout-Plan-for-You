@@ -3,6 +3,7 @@ export const content  = {
     userPersonalInfo:{
       text: 'Step 1: Specify Information',
       textAfter: 'Change Your Information',
+      image: 'https://images.unsplash.com/photo-1560169573-5ff6f7f35fe4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1410&q=80',
       age:{name: 'Age',value: 'age'},
       weight:{
         name: 'Weight', 
@@ -37,6 +38,7 @@ export const content  = {
           options: ['Slow', 'Fast'],
         },
         suggestions:'Healthy weight-loss/gain rates are 1-2 pounds/week (0.5 to 1 kg)'},
+      image:'https://culturesync.net/wp-content/uploads/2019/08/goals-setting-960x540.jpg',
       submit: {
         buttonText: 'Submit',
         displayComplete: 'Complete! You are good to go!',
@@ -49,21 +51,10 @@ export const content  = {
     },
     results:{
       text: 'Results',
-      'lose-weight': {
-        text1: 'In order to reach your goal in',
-        text2: 'weeks, you should eat : ',
-        text3: 'Calories/day'
-      },
-      'gain-weight':{
-        text1: 'In order to reach your goal in',
-        text2: 'weeks, you should eat : ',
-        text3: 'Calories/day'
-      },
-      'maintain-weight':{
-        text1: 'In order to maintain your current weight in',
-        text2: 'weeks, you should eat : ',
-        text3: 'Calories/day'
-      }
+      image:'https://d50b62f6164e0c4a0279-11570554cb5edae3285603e6ab25c978.ssl.cf5.rackcdn.com/html_body_blocks/images/000/007/051/original/HowToStickToYourMealPlan_en0480002f5673756c159558dce0a778f1.jpg?1524197354',
+      textGoal: 'Goal : ',
+      textEstimatedTime: 'Estimated Time to Reach Goal (#weeks) : ',
+      textCalories: 'Your Daily Calorie Need (Kcal) : '
     }
   },
   mealPlan:{
@@ -73,7 +64,15 @@ export const content  = {
                   {name: 'Lunch', value:'lunch'},
                   {name: 'Dinner', value:'dinner'},
                   {name: 'Snacks', value:'snacks'},
-                  ]
+                  ],
+          addFood:{
+            text: '+ Add Food',
+            placeholder: 'Search for a food',
+            type: 'food',
+            searchResults: 'Search Results',
+            eneryUnit: 'Kcal'
+          },
+          
         },
         mealPlanRecipes:{
           type: 'mealPlan',
@@ -132,6 +131,7 @@ export const content  = {
             {name: 'Snack', value:'snack'}]
         },
         searchRecipe:{
+          type: 'food',
           button:{
             text: 'Search Recipe'
           },

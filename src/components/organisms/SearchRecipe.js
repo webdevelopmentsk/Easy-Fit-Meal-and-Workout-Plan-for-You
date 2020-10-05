@@ -13,7 +13,6 @@ const SearchRecipe = props => {
                 content ={props.content.ingredients} 
                 addItem = {props.addItem}
                 deleteItem = {props.deleteItem}
-                autoComplete ={props.autoComplete}
             />
 
             <CheckBoxGroup 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { content } from '../../data/content';
 import RecipeCardList from './RecipeCardList';
 
 

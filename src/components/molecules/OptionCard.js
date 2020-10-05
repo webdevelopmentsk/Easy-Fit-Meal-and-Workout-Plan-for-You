@@ -6,10 +6,10 @@ const OptionCard = props => {
 
     return(
         <>
-            <a href="#" onClick = {() => onClickOption(option,type)}>
+            <a href="#/" onClick = {() => onClickOption(option,type)}>
                 <div className="card">
                     <div className="image">
-                    <img src={option.image} style={{height:"60px"}}/>
+                    <img alt = "option" src={option.image} style={{height:"60px"}}/>
                     </div>
                     <div className="content">
                     <div className="header">{option.name}</div>

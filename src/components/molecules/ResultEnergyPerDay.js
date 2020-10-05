@@ -5,12 +5,19 @@ const ResultEnergyPerDay = props => {
     return(
         <>
             <br />
-            <span>{props.content.results[props.state.userGoal.goalType].text1}</span>
-            <span>{props.state.calTrack.weeks}</span>
-            <span>{props.content.results[props.state.userGoal.goalType].text2}</span>
-            <span>{props.state.calTrack.goalCal}</span>
-            <span>{props.content.results[props.state.userGoal.goalType].text3}</span>
-            <br />
+            <div style={{border:"solid 1px black",display:"flex", padding: "1rem"}}>
+                <img alt ="results" src={props.content.results.image} style={{height:"8rem"}}></img>
+                <div>
+                <div>{props.content.results.textGoal}{props.state.userGoal.goalType}</div>
+                    {
+                        props.state.calTrack.weeks !== 0 &&
+                        <div>{props.content.results.textEstimatedTime}{props.state.calTrack.weeks}</div>
+                        
+                    }
+                <div>{props.content.results.textCalories}{props.state.calTrack.goalCal}</div>
+                </div>
+            </div>
+
         </>
     );
 };

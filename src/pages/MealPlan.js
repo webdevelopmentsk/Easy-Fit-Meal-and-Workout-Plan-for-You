@@ -13,18 +13,19 @@ import FoodDiary from '../components/organisms/FoodDiary';
 //data
 import { content } from '../data/content';
 import { routesRecipeBar } from '../data/routes';
-import { commonIngredients } from '../data/commonIngredients';
 //context
 import { Context } from '../context/Provider';
 
 //apis
 import edamam from '../apis/edamam';
+import clientFood from '../apis/client'; 
+
 //import axios from 'axios';
 
 const MealPlan = () => {
 
   const content_mealPlan = content.mealPlan;
-  const {state,changeState} = React.useContext(Context);
+  const {state,changeState,change2State} = React.useContext(Context);
 
 const addItem = (item,type) => {
   let newList = [...state[type],item];
@@ -49,7 +50,10 @@ const onChangeItem = (item,type) =>{
           let value = false;
           let index = -1;
           state.favoriteRecipes.map((obj,idx) => {
-          if(obj.recipe.url === item.recipe.url){value = true;index=idx;}});
+            if(obj.recipe.url === item.recipe.url)
+            {value = true;index=idx;}
+            return null;
+          });
 
           if (value){
             deleteItemFavRecipe(index,type);
@@ -63,6 +67,7 @@ const onChangeItem = (item,type) =>{
         let index = state[type].indexOf(item);
         index > -1 ? deleteItem(item,type) : addItem(item,type);
       }
+
 };
 
 const checkFavoriteRecipe = item => {
@@ -73,14 +78,14 @@ const checkFavoriteRecipe = item => {
       if(obj.recipe.url === item.recipe.url) 
       {
         isLiked = true;
-    }}
+      } return isLiked;}
   );
+
   return isLiked;
 }
 
+//CalTotalCalories from Food
 useEffect(()=>{
-  //For Add Food from Recipes
-  //CalTotalCalories from Food
   let totalCal = 0;
   state.breakfast.forEach(food => {
     let itemCal = Math.round(food.recipe.calories/food.recipe.yield);
@@ -98,7 +103,12 @@ useEffect(()=>{
     let itemCal = Math.round(food.recipe.calories/food.recipe.yield);
     totalCal = totalCal + itemCal;
   })
-  changeState('foodTotalCal',totalCal)
+
+  let data = state.calTrack;
+  data.foodTotalCal = totalCal;
+  changeState('calTrack',data);
+
+
 },[state.breakfast,state.lunch,state.dinner,state.snacks]);
 
 const onClickSearchRecipe = async() => {
@@ -128,14 +138,36 @@ const onSelectMealPlan = async(item,type) =>{
         },
       });
       response.data.hits && changeState('mealPlanRecipes',response.data.hits);
-    }
-    case'time':{
-
-    }
+    };break;
     default:break;
   }
 }
 
+const onUserFoodItemAdded = async(item) =>{
+
+  const foods = await clientFood.search({ query: item });
+  let list=[];
+  for(let i=0; i<= 3; i++){list.push(foods.hints[i])}
+  let constructedList = [];
+  list.map(item =>{
+    let data = {
+        recipe:{
+            label:'',
+            calories: '',
+            yield:1
+        }
+    };
+    data.recipe.label = item.food.label;
+    data.recipe.calories = Math.round(item.food.nutrients.ENERC_KCAL)
+    constructedList.push(data)
+  })
+  changeState('userFoodItems',constructedList)
+};
+
+const onClickSelectFoodItem = async (item,type) =>{
+  let newList = [...state[type],item];
+  change2State(type,newList)
+};
   return <>
             <CaloriesRemain />
             <FoodDiary 
@@ -143,6 +175,9 @@ const onSelectMealPlan = async(item,type) =>{
               state ={state}
               deleteItem ={deleteItem}
               isItemObject = {true}
+              onUserFoodItemAdded = {onUserFoodItemAdded}
+              searchItemType = 'userFoodItems'
+              onClickSelectFoodItem ={onClickSelectFoodItem} 
             />
             <Header routes ={routesRecipeBar} />
               <Switch>
@@ -166,14 +201,14 @@ const onSelectMealPlan = async(item,type) =>{
                     <SearchRecipe
                     content = {content_mealPlan}
                     state ={state}
-                    autoComplete = {commonIngredients}
                     onClickSearchRecipe = {onClickSearchRecipe} 
                     isItemObject = {false}
                     onChangeItem ={onChangeItem}
                     addItem = {addItem}
                     deleteItem ={deleteItem}
                     checkFavoriteRecipe = {checkFavoriteRecipe} 
-                    onClickIconAddFoodRecipe ={addItem} />
+                    onClickIconAddFoodRecipe ={addItem} 
+                    type = {content_mealPlan.searchRecipe.type}/>
                   </Route>
                   <Route
                     path="/mealplan/favoriterecipes"

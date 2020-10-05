@@ -48,6 +48,7 @@ const UserInformationForm = props =>{
                                 if(unit !== userPersonalInfo.unitWeight){
                                    return <option key ={index} value={unit}>{unit}</option>
                                 }
+                                else return null
                             })
                         }
                         
@@ -75,7 +76,7 @@ const UserInformationForm = props =>{
                             content.height.units.map((unit,index) => {
                                 if(unit !== userPersonalInfo.unitHeight){
                                    return <option key = {index} value={unit}>{unit}</option>
-                                }
+                                } else return null
                             })
                         }
                     </select>
@@ -93,7 +94,7 @@ const UserInformationForm = props =>{
                             content.gender.options.map((option,index) => {
                                 if(option !== userPersonalInfo.gender){
                                    return <option key = {index} value={option}>{option}</option>
-                                }
+                                } else return null
                             })
                         }
                     </select>
@@ -110,7 +111,7 @@ const UserInformationForm = props =>{
                             content.activity.options.map((option,index) => {
                                 if(option !== userPersonalInfo.activity){
                                    return <option key ={index} value={option}>{option}</option>
-                                }
+                                } else return null
                             })
                         }
                     </select>

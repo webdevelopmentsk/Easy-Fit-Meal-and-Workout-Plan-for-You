@@ -1,4 +1,4 @@
-import React , { useState, useEffect } from 'react'
+import React , { useState } from 'react'
 
 import Button from '../atoms/Button';
 
@@ -24,6 +24,7 @@ const UserGoalForm = props => {
                                 if(option.value !== userGoal.goalType){
                                    return <option key ={index} value={option.value}>{option.name}</option>
                                 }
+                                else return null
                             })
                         }
                     </select>
@@ -50,6 +51,7 @@ const UserGoalForm = props => {
                                 if(option !== userGoal.goalUnitWeight){
                                    return <option key ={index} value={option}>{option}</option>
                                 }
+                                return null
                             })
                         }
                     </select>

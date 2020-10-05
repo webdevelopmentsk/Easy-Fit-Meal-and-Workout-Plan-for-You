@@ -41,4 +41,5 @@ export const initialState = {
     mealPlan: '',
     randomIngredients:['chicken','potato','lettuce'],
     mealPlanRecipes:[],
+    userFoodItems: []
 }

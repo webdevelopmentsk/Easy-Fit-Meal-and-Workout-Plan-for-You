@@ -1,4 +1,4 @@
-import React , { useState }from 'react';
+import React from 'react';
 
 import IconClock from '../atoms/IconClock';
 import IconPerson from '../atoms/IconPerson';
@@ -17,12 +17,6 @@ const PopUpRecipe = props =>{
 
     const isLiked = props.checkFavoriteRecipe(props.item);
 
-    const [showChooseMeal,setChooseMeal] = useState(true);
-
-    const toggleChooseMeal = () => {
-        setChooseMeal(!showChooseMeal);
-    }
-
     return(
         <>
         <div className ="popup">
@@ -31,12 +25,11 @@ const PopUpRecipe = props =>{
                     <IconFavorite  isLiked = {isLiked} onClickIcon = {props.onChangeItem} item = {props.item} type="favoriteRecipes"/>
                     <IconClose onClickIcon = {props.togglePopup} />
                     <IconAddFood />
-                        {showChooseMeal && 
                         <ChooseMeal 
                         content ={props.contentFoodDiary.options}
                         item = {props.item}
                         onClickIconAddFoodRecipe ={props.onClickIconAddFoodRecipe}
-                        />}
+                        />
                 </div>
                 <div>
                 < Image alt={props.item.recipe.label} src={props.item.recipe.image} href="#" />
@@ -59,7 +52,7 @@ const PopUpRecipe = props =>{
                 </div>
                 <div className ="content">
                     <div className="header"><IconSeeLink /><span>  </span>
-                    <a href= {props.item.recipe.url} target="_blank">{props.content.popup.preparation}</a></div>
+                    <a href= {props.item.recipe.url} target="_blank" rel="noopener noreferrer">{props.content.popup.preparation}</a></div>
                 </div>
             </div>
         </div>

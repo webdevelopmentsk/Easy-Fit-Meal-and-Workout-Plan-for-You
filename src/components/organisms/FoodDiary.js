@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ShowListFoodDiary from '../molecules/ShowListFoodDiary';
 
 const FoodDiary = props => {
@@ -14,9 +13,14 @@ const FoodDiary = props => {
                             <div>{meal.name}</div>
                             {props.state[meal.value] ?
                             <ShowListFoodDiary 
+                            content = {props.content}
+                            state ={props.state}
                             list = {props.state[meal.value]}
                             type = {meal.value}
                             deleteItem ={props.deleteItem}
+                            onUserFoodItemAdded ={props.onUserFoodItemAdded}
+                            searchItemType = {props.searchItemType}
+                            onClickSelectFoodItem = {props.onClickSelectFoodItem}
                             />
                             :null}
                         </div>
