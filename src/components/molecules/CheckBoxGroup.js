@@ -1,9 +1,9 @@
 import React from 'react';
 
 const CheckBoxGroup = props => {
-    //Add Arrays of checkboxes here:
-    const {state,text, options, onClickCheckBox,type} = props;
-    const checkedBoxes = [...state.foodPreferences,...state.meals]
+    console.log(props)
+    const {text, options, onClickCheckBox,type,checkedBoxes} = props;
+
     return (
         <>
             <br />

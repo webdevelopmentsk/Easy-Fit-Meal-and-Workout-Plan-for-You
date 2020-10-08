@@ -32,27 +32,27 @@ const PopUpRecipe = props =>{
                         />
                 </div>
                 <div>
-                < Image alt={props.item.recipe.label} src={props.item.recipe.image} href="#" />
+                < Image alt={props.item.label} src={props.item.image} href="#" />
                 </div>
                 <div className ="content">
-                    <div className="header">{props.item.recipe.label}</div>
+                    <div className="header">{props.item.label}</div>
                     <div className="meta">
-                    <div><IconClock />{props.item.recipe.totalTime}<span>  </span>{props.content.units.time}</div>
-                    <div><IconPerson />{props.item.recipe.yield}<span>  </span>{props.content.units.portion}</div>
-                    <div><IconBurn />{Math.round(props.item.recipe.calories/props.item.recipe.yield)}<span>  </span>{props.content.units.calories}</div>
+                    <div><IconClock />{props.item.totalTime===0? 30: props.item.totalTime}<span>  </span>{props.content.units.time}</div>
+                    <div><IconPerson />{props.item.yield}<span>  </span>{props.content.units.portion}</div>
+                    <div><IconBurn />{Math.round(props.item.calories/props.item.yield)}<span>  </span>{props.content.units.calories}</div>
                     </div>
                 </div>
                 <div className ="content">
                     <div className="header">{props.content.popup.healthLabels}</div>
-                    <div>{props.item.recipe.healthLabels.map((item,index)=><span key={index}>{item + " "}</span>)}</div>
+                    <div>{props.item.healthLabels.map((item,index)=><span key={index}>{item + " "}</span>)}</div>
                 </div>
                 <div className ="content">
                     <div className="header">{props.content.popup.ingredients}</div>
-                    <IngredientCardList  list = {props.item.recipe.ingredients}/>
+                    <IngredientCardList  list = {props.item.ingredients}/>
                 </div>
                 <div className ="content">
                     <div className="header"><IconSeeLink /><span>  </span>
-                    <a href= {props.item.recipe.url} target="_blank" rel="noopener noreferrer">{props.content.popup.preparation}</a></div>
+                    <a href= {props.item.url} target="_blank" rel="noopener noreferrer">{props.content.popup.preparation}</a></div>
                 </div>
             </div>
         </div>

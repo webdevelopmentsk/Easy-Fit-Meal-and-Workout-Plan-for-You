@@ -75,7 +75,7 @@ export const content  = {
           
         },
         mealPlanRecipes:{
-          type: 'mealPlan',
+          type: 'dietPlan',
           text: "Choose a diet you'd like to follow",
           options: [
             {
@@ -87,7 +87,7 @@ export const content  = {
             {
               name: 'Immune System Booster',text:'Keeping immune system strong', 
               parameter: 'diet', 
-              value: 'balanced', 
+              value: 'low-fat', 
               image:'https://www.wcrf.org/sites/default/files/Immunity-656x410.png'
             },
             {
@@ -99,7 +99,7 @@ export const content  = {
             {
               name: 'Simple Plan',text:'Easy, time-saving recipes', 
               parameter: 'time', 
-              value: '&time=30', 
+              value: 30, 
               image:'https://assets.rebelmouse.io/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vd3d3LmJyaXQuY28vbWVkaWEtbGlicmFyeS9leUpoYkdjaU9pSklVekkxTmlJc0luUjVjQ0k2SWtwWFZDSjkuZXlKcGJXRm5aU0k2SW1oMGRIQnpPaTh2WVhOelpYUnpMbkppYkM1dGN5OHlNVGd5TURJd055OXZjbWxuYVc0dWFuQm5JaXdpWlhod2FYSmxjMTloZENJNk1UWXhOVE00Tnpnd01YMC44SEJaa09LdHA3cUpkcWdDRllFb2tWdWFrOGZqaXlkN2gxQ1VyalM5QmJZL2ltYWdlLmpwZz93aWR0aD05ODAiLCJleHBpcmVzX2F0IjoxNjQwNDc0MjExfQ.UEd4vbW92fsIb-phlyx-x2CGnwBRWg_N4yWWg04G_Q8/img.jpg?width=2000&height=2000'
             },
           ],
@@ -128,7 +128,7 @@ export const content  = {
             {name: 'Breakfast', value:'breakfast'},
             {name: 'Lunch', value:'lunch'},
             {name: 'Dinner', value:'dinner'},
-            {name: 'Snack', value:'snack'}]
+            {name: 'Snacks', value:'snacks'}]
         },
         searchRecipe:{
           type: 'food',

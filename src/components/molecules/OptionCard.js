@@ -3,7 +3,7 @@ import React from 'react';
 const OptionCard = props => {
 
     const {type,option,onClickOption} = props;
-
+    
     return(
         <>
             <a href="#/" onClick = {() => onClickOption(option,type)}>

@@ -1,9 +1,10 @@
-import React from 'react';
+import React , { useState } from 'react';
 import ChooseOptionList from '../organisms/ChooseOptionList';
 import RecipeCardList from './RecipeCardList';
-
+import CheckBoxGroup from '../molecules/CheckBoxGroup';
 const SuggestedRecipe = props =>{
     
+
     return (
     <>
         <ChooseOptionList 
@@ -11,16 +12,28 @@ const SuggestedRecipe = props =>{
         onClickOption = {props.onSelectMealPlan}
         />
         {
-            props.state.mealPlanRecipes && 
-            <RecipeCardList 
-            content = {props.content.recipeCard}
-            contentFoodDiary = {props.content.foodDiary}
-            list = {props.state.mealPlanRecipes}
-            onChangeItem = {props.onChangeItem}
-            checkFavoriteRecipe = {props.checkFavoriteRecipe}
-            onAddFoodRecipe ={props.onAddFoodRecipe}
-            onClickIconAddFoodRecipe ={props.onClickIconAddFoodRecipe}
-            />
+            props.state.mealPlanRecipes.total && 
+            <>
+                <CheckBoxGroup 
+                    state= {props.state}
+                    text={props.content.meals.text} 
+                    options ={props.content.meals.options}
+                    onClickCheckBox = {props.onChangeItem}
+                    type = {props.type}
+                    checkedBoxes ={props.checkedBoxes}
+                />
+
+                <RecipeCardList 
+                    content = {props.content.recipeCard}
+                    contentFoodDiary = {props.content.foodDiary}
+                    list = {props.state.mealPlanRecipes.rendered}
+                    onChangeItem = {props.onChangeItem}
+                    checkFavoriteRecipe = {props.checkFavoriteRecipe}
+                    onAddFoodRecipe ={props.onAddFoodRecipe}
+                    onClickIconAddFoodRecipe ={props.onClickIconAddFoodRecipe}
+                />
+            </>
+
         }
     </>);
 }

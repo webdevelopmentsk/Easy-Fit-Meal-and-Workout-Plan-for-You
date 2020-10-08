@@ -20,13 +20,15 @@ const SearchRecipe = props => {
                 text={props.content.foodPreferences.text} 
                 options ={props.content.foodPreferences.options}
                 onClickCheckBox = {props.onChangeItem}
-                type ={props.content.foodPreferences.type}/>
+                type ={props.content.foodPreferences.type}
+                checkedBoxes ={props.checkedBoxes}/>
             <CheckBoxGroup 
                 state= {props.state}
                 text={props.content.meals.text} 
                 options ={props.content.meals.options}
                 onClickCheckBox = {props.onChangeItem}
-                type ={props.content.meals.type}/>
+                type ={props.content.meals.type}
+                checkedBoxes ={props.checkedBoxes}/>
             <div>
                 <br />
                 <Button 

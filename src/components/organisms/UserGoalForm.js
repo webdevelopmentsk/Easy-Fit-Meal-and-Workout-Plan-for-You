@@ -5,6 +5,32 @@ import Button from '../atoms/Button';
 const UserGoalForm = props => {
 
     const [userGoal,setUserGoal] = useState(props.state.userGoal);
+    const [open, setOpen] = useState(true);
+    const [ranges, setRanges] = useState({
+        minWeight: 40,
+        maxWeight: props.state.userPersonalInfo.weight,
+        unit: 'cm'
+    })
+
+    const onGoalChange = e =>{
+        setUserGoal({...userGoal,goalType:e.target.value});
+        if(e.target.value === props.content.userGoal.options[1].value){
+            setOpen(false);
+        }
+        else{
+            setOpen(true);
+            if(e.target.value === props.content.userGoal.options[0].value){
+                setRanges({...ranges, 
+                    minWeight: 40,maxWeight: props.state.userPersonalInfo.weight
+                });
+            }
+            else if(e.target.value === props.content.userGoal.options[2].value){
+                setRanges({...ranges, 
+                    minWeight: props.state.userPersonalInfo.weight, maxWeight: 200
+                });
+            }
+        }
+    }
 
     return(
         <div className ="popup">  
@@ -15,7 +41,7 @@ const UserGoalForm = props => {
                 <div>{props.content.userGoal.text.goal}
                     <select 
                     className="selection dropdown"
-                    onChange ={e => setUserGoal({...userGoal,goalType:e.target.value})}
+                    onChange ={e => onGoalChange(e)}
                     >
                         <option className="text">{props.content.userGoal.options.map(option => option.value === userGoal.goalType ? option.name: null)}
                         </option>
@@ -30,10 +56,12 @@ const UserGoalForm = props => {
                     </select>
                 </div>
 
+            { open &&   
+                <div>
                 <div>{props.content.userGoal.text.target}
                     <input 
                     type="range"
-                    min="30" max="200" 
+                    min= {ranges.minWeight} max= {ranges.maxWeight}
                     name={props.content.userPersonalInfo.weight.value} 
                     id={props.content.userPersonalInfo.weight.value}
                     value={userGoal.goalWeight}
@@ -70,6 +98,9 @@ const UserGoalForm = props => {
                     <span>{props.content.userGoal.text.intensity.options[1]}</span>
                     
                 </div>
+
+                </div>
+            }
                 
                 <Button 
                     text = {props.content.userGoal.submit.buttonText}

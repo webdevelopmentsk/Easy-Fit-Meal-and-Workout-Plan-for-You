@@ -1,4 +1,4 @@
-import React , { useState, useEffect } from 'react';
+import React from 'react';
 import AutoComplete from './AutoComplete';
 import UserItemList from './UserItemList';
 
@@ -22,9 +22,9 @@ const AddUserItem = props => {
                     searchItemType ={props.searchItemType}
                     key ={index}
                     item ={item}
-                    tag1= {item.recipe.label}
-                    tag2= {item.recipe.calories}
-                    tag3= {item.recipe.eneryUnit}
+                    tag1= {item.label}
+                    tag2= {item.calories}
+                    tag3= {item.eneryUnit}
                     onClickSelectFoodItem ={props.onClickSelectFoodItem}
 
                 />)

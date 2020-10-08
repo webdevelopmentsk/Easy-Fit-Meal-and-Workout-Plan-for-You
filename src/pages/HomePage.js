@@ -31,13 +31,6 @@ const HomePage = () => {
         dataUserGoal.complete = false;
         changeState('userGoal',dataUserGoal);
 
-        /*
-        let isComplete = true;
-        for (const [key, value] of Object.entries(data)) {
-            if(value === 0) {isComplete = false;}
-        };
-        */
-
        let isComplete = true;
        for (let key in data) {
            if(data[key] === 0) {isComplete = false;}

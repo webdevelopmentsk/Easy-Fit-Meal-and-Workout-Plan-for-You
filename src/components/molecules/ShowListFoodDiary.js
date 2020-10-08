@@ -9,7 +9,7 @@ const ShowListFoodDiary = props => {
     const [open, setOpen] = useState(false);
 
     const renderList = props.list.map((item,index) => 
-    <div key={index}>{item.recipe.label}<IconTrash deleteItem = {props.deleteItem} type={props.type}/></div>);
+    <div key={index}>{item.label}<IconTrash deleteItem = {props.deleteItem} type={props.type}/></div>);
 
     return(<> 
     {props.list && renderList}

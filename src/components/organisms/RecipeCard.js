@@ -20,13 +20,13 @@ const RecipeCard = props =>{
     return(
         <>
         <div className= "ui card">
-            < Image alt={props.item.recipe.label} src={props.item.recipe.image} href="#" onClickImage={togglePopup} />
+            < Image alt={props.item.label} src={props.item.image} href="#" onClickImage={togglePopup} />
             <div className ="content">
-                <div className="header">{props.item.recipe.label}</div>
+                <div className="header">{props.item.label}</div>
                 <div className="meta">
-                <div><IconClock />{props.item.recipe.totalTime}<span>  </span>{props.content.units.time}</div>
-                <div><IconPerson />{props.item.recipe.yield}<span>  </span>{props.content.units.portion}</div>
-                <div><IconBurn />{Math.round(props.item.recipe.calories/props.item.recipe.yield)}<span>  </span>{props.content.units.calories}</div>
+                <div><IconClock />{props.item.totalTime===0? 30: props.item.totalTime}<span>  </span>{props.content.units.time}</div>
+                <div><IconPerson />{props.item.yield}<span>  </span>{props.content.units.portion}</div>
+                <div><IconBurn />{Math.round(props.item.calories/props.item.yield)}<span>  </span>{props.content.units.calories}</div>
                 </div>
             </div>
         </div>

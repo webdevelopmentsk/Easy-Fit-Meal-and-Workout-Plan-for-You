@@ -18,9 +18,12 @@ import { Context } from '../context/Provider';
 
 //apis
 import edamam from '../apis/edamam';
-import clientFood from '../apis/client'; 
+//algorithms
+import { foodItemSearch } from '../algorithms/foodItemSearch';
+import { dietPlan } from '../algorithms/dietPlan';
 
-//import axios from 'axios';
+
+
 
 const MealPlan = () => {
 
@@ -50,7 +53,7 @@ const onChangeItem = (item,type) =>{
           let value = false;
           let index = -1;
           state.favoriteRecipes.map((obj,idx) => {
-            if(obj.recipe.url === item.recipe.url)
+            if(obj.url === item.url)
             {value = true;index=idx;}
             return null;
           });
@@ -75,7 +78,7 @@ const checkFavoriteRecipe = item => {
 
   state.favoriteRecipes.length > 0 && state.favoriteRecipes.map(
     obj => { 
-      if(obj.recipe.url === item.recipe.url) 
+      if(obj.url === item.url) 
       {
         isLiked = true;
       } return isLiked;}
@@ -88,19 +91,19 @@ const checkFavoriteRecipe = item => {
 useEffect(()=>{
   let totalCal = 0;
   state.breakfast.forEach(food => {
-    let itemCal = Math.round(food.recipe.calories/food.recipe.yield);
+    let itemCal = Math.round(food.calories/food.yield);
     totalCal = totalCal + itemCal;
   })
   state.lunch.forEach(food => {
-    let itemCal = Math.round(food.recipe.calories/food.recipe.yield);
+    let itemCal = Math.round(food.calories/food.yield);
     totalCal = totalCal + itemCal;
   })
   state.dinner.forEach(food => {
-    let itemCal = Math.round(food.recipe.calories/food.recipe.yield);
+    let itemCal = Math.round(food.calories/food.yield);
     totalCal = totalCal + itemCal;
   })
   state.snacks.forEach(food => {
-    let itemCal = Math.round(food.recipe.calories/food.recipe.yield);
+    let itemCal = Math.round(food.calories/food.yield);
     totalCal = totalCal + itemCal;
   })
 
@@ -127,41 +130,34 @@ const onClickSearchRecipe = async() => {
 };
 
 const onSelectMealPlan = async(item,type) =>{
-  await changeState(type,item)
-  console.log(item.parameter)
-  switch(item.parameter){
-    case 'diet':{
-       const response = await edamam.get('/search', 
-      {
-        params: {
-          q: state.randomIngredients.join('+')
-        },
-      });
-      response.data.hits && changeState('mealPlanRecipes',response.data.hits);
-    };break;
-    default:break;
-  }
-}
+  const recommended = [];
+  const meals = ['breakfast', 'lunch', 'dinner' , 'snacks'];
+  await Promise.all(meals.map(async meal =>{
+    const results = await dietPlan(item,meal);
+    results.map(recipe => recommended.push(recipe));
+  }))
+  changeState('mealPlanRecipes',{total:recommended,rendered:recommended});
+};
+
+useEffect(() =>{
+  const meals = state.mealPlanSelectedMeals;
+  const totalRecipes = state.mealPlanRecipes.total;
+  let renderedRecipes = [];
+  meals.map(meal =>{
+    totalRecipes.map(recipe =>{
+      if(meal === recipe.meal){
+        renderedRecipes.push(recipe)
+      }
+    })
+  });
+  changeState('mealPlanRecipes',{total:totalRecipes,rendered:renderedRecipes});
+},[state.mealPlanSelectedMeals]);
 
 const onUserFoodItemAdded = async(item) =>{
 
-  const foods = await clientFood.search({ query: item });
-  let list=[];
-  for(let i=0; i<= 3; i++){list.push(foods.hints[i])}
-  let constructedList = [];
-  list.map(item =>{
-    let data = {
-        recipe:{
-            label:'',
-            calories: '',
-            yield:1
-        }
-    };
-    data.recipe.label = item.food.label;
-    data.recipe.calories = Math.round(item.food.nutrients.ENERC_KCAL)
-    constructedList.push(data)
-  })
-  changeState('userFoodItems',constructedList)
+  const results = await foodItemSearch(item);
+  changeState('userFoodItems',results);
+
 };
 
 const onClickSelectFoodItem = async (item,type) =>{
@@ -192,6 +188,8 @@ const onClickSelectFoodItem = async (item,type) =>{
                       onChangeItem = {onChangeItem}
                       checkFavoriteRecipe = {checkFavoriteRecipe}
                       onClickIconAddFoodRecipe ={addItem}
+                      checkedBoxes ={state.mealPlanSelectedMeals}
+                      type = 'mealPlanSelectedMeals'
                     />
                   </Route>
                   <Route
@@ -208,7 +206,9 @@ const onClickSelectFoodItem = async (item,type) =>{
                     deleteItem ={deleteItem}
                     checkFavoriteRecipe = {checkFavoriteRecipe} 
                     onClickIconAddFoodRecipe ={addItem} 
-                    type = {content_mealPlan.searchRecipe.type}/>
+                    type = {content_mealPlan.searchRecipe.type}
+                    checkedBoxes = {[...state.foodPreferences,...state.meals]}
+                    />
                   </Route>
                   <Route
                     path="/mealplan/favoriterecipes"

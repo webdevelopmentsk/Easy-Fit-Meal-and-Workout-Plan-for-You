@@ -45,7 +45,7 @@ const dailyCalorieIntake = state => {
 
     if(goalType === 'maintain-weight') {
         let time = 0;
-        return [calMaintain,time];
+        return [Math.round(calMaintain),time];
     }
     else{
         let speed = 0.25*goalSpeed + 0.5;  // kgs/week
@@ -59,7 +59,7 @@ const dailyCalorieIntake = state => {
             case 'gain-weight': dailyCalIntake = Math.round(calMaintain + calToBurn);break;
             default: break;
         };
-        return [dailyCalIntake,time];
+        return [Math.round(dailyCalIntake),time];
     };
 
 

@@ -38,8 +38,11 @@ export const initialState = {
     favoriteRecipes:[],
     popUpRecipe: false,    
     checkedBoxes: [],
-    mealPlan: '',
-    randomIngredients:['chicken','potato','lettuce'],
-    mealPlanRecipes:[],
+    dietPlan: '',
+    mealPlanRecipes:{
+        total: [],
+        rendered:[]
+    },
+    mealPlanSelectedMeals:['breakfast','lunch','dinner','snacks'],
     userFoodItems: []
 }
