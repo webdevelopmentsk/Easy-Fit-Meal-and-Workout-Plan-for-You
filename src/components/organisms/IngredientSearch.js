@@ -18,7 +18,7 @@ const IngredientSearch = props => {
             />
             <br />
             <ShowList 
-                list = {props.state.ingredients} 
+                list = {props.state.searchIngredients} 
                 deleteItem = {props.deleteItem} 
                 type ={props.content.type}
             />

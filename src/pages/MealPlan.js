@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useState, useEffect} from 'react';
 
 //Routers
 import {Switch, Route} from 'react-router-dom';
@@ -15,22 +15,21 @@ import { content } from '../data/content';
 import { routesRecipeBar } from '../data/routes';
 //context
 import { Context } from '../context/Provider';
-
-//apis
-import edamam from '../apis/edamam';
 //algorithms
 import { foodItemSearch } from '../algorithms/foodItemSearch';
 import { dietPlan } from '../algorithms/dietPlan';
-
+import { searchRecipe } from '../algorithms/searchRecipe';
 
 
 
 const MealPlan = () => {
 
   const content_mealPlan = content.mealPlan;
-  const {state,changeState,change2State} = React.useContext(Context);
+  const {state,changeState} = React.useContext(Context);
+  const [report, SetReport ] = useState('');
 
 const addItem = (item,type) => {
+  console.log(item);console.log(type)
   let newList = [...state[type],item];
   changeState(type,newList)
 };     
@@ -116,27 +115,30 @@ useEffect(()=>{
 
 const onClickSearchRecipe = async() => {
 
-    if(!state.ingredients && state.meals && state.foodPreferences) 
-    { return content_mealPlan.searchRecipe.errors.noSearchOption}
-
-    const response = await edamam.get('/search', 
-    {
-      params: {
-        q: state.ingredients.join('+')
-      },
-    });
-    response.data.hits && changeState('recipes',response.data.hits);
-
+  if(state.searchIngredients){
+    const searchObj = {
+      ingredients: state.searchIngredients,
+      meals: state.searchMeals,
+      foodPreferences: state.searchFoodPreferences
+    }
+    const results = await searchRecipe(searchObj);
+    const filterResults = [];
+    results.map(obj => filterResults.push(obj.recipe));
+    changeState('searchRecipes',{total:filterResults,rendered:filterResults});
+  }
+  else{
+    SetReport(content_mealPlan.searchRecipe.errors.noSearchOption);
+  }
 };
 
 const onSelectMealPlan = async(item,type) =>{
-  const recommended = [];
-  const meals = ['breakfast', 'lunch', 'dinner' , 'snacks'];
+  const filterResults = [];
+  const meals = content_mealPlan.searchMeals.options.map(meal => meal.value);
   await Promise.all(meals.map(async meal =>{
     const results = await dietPlan(item,meal);
-    results.map(recipe => recommended.push(recipe));
+    results.map(recipe => filterResults.push(recipe));
   }))
-  changeState('mealPlanRecipes',{total:recommended,rendered:recommended});
+  changeState('mealPlanRecipes',{total:filterResults,rendered:filterResults});
 };
 
 useEffect(() =>{
@@ -162,7 +164,7 @@ const onUserFoodItemAdded = async(item) =>{
 
 const onClickSelectFoodItem = async (item,type) =>{
   let newList = [...state[type],item];
-  change2State(type,newList)
+  changeState(type,newList)
 };
   return <>
             <CaloriesRemain />
@@ -206,8 +208,8 @@ const onClickSelectFoodItem = async (item,type) =>{
                     deleteItem ={deleteItem}
                     checkFavoriteRecipe = {checkFavoriteRecipe} 
                     onClickIconAddFoodRecipe ={addItem} 
-                    type = {content_mealPlan.searchRecipe.type}
-                    checkedBoxes = {[...state.foodPreferences,...state.meals]}
+                    type = {content_mealPlan.searchRecipes.type}
+                    checkedBoxes = {[...state.searchFoodPreferences,...state.searchMeals]}
                     />
                   </Route>
                   <Route

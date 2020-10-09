@@ -11,7 +11,7 @@ const FoodDiary = props => {
                 props.content.foodDiary.options.map((meal,index)=>{
                 return  <div key ={index}>
                             <div>{meal.name}</div>
-                            {props.state[meal.value] ?
+                            {props.state.foodDiary[meal.value] ?
                             <ShowListFoodDiary 
                             content = {props.content}
                             state ={props.state}

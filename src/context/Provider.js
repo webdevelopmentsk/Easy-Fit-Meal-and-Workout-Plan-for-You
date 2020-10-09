@@ -12,12 +12,6 @@ const Provider = props => {
         {state,
              reset: () => setState(initialState),
              changeState: (propName,value) => setState({...state,[propName]: value}),
-             change2State: (propName1,value1,propName2,value2) => setState(
-                 {...state,
-                    [propName1]:value1,
-                    [propName2]:value2
-                 }
-             )
         }
         }>
             {props.children}

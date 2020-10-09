@@ -2,9 +2,12 @@ import React , { useState }  from 'react';
 import clientFood from '../../apis/client'; 
 
 const createSuggestions = async (type,value) =>{
-    let suggestions;
+    let suggestions=[];
 
-    if(type === 'ingredients' || type === 'breakfast'|| type === 'lunch'|| type === 'dinner'|| type === 'snacks'){
+    if(type === 'searchIngredients' || type === 'searchBreakfast'||
+       type === 'searchLunch'|| type === 'searchDinner'|| type === 'searchSnacks' ||
+       type === 'breakfast' || type === 'lunch' || type === 'dinner' || type === 'snacks'){
+       
         suggestions = await clientFood.autocomplete({query: value}, {limit: 5})
     }
 

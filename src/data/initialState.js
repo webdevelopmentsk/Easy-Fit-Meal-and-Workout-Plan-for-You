@@ -27,14 +27,25 @@ export const initialState = {
         remainingCal: 0,
         weeks: 0
     },
-    breakfast:[],
+    //Food Diary
+    breakfast:[], 
     lunch:[],
     dinner:[],
     snacks:[],
-    ingredients: [],
-    foodPreferences: [],
-    meals:[],
-    recipes: [],
+    foodDiary:{
+        breakfast:[], 
+        lunch:[],
+        dinner:[],
+        snacks:[],
+    },
+    //Food Diary
+    searchRecipes:{
+        total: [],
+        rendered:[]
+    },
+    searchIngredients: [],
+    searchFoodPreferences: [],
+    searchMeals:[],
     favoriteRecipes:[],
     popUpRecipe: false,    
     checkedBoxes: [],

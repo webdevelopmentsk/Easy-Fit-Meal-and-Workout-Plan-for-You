@@ -1,4 +1,4 @@
-import React , { useState } from 'react';
+import React  from 'react';
 import ChooseOptionList from '../organisms/ChooseOptionList';
 import RecipeCardList from './RecipeCardList';
 import CheckBoxGroup from '../molecules/CheckBoxGroup';
@@ -16,8 +16,8 @@ const SuggestedRecipe = props =>{
             <>
                 <CheckBoxGroup 
                     state= {props.state}
-                    text={props.content.meals.text} 
-                    options ={props.content.meals.options}
+                    text={props.content.searchMeals.text} 
+                    options ={props.content.searchMeals.options}
                     onClickCheckBox = {props.onChangeItem}
                     type = {props.type}
                     checkedBoxes ={props.checkedBoxes}

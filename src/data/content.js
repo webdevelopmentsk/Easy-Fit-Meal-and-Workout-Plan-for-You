@@ -104,15 +104,15 @@ export const content  = {
             },
           ],
         },
-        ingredients: 
+        searchIngredients: 
         {
-          type: 'ingredients',
+          type: 'searchIngredients',
           text: 'Select Ingredients',
           placeholder: 'Add an ingredient ...'
         },
-        foodPreferences: {
+        searchFoodPreferences: {
           text: 'Slect Food Preferences',
-          type: 'foodPreferences',
+          type: 'searchFoodPreferences',
           options: [
             {name: 'High Protein',value: 'high-protein'},
             {name: 'High Fiber',value: 'high-fiber'},
@@ -121,17 +121,17 @@ export const content  = {
             {name: 'Low Sodium',value: 'low-sodium'},
           ]
         },
-        meals:{
+        searchMeals:{
           text: 'Select Meal',
-          type: 'meals',
+          type: 'searchMeals',
           options:[
             {name: 'Breakfast', value:'breakfast'},
             {name: 'Lunch', value:'lunch'},
             {name: 'Dinner', value:'dinner'},
             {name: 'Snacks', value:'snacks'}]
         },
-        searchRecipe:{
-          type: 'food',
+        searchRecipes:{
+          type: 'searchRecipes',
           button:{
             text: 'Search Recipe'
           },

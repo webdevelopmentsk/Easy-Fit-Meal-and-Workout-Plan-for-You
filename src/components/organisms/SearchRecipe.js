@@ -10,36 +10,36 @@ const SearchRecipe = props => {
         <>
             <IngredientSearch 
                 state = {props.state}
-                content ={props.content.ingredients} 
+                content ={props.content.searchIngredients} 
                 addItem = {props.addItem}
                 deleteItem = {props.deleteItem}
             />
 
             <CheckBoxGroup 
                 state= {props.state}
-                text={props.content.foodPreferences.text} 
-                options ={props.content.foodPreferences.options}
+                text={props.content.searchFoodPreferences.text} 
+                options ={props.content.searchFoodPreferences.options}
                 onClickCheckBox = {props.onChangeItem}
-                type ={props.content.foodPreferences.type}
+                type ={props.content.searchFoodPreferences.type}
                 checkedBoxes ={props.checkedBoxes}/>
             <CheckBoxGroup 
                 state= {props.state}
-                text={props.content.meals.text} 
-                options ={props.content.meals.options}
+                text={props.content.searchMeals.text} 
+                options ={props.content.searchMeals.options}
                 onClickCheckBox = {props.onChangeItem}
-                type ={props.content.meals.type}
+                type ={props.content.searchMeals.type}
                 checkedBoxes ={props.checkedBoxes}/>
             <div>
                 <br />
                 <Button 
-                text={props.content.searchRecipe.button.text} 
+                text={props.content.searchRecipes.button.text} 
                 onClickButton={props.onClickSearchRecipe} />
             </div>
 
             <br />
-            {props.state.recipes &&  
+            {props.state.searchRecipes.rendered &&  
                 <RecipeCardList 
-                list = {props.state.recipes}
+                list = {props.state.searchRecipes.rendered}
                 content ={props.content.recipeCard}
                 contentFoodDiary = {props.content.foodDiary}
                 onChangeItem={props.onChangeItem}
