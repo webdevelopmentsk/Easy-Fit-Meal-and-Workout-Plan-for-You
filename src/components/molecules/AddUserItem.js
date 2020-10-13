@@ -4,14 +4,15 @@ import UserItemList from './UserItemList';
 
 const AddUserItem = props => {
 
-
     return(
         <>
             <div>
                 <AutoComplete 
-                placeholder = {props.content.placeholder}
+                content = {props.content}
                 onSearchSubmit={props.onSearchSubmit}
                 type ={props.type}
+                state = {props.state}
+                showQuantity = {true}
                 />
             </div>
             <div>{props.content.searchResults}</div>
@@ -24,8 +25,8 @@ const AddUserItem = props => {
                     item ={item}
                     tag1= {item.label}
                     tag2= {item.calories}
-                    tag3= {item.eneryUnit}
-                    onClickSelectFoodItem ={props.onClickSelectFoodItem}
+                    tag3= {item.unitCalories}
+                    onClickSelectItem ={props.onClickSelectItem}
 
                 />)
             }

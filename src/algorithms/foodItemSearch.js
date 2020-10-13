@@ -14,8 +14,10 @@ export const foodItemSearch = async(item) =>{
     list.map(item =>{
       let data = {
               label:item.food.label,
+              unityield: 'yield',
+              yield:1,
               calories: Math.round(item.food.nutrients.ENERC_KCAL),
-              yield:1
+              unitCalories: 'Kcal',
       };
       constructedList.push(data)
     })

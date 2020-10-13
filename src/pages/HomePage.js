@@ -60,8 +60,13 @@ const HomePage = () => {
 
     },[state.userGoal]);
 
+    const testAPI = () => {
+        
+    };
+
     return (
     <>
+    <button onClick = {testAPI}>Get Data</button>
     <br />
     <div style={{display:"flex",flexDirection:"column",width:"10rem"}}>
             <img alt ="infomation" src = {content_homePage.userPersonalInfo.image} 

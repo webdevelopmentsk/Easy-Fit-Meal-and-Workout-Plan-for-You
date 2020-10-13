@@ -1,10 +1,10 @@
 import React from 'react';
 
 const IconTrash = props => {
-    const {deleteItem,type} = props;
+    const {deleteItem,type, value} = props;
 
     return (
-        <i className="icon trash alternate outline" onClick = {e => deleteItem(e.target.parentNode.textContent,type)}></i>
+        <i className="icon trash alternate outline" onClick = {e => deleteItem(value,type)}></i>
     )
 }
 

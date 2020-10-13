@@ -7,13 +7,11 @@ const UserItemList = props =>{
         <div 
         onClick ={ async() => {
 
-            props.onClickSelectFoodItem(props.item,props.type);
+            props.onClickSelectItem(props.item,props.type);
         }}
         
         style={{display:"flex", flexWrap: "wrap"}}>
-            <span> {props.tag1} </span>
-            <span> {props.tag2} </span>
-            <span> {props.tag3} </span>
+            <span>{`${props.tag1} ${props.tag2} ${props.tag3}`}</span>
         </div>
     )
 

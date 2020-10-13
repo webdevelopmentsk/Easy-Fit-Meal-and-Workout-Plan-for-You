@@ -4,27 +4,31 @@ import IconTrash from '../atoms/IconTrash'
 import AddUserItem from './AddUserItem';
 
 
-const ShowListFoodDiary = props => {
+const ShowListDiary = props => {
 
     const [open, setOpen] = useState(false);
 
     const renderList = props.list.map((item,index) => 
-    <div key={index}>{item.label}<IconTrash deleteItem = {props.deleteItem} type={props.type}/></div>);
+    <div key={index}>{
+        Object.values(item).map(value => ` ${value} `)
+    }
+
+        <IconTrash deleteItem = {props.deleteItem} type={props.type} value = {item.label}/></div>);
 
     return(<> 
     {props.list && renderList}
-    <Button onClickButton = {() => {setOpen(!open)}}text ={props.content.foodDiary.addFood.text} />
+    <Button onClickButton = {() => {setOpen(!open)}}text ={props.content.addItem.text} />
     {
                 open && <AddUserItem 
                 type ={props.type}
                 state = {props.state}
-                content ={props.content.foodDiary.addFood}
-                onSearchSubmit ={props.onUserFoodItemAdded}
+                content ={props.content.addItem}
+                onSearchSubmit ={props.onUserItemAdded}
                 searchItemType ={props.searchItemType}
-                onClickSelectFoodItem = {props.onClickSelectFoodItem}
+                onClickSelectItem = {props.onClickSelectItem}
                 />
     }
     </>);
 }
 
-export default ShowListFoodDiary;
+export default ShowListDiary;

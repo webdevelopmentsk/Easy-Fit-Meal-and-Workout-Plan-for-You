@@ -4,10 +4,10 @@ export const initialState = {
     password: '',
     confirmPassword: '',
     userPersonalInfo:{
-        age: 0,
+        age: 18,
         gender: 'female',
-        height:0,
-        weight:0,
+        height:168,
+        weight:55,
         activity:'Little to no exercise',
         unitHeight:'cm',
         unitWeight:'kg',
@@ -15,9 +15,9 @@ export const initialState = {
     },
     userGoal:{
         goalType:'lose-weight',
-        goalWeight: 0,
+        goalWeight: 50,
         goalUnitWeight:'kg',
-        goalSpeed: 0,
+        goalSpeed: 1,
         complete: false
     },
     calTrack:{
@@ -32,17 +32,11 @@ export const initialState = {
     lunch:[],
     dinner:[],
     snacks:[],
-    foodDiary:{
-        breakfast:[], 
-        lunch:[],
-        dinner:[],
-        snacks:[],
-    },
-    //Food Diary
     searchRecipes:{
         total: [],
         rendered:[]
     },
+    //Search Ingredients
     searchIngredients: [],
     searchFoodPreferences: [],
     searchMeals:[],
@@ -55,5 +49,11 @@ export const initialState = {
         rendered:[]
     },
     mealPlanSelectedMeals:['breakfast','lunch','dinner','snacks'],
-    userFoodItems: []
+    userFoodItems: [],
+    //Exercise Diary
+    cardio:[],
+    strength:[],
+    workoutRoutine:[],
+    otherActivities: [],
+    userExerciseItems:[]
 }

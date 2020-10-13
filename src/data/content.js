@@ -59,15 +59,17 @@ export const content  = {
   },
   mealPlan:{
         foodDiary:{
+          stateName: 'foodDiary',
           text: 'Food Diary',
           options:[{name: 'Breakfast', value:'breakfast'},
                   {name: 'Lunch', value:'lunch'},
                   {name: 'Dinner', value:'dinner'},
                   {name: 'Snacks', value:'snacks'},
                   ],
-          addFood:{
+          addItem:{
             text: '+ Add Food',
-            placeholder: 'Search for a food',
+            placeholderSearch: 'Search for a food',
+            placeholderQuantity: 'Enter quantity',
             type: 'food',
             searchResults: 'Search Results',
             eneryUnit: 'Kcal'
@@ -108,7 +110,8 @@ export const content  = {
         {
           type: 'searchIngredients',
           text: 'Select Ingredients',
-          placeholder: 'Add an ingredient ...'
+          placeholderSearch: 'Add an ingredient ...',
+          placeholderQuantity: 'Enter quantity',
         },
         searchFoodPreferences: {
           text: 'Slect Food Preferences',
@@ -163,4 +166,22 @@ export const content  = {
 
 
   },
+  workOutPlan:{
+    exerciseDiary:{
+      text: 'Exercise/Activity',
+      options:[
+        {name: 'Cardio', value:'cardio'},
+        {name: 'Strength', value:'strength'},
+        {name: 'Workout Routine', value:'workoutRoutine'},
+        {name: 'Other Activities', value:'otherActivities'}],
+      addItem:{
+        text: '+ Add Exercise',
+        placeholderSearch: 'Search for an exercise',
+        placeholderQuantity: 'Enter duration (min)',
+        type: 'exercise',
+        searchResults: 'Search Results',
+        eneryUnit: 'Kcal'
+      },
+    }
+  }
 }

@@ -8,9 +8,9 @@ import SearchRecipe from '../components/organisms/SearchRecipe';
 import Header from '../components/organisms/Header';
 import FavoriteRecipe from '../components/organisms/FavoriteRecipe';
 import SuggestedRecipe from '../components/organisms/SuggestedRecipe';
-import FoodDiary from '../components/organisms/FoodDiary';
+import DisplayDiary from '../components/organisms/DisplayDiary';
 
-//data
+//content
 import { content } from '../data/content';
 import { routesRecipeBar } from '../data/routes';
 //context
@@ -29,7 +29,6 @@ const MealPlan = () => {
   const [report, SetReport ] = useState('');
 
 const addItem = (item,type) => {
-  console.log(item);console.log(type)
   let newList = [...state[type],item];
   changeState(type,newList)
 };     
@@ -116,6 +115,7 @@ useEffect(()=>{
 const onClickSearchRecipe = async() => {
 
   if(state.searchIngredients){
+
     const searchObj = {
       ingredients: state.searchIngredients,
       meals: state.searchMeals,
@@ -163,19 +163,20 @@ const onUserFoodItemAdded = async(item) =>{
 };
 
 const onClickSelectFoodItem = async (item,type) =>{
+
   let newList = [...state[type],item];
   changeState(type,newList)
 };
   return <>
             <CaloriesRemain />
-            <FoodDiary 
-              content = {content_mealPlan}
+            <DisplayDiary 
+              content = {content_mealPlan.foodDiary}
               state ={state}
               deleteItem ={deleteItem}
               isItemObject = {true}
-              onUserFoodItemAdded = {onUserFoodItemAdded}
+              onUserItemAdded = {onUserFoodItemAdded}
               searchItemType = 'userFoodItems'
-              onClickSelectFoodItem ={onClickSelectFoodItem} 
+              onClickSelectItem ={onClickSelectFoodItem} 
             />
             <Header routes ={routesRecipeBar} />
               <Switch>

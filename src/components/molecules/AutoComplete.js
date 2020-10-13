@@ -1,5 +1,6 @@
 import React , { useState }  from 'react';
 import clientFood from '../../apis/client'; 
+import suggestedActivities from '../../algorithms/suggestedActivities';
 
 const createSuggestions = async (type,value) =>{
     let suggestions=[];
@@ -11,48 +12,80 @@ const createSuggestions = async (type,value) =>{
         suggestions = await clientFood.autocomplete({query: value}, {limit: 5})
     }
 
+    if(type === 'cardio' || type ==='strength' || type ==='workoutRoutine' || type ==='otherActivities'){
+        suggestions = suggestedActivities(type,value);
+    }
+
     return suggestions;
 }
 
 const AutoComplete = props =>{
     
-    //const items = props.items;
     const [suggestions,setSuggestions] = useState('');
     const [text, setText] = useState('');
-    
+    const [quantity, setQuantity] = useState('');
+
     const onTextChanged = async e => {
         const value = e.target.value;
         let suggestions = [];
         if (value.length > 0){
             suggestions = await createSuggestions(props.type,value)
-            //const regex = new RegExp(`${value}`,'i');
-            //suggestions = items.sort().filter(v => regex.test(v));
         }
         setSuggestions(suggestions);
         setText(value);
     };
+    
+    const onQuantityChange =  e =>{
+        let value = e.target.value;
+        if(value < 0){
+            value = prompt(props.content.placeholderQuantity + " (> 0)");
+        }
+        setQuantity(value);
+    }
 
-    const suggestionSelected = value =>{
-        setText(value);
+    const suggestionSelected = item =>{
+        setText(item);
         setSuggestions([]);
-        value && props.onSearchSubmit(value,props.type); 
+        if(props.showQuantity){
+            item && quantity && props.onSearchSubmit(item,props.type,quantity); 
+            setQuantity('');
+        }
+        else{
+            item && props.onSearchSubmit(item,props.type); 
+        }
+
         setText('');
     };
 
     const onFormSubmit = e =>{
         e.preventDefault();
         setSuggestions([]);
-        text && props.onSearchSubmit(text,props.type); 
+        if(props.showQuantity){
+            text && quantity && props.onSearchSubmit(text,props.type,quantity); 
+            setQuantity('');
+        }
+        else{
+            text && props.onSearchSubmit(text,props.type); 
+        }
         setText('');
     };
 
     return(
-        <form onSubmit ={e =>onFormSubmit(e)}>
+        <form onSubmit ={onFormSubmit}>
+            {
+                props.showQuantity && 
+                <input
+                type = "number"
+                placeholder = {props.content.placeholderQuantity}
+                value ={quantity}
+                onChange = {onQuantityChange} 
+            />
+            }
             <input 
             onChange = {onTextChanged} 
             type="text" 
             value = {text}
-            placeholder= {props.placeholder} 
+            placeholder= {props.content.placeholderSearch} 
             />
             <ul>
                 {suggestions.length > 0 && 

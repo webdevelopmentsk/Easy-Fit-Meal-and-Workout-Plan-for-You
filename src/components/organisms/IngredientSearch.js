@@ -5,17 +5,20 @@ import AutoComplete from '../molecules/AutoComplete';
 
 const IngredientSearch = props => {
 
+    console.log(props)
+
     return(
         <>
             <br />
             <div>{props.content.text}</div>
             <br />
             <AutoComplete 
-                placeholder = {props.content.placeholder}
+                content = {props.content}
                 onSearchSubmit={props.addItem}
                 type ={props.content.type}
-                items ={props.autoComplete}
+                showQuantity = {false}
             />
+
             <br />
             <ShowList 
                 list = {props.state.searchIngredients} 
