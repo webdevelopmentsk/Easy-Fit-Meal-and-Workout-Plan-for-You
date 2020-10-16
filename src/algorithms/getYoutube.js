@@ -1,6 +1,12 @@
 import youtube from '../apis/youtube';
+require('dotenv').config();
+
 
 const getYoutube = async () => {
+
+    var myKey = process.env.YOUTUBE_KEY;
+
+    console.log(myKey)
 
     const response = await youtube.get('/search', {
         params:{
@@ -8,7 +14,7 @@ const getYoutube = async () => {
             part: 'snippet',
             maxResults: 4,
             type: 'video',
-            key: 'AIzaSyAQWpXt2qLY4PNoAnnQfbm_qLkBbG57W00'
+            key: ''
         },
     });
     console.log(response.data.items)
