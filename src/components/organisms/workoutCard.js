@@ -1,15 +1,7 @@
-import React , {useState} from 'react';
+import React from 'react';
+import PopupWorkout from './PopupWorkout';
 
-import Image from '../atoms/Image';
-
-import IconClock from '../atoms/IconClock';
-import IconPerson from '../atoms/IconPerson';
-import IconBurn from '../atoms/IconBurn';
-
-
-import PopUpRecipe from './PopUpRecipe';
-
-const RecipeCard = props =>{
+const workoutCard = props =>{
 
     const [showPopUp,setShowPopUp] = useState(false);
 
@@ -30,18 +22,12 @@ const RecipeCard = props =>{
                 </div>
             </div>
         </div>
-        {showPopUp && < PopUpRecipe
+        {showPopUp && < PopupWorkout
                         update = {showPopUp}
-                        item ={props.item}
-                        content = {props.content}
-                        contentFoodDiary = {props.contentFoodDiary}
-                        togglePopup ={togglePopup}
-                        onChangeItem ={props.onChangeItem}
-                        checkFavoriteRecipe = {props.checkFavoriteRecipe}
-                        onClickIconAddFoodRecipe ={props.onClickIconAddFoodRecipe}
                         />}
         </>
     );
-}
 
-export default RecipeCard;
+};
+
+export default workoutCard;

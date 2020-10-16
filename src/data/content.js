@@ -58,15 +58,14 @@ export const content  = {
     }
   },
   mealPlan:{
-        foodDiary:{
-          stateName: 'foodDiary',
-          text: 'Food Diary',
-          options:[{name: 'Breakfast', value:'breakfast'},
+    diary:{
+      text: 'Food Diary',
+      options:[{name: 'Breakfast', value:'breakfast'},
                   {name: 'Lunch', value:'lunch'},
                   {name: 'Dinner', value:'dinner'},
                   {name: 'Snacks', value:'snacks'},
                   ],
-          addItem:{
+      addItem:{
             text: '+ Add Food',
             placeholderSearch: 'Search for a food',
             placeholderQuantity: 'Enter quantity',
@@ -74,9 +73,8 @@ export const content  = {
             searchResults: 'Search Results',
             eneryUnit: 'Kcal'
           },
-          
         },
-        mealPlanRecipes:{
+    plans:{
           type: 'dietPlan',
           text: "Choose a diet you'd like to follow",
           options: [
@@ -106,14 +104,14 @@ export const content  = {
             },
           ],
         },
-        searchIngredients: 
+    searchIngredients: 
         {
           type: 'searchIngredients',
           text: 'Select Ingredients',
           placeholderSearch: 'Add an ingredient ...',
           placeholderQuantity: 'Enter quantity',
         },
-        searchFoodPreferences: {
+    searchFoodPreferences: {
           text: 'Slect Food Preferences',
           type: 'searchFoodPreferences',
           options: [
@@ -124,7 +122,7 @@ export const content  = {
             {name: 'Low Sodium',value: 'low-sodium'},
           ]
         },
-        searchMeals:{
+    selectSubOptions:{
           text: 'Select Meal',
           type: 'searchMeals',
           options:[
@@ -133,7 +131,7 @@ export const content  = {
             {name: 'Dinner', value:'dinner'},
             {name: 'Snacks', value:'snacks'}]
         },
-        searchRecipes:{
+    searchRecipes:{
           type: 'searchRecipes',
           button:{
             text: 'Search Recipe'
@@ -145,34 +143,32 @@ export const content  = {
             text: 'Please see the results'
           } 
         },
-        favoriteRecipes:{
+    favoriteRecipes:{
           results:{
             text: 'Please see the results'
           },
         },
-        recipeCard:{
+    card:{
           units:{
             time: 'mins',
             portion: 'portions',
             calories: 'Kcal/portion'
           },
           popup:{
+            type: 'recipe',
             ingredients: 'Ingredients:',
             preparation: 'Preparation:',
             healthLabels: 'Health Labels:'
           }, 
-        }
-
-
-
+    }
   },
   workOutPlan:{
-    exerciseDiary:{
+    diary:{
       text: 'Exercise/Activity',
       options:[
         {name: 'Cardio', value:'cardio'},
         {name: 'Strength', value:'strength'},
-        {name: 'Workout Routine', value:'workoutRoutine'},
+        {name: 'Flexibility', value:'flexibility'},
         {name: 'Other Activities', value:'otherActivities'}],
       addItem:{
         text: '+ Add Exercise',
@@ -182,6 +178,42 @@ export const content  = {
         searchResults: 'Search Results',
         eneryUnit: 'Kcal'
       },
+    },
+    plans:{
+      type: 'workoutPlan',
+      text: "Choose a plan you'd like to follow",
+      options: [
+        {
+          name: 'Full Body Workout',text: 'One of the best workout splits for muscle growth and strength regardless of your training experience.',
+          image:'https://builtwithscience.com/wp-content/uploads/2019/01/full-body-workout-A-thumbnail-min-e1568692521525.jpg'
+        },
+        {
+          name: 'Yoga',text: 'Yoga is an ancient practice that brings together mind and body.',
+          image:'https://static.onecms.io/wp-content/uploads/sites/35/2019/04/16045733/benefits-yoga-fb.jpg'
+        },
+        {
+          name: 'Flexibility Routine',text: 'Stretches for the Inflexible',
+          image:'https://www.verywellfit.com/thmb/SmjIwmy0AhURbEpqO3Kbh3TeryI=/1887x1415/smart/filters:no_upscale()/GettyImages-536906989-566ef3c03df78ce161a406c4.jpg'
+        },
+      ],
+    },
+    selectSubOptions:{
+      text: 'Select Levels',
+      type: '',
+      options:[
+        {name: 'Beginner', value:'beginner'},
+        {name: 'Intermediate', value:'intermediate'},
+        {name: 'Advanced', value:'advanced'},]
+    },
+    card:{
+      units:{
+        time: 'mins',
+        calories: 'Kcal'
+      },
+      popup:{
+        type: 'workout',
+        textAddToDiary: 'Add Exercise'
+      }, 
     }
   }
 }

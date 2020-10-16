@@ -53,7 +53,13 @@ export const initialState = {
     //Exercise Diary
     cardio:[],
     strength:[],
-    workoutRoutine:[],
+    flexibility:[],
     otherActivities: [],
-    userExerciseItems:[]
+    userExerciseItems:[],
+    workoutPlans:{
+        total: [],
+        rendered:[]
+    },
+    workoutPlanSelectLevels:['beginner', 'intermediate','advanced'],
+    favoriteExercises: [],
 }

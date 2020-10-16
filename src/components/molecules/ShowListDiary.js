@@ -5,13 +5,11 @@ import AddUserItem from './AddUserItem';
 
 
 const ShowListDiary = props => {
-
+    
     const [open, setOpen] = useState(false);
 
     const renderList = props.list.map((item,index) => 
-    <div key={index}>{
-        Object.values(item).map(value => ` ${value} `)
-    }
+    <div key={index}>{item.displayItem}
 
         <IconTrash deleteItem = {props.deleteItem} type={props.type} value = {item.label}/></div>);
 

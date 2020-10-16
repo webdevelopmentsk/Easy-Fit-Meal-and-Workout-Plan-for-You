@@ -23,9 +23,6 @@ const AddUserItem = props => {
                     searchItemType ={props.searchItemType}
                     key ={index}
                     item ={item}
-                    tag1= {item.label}
-                    tag2= {item.calories}
-                    tag3= {item.unitCalories}
                     onClickSelectItem ={props.onClickSelectItem}
 
                 />)

@@ -12,7 +12,7 @@ const createSuggestions = async (type,value) =>{
         suggestions = await clientFood.autocomplete({query: value}, {limit: 5})
     }
 
-    if(type === 'cardio' || type ==='strength' || type ==='workoutRoutine' || type ==='otherActivities'){
+    if(type === 'cardio' || type ==='strength' || type ==='flexibility' || type ==='otherActivities'){
         suggestions = suggestedActivities(type,value);
     }
 
@@ -90,7 +90,8 @@ const AutoComplete = props =>{
             <ul>
                 {suggestions.length > 0 && 
                 suggestions.map((item,index) => 
-                <div onClick ={()=> suggestionSelected(item)}key={index}>{item}</div>)}
+                <div onClick ={()=> suggestionSelected(item)}key={index}>{item}</div>)
+            }
             </ul>
         </form>);
 

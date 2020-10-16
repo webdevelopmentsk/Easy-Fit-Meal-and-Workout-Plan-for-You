@@ -13,6 +13,6 @@ export const routesRecipeBar = [
 
 export const routesExerciseBar = [
   { name: "Suggested Workout Plans", link: "/workoutplan/suggestedexercise",compName: "Suggested Workout Plans", icon:"clipboard list icon"},
-  { name: "Searh Exercise", link: "/workoutplan/searchexercise",compName: "All", icon:"search icon"},
+  //{ name: "Searh Exercise", link: "/workoutplan/searchexercise",compName: "All", icon:"search icon"},
   { name: "Favorite", link: "/workoutplan/favoriteexercise",compName: "Favorites", icon:"heart icon"}
 ];

@@ -1,25 +1,25 @@
 import React from 'react';
-import RecipeCard from './RecipeCard';
+import Card from './Card';
 
-const RecipeCardList = props =>{
+const RenderCardList = props =>{
 
         return(<> 
                 {props.list && props.list.map((item,index) =>
                     <div key={index}>
-                    <RecipeCard 
+                    <Card 
                     item={item} 
                     content ={props.content} 
-                    contentFoodDiary ={props.contentFoodDiary}
+                    contentDiary ={props.contentDiary}
                     list ={props.list} 
                     onChangeItem={props.onChangeItem}
-                    checkFavoriteRecipe ={props.checkFavoriteRecipe}
-                    onClickIconAddFoodRecipe ={props.onClickIconAddFoodRecipe}
+                    checkIfFavorite ={props.checkIfFavorite}
+                    addItem ={props.addItem}
                     /></div>
                 )}
             </>);
 }
 
-export default RecipeCardList;
+export default RenderCardList;
 
 
 

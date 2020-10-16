@@ -30,10 +30,16 @@ export const dietPlan = async (item, meal) => {
         };
         let response = await getRecipes(item,randomIngredients);
 
-        response && await response.map(recipe => {recipe.recipe.meal = meal;recommended.push(recipe.recipe);});
+        response && await response.map(recipe => {
+          recipe.recipe.meal = meal;
+          recipe.recipe.displayItem = `${recipe.recipe.label}  ${Math.round(recipe.recipe.calories/recipe.recipe.yield)}  Kcal`
+          recommended.push(recipe.recipe);
+          return null;
+        });
     
     return recommended;
 };
+
 
 
 /*

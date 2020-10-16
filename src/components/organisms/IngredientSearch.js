@@ -5,8 +5,6 @@ import AutoComplete from '../molecules/AutoComplete';
 
 const IngredientSearch = props => {
 
-    console.log(props)
-
     return(
         <>
             <br />

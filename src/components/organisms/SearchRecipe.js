@@ -2,7 +2,7 @@ import React from 'react';
 import IngredientSearch from './IngredientSearch';
 import CheckBoxGroup from '../molecules/CheckBoxGroup';
 import Button from '../atoms/Button';
-import RecipeCardList from './RecipeCardList';
+import RenderCardList from './RenderCardList';
 
 const SearchRecipe = props => {
 
@@ -21,14 +21,8 @@ const SearchRecipe = props => {
                 options ={props.content.searchFoodPreferences.options}
                 onClickCheckBox = {props.onChangeItem}
                 type ={props.content.searchFoodPreferences.type}
-                checkedBoxes ={props.checkedBoxes}/>
-            <CheckBoxGroup 
-                state= {props.state}
-                text={props.content.searchMeals.text} 
-                options ={props.content.searchMeals.options}
-                onClickCheckBox = {props.onChangeItem}
-                type ={props.content.searchMeals.type}
-                checkedBoxes ={props.checkedBoxes}/>
+                checkedBoxes ={props.checkedBoxes}
+                showCheckBoxes = {true}/>
             <div>
                 <br />
                 <Button 
@@ -38,16 +32,32 @@ const SearchRecipe = props => {
 
             <br />
             {props.state.searchRecipes.rendered &&  
-                <RecipeCardList 
-                list = {props.state.searchRecipes.rendered}
-                content ={props.content.recipeCard}
-                contentFoodDiary = {props.content.foodDiary}
-                onChangeItem={props.onChangeItem}
-                checkFavoriteRecipe={props.checkFavoriteRecipe}
-                onClickIconAddFoodRecipe ={props.onClickIconAddFoodRecipe}
+                <RenderCardList 
+                content ={props.content.card}
+                contentDiary = {props.content.diary}
+                list = {props.state[props.mainState].rendered}
+                onChangeItem = {props.onChangeItem}
+                checkIfFavorite = {props.checkIfFavorite}
+                onAddItemToDiary ={props.onAddFoodRecipe}
+                addItem ={props.addItem}
+
             />}
+
         </>
     );
 };
 
 export default SearchRecipe;
+
+/*
+Checkboxes for meals 
+            <CheckBoxGroup 
+                state= {props.state}
+                text={props.content.selectSubOptions.text} 
+                options ={props.content.selectSubOptions.options}
+                onClickCheckBox = {props.onChangeItem}
+                type ={props.content.selectSubOptions.type}
+                checkedBoxes ={props.checkedBoxes}
+                showCheckBoxes = {true}
+                />
+*/

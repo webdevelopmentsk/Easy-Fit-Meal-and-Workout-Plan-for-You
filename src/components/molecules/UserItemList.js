@@ -11,7 +11,7 @@ const UserItemList = props =>{
         }}
         
         style={{display:"flex", flexWrap: "wrap"}}>
-            <span>{`${props.tag1} ${props.tag2} ${props.tag3}`}</span>
+            {props.item.displayItem}
         </div>
     )
 

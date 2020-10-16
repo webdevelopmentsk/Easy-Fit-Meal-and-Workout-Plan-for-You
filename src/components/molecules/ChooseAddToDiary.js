@@ -1,13 +1,13 @@
 import React from 'react';
 
-const ChooseMeal = props => {
+const ChooseAddToDiary = props => {
 
-    const renderOptions = props.content.map((meal,index) => 
+    const renderOptions = props.content.map((option,index) => 
     <a  href="#/"
         key={index} 
-        onClick={ () => props.onClickIconAddFoodRecipe(props.item,meal.value)}
+        onClick={ () => props.addItem(props.item,option.value)}
         >
-        {meal.name}
+        {option.name}
     </a>
     );
 
@@ -21,6 +21,6 @@ const ChooseMeal = props => {
 
 }
 
-export default ChooseMeal;
+export default ChooseAddToDiary;
 
 

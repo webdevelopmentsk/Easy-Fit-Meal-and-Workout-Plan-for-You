@@ -1,12 +1,16 @@
-import React , { useEffect } from 'react';
+import React , { useState, useEffect } from 'react';
 import CaloriesRemain from '../components/molecules/CaloriesRemain';
 import DisplayDiary from '../components/organisms/DisplayDiary';
 import caloriesBurned from '../algorithms/caloriesBurned';
 import Header from '../components/organisms/Header';
+import SuggestedPlan from '../components/organisms/SuggestedPlan';
+import FavoriteCards from '../components/organisms/FavoriteCards';
 
 //content
 import { content } from '../data/content';
 import { routesExerciseBar } from '../data/routes';
+import { workoutPlans } from '../data/workoutPlans';
+
 //context
 import { Context } from '../context/Provider';
 
@@ -17,28 +21,105 @@ const WorkoutPlan = () => {
 
     const content_workoutPlan = content.workOutPlan;
     const {state,changeState} = React.useContext(Context);
+    const [showCheckBoxes, setShowCheckBoxes] = useState(false);
 
+    const onSelectPlan = item =>{
+      setShowCheckBoxes(true);
+      const gender = state.userPersonalInfo.gender;
+      const filterResults = [];
+      workoutPlans[item.name].map(plan =>{
+        if(plan.suitableFor.indexOf(gender) > -1) {
+          const totalBurned =  caloriesBurned(plan,state);
+          plan.calories =totalBurned;
+          filterResults.push(plan);
+        }
+        return null;
+      })
+      changeState('workoutPlans',{total:filterResults,rendered:filterResults});
+    };
+
+    const deleteItemFavExercise = (index,type) => {
+      let newList = [...state[type]];
+      newList.splice(index,1);
+      changeState(type,newList);
+    };
+
+    const onChangeItem = (item,type) =>{
+
+      if(type=== 'favoriteExercises'){
+            let value = false;
+            let index = -1;
+            state.favoriteExercises.map((obj,idx) => {
+              if(obj.url === item.url)
+              {value = true;index=idx;}
+              return null;
+            });
+  
+            if (value){
+              deleteItemFavExercise(index,type);
+            }
+            else{
+              addItem(item,type)
+            }
+            
+        }
+        else{
+          let index = state[type].indexOf(item);
+          index > -1 ? deleteItem(item,type) : addItem(item,type);
+        }
+  
+    };
+
+    useEffect(() =>{
+      const levels = state.workoutPlanSelectLevels;
+      const totalExercises = state.workoutPlans.total;
+      let renderedExercises = [];
+      levels.map(level =>{
+        totalExercises.map(exercise =>{
+          if(level === exercise.level){
+            renderedExercises.push(exercise);
+          }
+          return null;
+        })
+        return null;});
+      changeState('workoutPlans',{total:totalExercises,rendered:renderedExercises});
+    },[state.workoutPlanSelectLevels]);
+
+
+    const checkIfFavorite = item =>{
+      let isLiked = false;
+
+      state.favoriteExercises.length > 0 && state.favoriteExercises.map(
+        obj => { 
+          if(obj.url === item.url) 
+          {
+            isLiked = true;
+          } return isLiked;}
+      );
+    
+      return isLiked;
+    };
     const addItem = (item,type) => {
-        console.log(item);console.log(type)
-        let newList = [...state[type],item];
-        changeState(type,newList)
-      };     
-      const deleteItem = (item,type)=> {        
-        let index = state[type].indexOf(item);
-        let newList = [...state[type]];
-        newList.splice(index,1);
-        changeState(type,newList);
-      };
-
+      let newList = [...state[type],item];
+      changeState(type,newList)
+    };    
+    
+    const deleteItem = (item,type)=> {        
+      let index = state[type].indexOf(item);
+      let newList = [...state[type]];
+      newList.splice(index,1);
+      changeState(type,newList);
+    };
       const onUserExerciseItemSelect = async(item,type,quantity) =>{
 
-        const totalCalBurned = caloriesBurned(item,type,quantity,state)
+        const totalCalBurned = caloriesBurned(item,state,type,quantity)
         let data = {
             label: item,
             time: quantity,
             timeUnit: 'mins',
             calories: totalCalBurned,
-            unitCalories: 'Kcal',
+            unitEnergy: 'Kcal',
+            displayItem: `${item}  ${quantity}  mins  ${totalCalBurned}  Kcal`
         }
         let newList = [...state[type],data];
         changeState(type,newList)
@@ -60,7 +141,7 @@ const WorkoutPlan = () => {
       let itemCal = Math.round(exercise.calories);
       totalCal = totalCal + itemCal;
     })
-    state.workoutRoutine.forEach(exercise => {
+    state.flexibility.forEach(exercise => {
       let itemCal = Math.round(exercise.calories);
       totalCal = totalCal + itemCal;
     })
@@ -74,14 +155,14 @@ const WorkoutPlan = () => {
     changeState('calTrack',data);
   
   
-  },[state.cardio,state.strength,state.workoutRoutine,state.otherActivities]);
+  },[state.cardio,state.strength,state.flexibility,state.otherActivities]);
 
 
     return(
         <>
          <CaloriesRemain />
          <DisplayDiary 
-              content = {content_workoutPlan.exerciseDiary}
+              content = {content_workoutPlan.diary}
               state ={state}
               deleteItem ={deleteItem}
               isItemObject = {true}
@@ -94,17 +175,31 @@ const WorkoutPlan = () => {
                   <Route
                     path="/workoutplan/suggestedexercise"
                   >
-
-                  </Route>
-                  <Route
-                    path="/workoutplan/searchexercise"
-                  >              
-
+                    <SuggestedPlan 
+                      state ={state}
+                      mainState = 'workoutPlans'
+                      content = {content_workoutPlan}
+                      onSelectPlan = {onSelectPlan}
+                      onChangeItem = {onChangeItem}
+                      checkIfFavorite = {checkIfFavorite}
+                      addItem ={addItem}
+                      checkedBoxes ={state.workoutPlanSelectLevels}
+                      type = 'workoutPlanSelectLevels'
+                      showCheckBoxes = {showCheckBoxes}
+                    />
                   </Route>
                   <Route
                     path="/workoutplan/favoriteexercise"
                   >
-
+                    {state.favoriteRecipes && 
+                    <FavoriteCards 
+                    content = {content_workoutPlan}
+                    state ={state}
+                    mainState = 'favoriteExercises'
+                    onChangeItem ={onChangeItem}
+                    checkIfFavorite ={checkIfFavorite}
+                    addItem ={addItem}
+                    />}
                   </Route>
               </Switch>
 

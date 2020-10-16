@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 //Routers
 import {Switch, Route} from 'react-router-dom';
@@ -6,8 +6,8 @@ import {Switch, Route} from 'react-router-dom';
 import CaloriesRemain from '../components/molecules/CaloriesRemain';
 import SearchRecipe from '../components/organisms/SearchRecipe';
 import Header from '../components/organisms/Header';
-import FavoriteRecipe from '../components/organisms/FavoriteRecipe';
-import SuggestedRecipe from '../components/organisms/SuggestedRecipe';
+import FavoriteCards from '../components/organisms/FavoriteCards';
+import SuggestedPlan from '../components/organisms/SuggestedPlan';
 import DisplayDiary from '../components/organisms/DisplayDiary';
 
 //content
@@ -26,7 +26,8 @@ const MealPlan = () => {
 
   const content_mealPlan = content.mealPlan;
   const {state,changeState} = React.useContext(Context);
-  const [report, SetReport ] = useState('');
+  const [showCheckBoxes, setShowCheckBoxes] = useState(false);
+  //const [report, SetReport ] = useState('');
 
 const addItem = (item,type) => {
   let newList = [...state[type],item];
@@ -71,7 +72,7 @@ const onChangeItem = (item,type) =>{
 
 };
 
-const checkFavoriteRecipe = item => {
+const checkIfFavorite = item => {
   let isLiked = false;
 
   state.favoriteRecipes.length > 0 && state.favoriteRecipes.map(
@@ -113,7 +114,7 @@ useEffect(()=>{
 },[state.breakfast,state.lunch,state.dinner,state.snacks]);
 
 const onClickSearchRecipe = async() => {
-
+  setShowCheckBoxes(true);
   if(state.searchIngredients){
 
     const searchObj = {
@@ -122,18 +123,18 @@ const onClickSearchRecipe = async() => {
       foodPreferences: state.searchFoodPreferences
     }
     const results = await searchRecipe(searchObj);
-    const filterResults = [];
-    results.map(obj => filterResults.push(obj.recipe));
-    changeState('searchRecipes',{total:filterResults,rendered:filterResults});
+
+    changeState('searchRecipes',{total:results,rendered:results});
   }
   else{
-    SetReport(content_mealPlan.searchRecipe.errors.noSearchOption);
+    //SetReport(content_mealPlan.searchRecipe.errors.noSearchOption);
   }
 };
 
-const onSelectMealPlan = async(item,type) =>{
+const onSelectPlan = async item =>{
+  setShowCheckBoxes(true);
   const filterResults = [];
-  const meals = content_mealPlan.searchMeals.options.map(meal => meal.value);
+  const meals = content_mealPlan.selectSubOptions.options.map(meal => meal.value);
   await Promise.all(meals.map(async meal =>{
     const results = await dietPlan(item,meal);
     results.map(recipe => filterResults.push(recipe));
@@ -148,10 +149,11 @@ useEffect(() =>{
   meals.map(meal =>{
     totalRecipes.map(recipe =>{
       if(meal === recipe.meal){
-        renderedRecipes.push(recipe)
+        renderedRecipes.push(recipe);
       }
+      return null;
     })
-  });
+    return null;});
   changeState('mealPlanRecipes',{total:totalRecipes,rendered:renderedRecipes});
 },[state.mealPlanSelectedMeals]);
 
@@ -170,7 +172,7 @@ const onClickSelectFoodItem = async (item,type) =>{
   return <>
             <CaloriesRemain />
             <DisplayDiary 
-              content = {content_mealPlan.foodDiary}
+              content = {content_mealPlan.diary}
               state ={state}
               deleteItem ={deleteItem}
               isItemObject = {true}
@@ -184,15 +186,17 @@ const onClickSelectFoodItem = async (item,type) =>{
                     path="/mealplan/suggestedrecipes"
                     //component={SuggestedRecipe}
                   >
-                    <SuggestedRecipe 
+                    <SuggestedPlan 
                       state ={state}
+                      mainState = 'mealPlanRecipes'
                       content = {content_mealPlan}
-                      onSelectMealPlan = {onSelectMealPlan}
+                      onSelectPlan = {onSelectPlan}
                       onChangeItem = {onChangeItem}
-                      checkFavoriteRecipe = {checkFavoriteRecipe}
-                      onClickIconAddFoodRecipe ={addItem}
+                      checkIfFavorite = {checkIfFavorite}
+                      addItem ={addItem}
                       checkedBoxes ={state.mealPlanSelectedMeals}
                       type = 'mealPlanSelectedMeals'
+                      showCheckBoxes = {showCheckBoxes}
                     />
                   </Route>
                   <Route
@@ -202,15 +206,17 @@ const onClickSelectFoodItem = async (item,type) =>{
                     <SearchRecipe
                     content = {content_mealPlan}
                     state ={state}
+                    mainState = 'searchRecipes'
                     onClickSearchRecipe = {onClickSearchRecipe} 
                     isItemObject = {false}
                     onChangeItem ={onChangeItem}
                     addItem = {addItem}
                     deleteItem ={deleteItem}
-                    checkFavoriteRecipe = {checkFavoriteRecipe} 
-                    onClickIconAddFoodRecipe ={addItem} 
+                    checkIfFavorite = {checkIfFavorite} 
+                    addItem ={addItem} 
                     type = {content_mealPlan.searchRecipes.type}
                     checkedBoxes = {[...state.searchFoodPreferences,...state.searchMeals]}
+                    showCheckBoxes = {showCheckBoxes}
                     />
                   </Route>
                   <Route
@@ -218,12 +224,13 @@ const onClickSelectFoodItem = async (item,type) =>{
                     //component ={FavoriteRecipe}
                   >
                     {state.favoriteRecipes && 
-                    <FavoriteRecipe 
+                    <FavoriteCards 
                     content = {content_mealPlan}
                     state ={state}
+                    mainState = 'favoriteRecipes'
                     onChangeItem ={onChangeItem}
-                    checkFavoriteRecipe ={checkFavoriteRecipe}
-                    onClickIconAddFoodRecipe ={addItem}
+                    checkIfFavorite ={checkIfFavorite}
+                    addItem ={addItem}
                     />}
                   </Route>
               </Switch>

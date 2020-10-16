@@ -19,14 +19,20 @@ const convertTometric = (unit,value) =>{
 // American College of Sports Medicine. Human Kinetics. 2017.
 //* MET = Metabolic Equivalent of Task
 
-const caloriesBurned = (item,type,quantity,state) => {
-    console.log(item,type,quantity,state)
+const caloriesBurned = (item,state,type,quantity) => {
+
     let weight = convertTometric(state.userPersonalInfo.unitWeight,state.userPersonalInfo.weight);
-    let itemIndex = -1; let MET = 0;
-    activities[type].map((obj,index) => {if(obj.name === item) {itemIndex = index}});
-    if(itemIndex > 0){MET = activities[type][itemIndex].MET;}
-    console.log(itemIndex,MET)
-    return Math.round((quantity * MET * 3.5 * weight)/200);
+    if(item.MET){
+        return Math.round((item.totalTime * item.MET * 3.5 * weight)/200);
+    }
+    else{
+        let itemIndex = -1; let MET = 0;
+        activities.map((obj,index) => {
+            if(obj.name === item) {itemIndex = index;} return null;
+        });
+        if(itemIndex > 0){MET = activities[itemIndex].MET;}
+        return Math.round((quantity * MET * 3.5 * weight)/200);
+    }
 };
 
 export default caloriesBurned;

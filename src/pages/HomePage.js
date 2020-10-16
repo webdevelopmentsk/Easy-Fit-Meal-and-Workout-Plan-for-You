@@ -10,8 +10,9 @@ import UserInformationForm from '../components/organisms/UserInformationForm';
 import UserGoalForm from '../components/organisms/UserGoalForm';
 import ResultEnergyPerDay from '../components/molecules/ResultEnergyPerDay';
 import CaloriesRemain from '../components/molecules/CaloriesRemain';
-
 import Button from '../components/atoms/Button';
+
+import getYoutube from '../algorithms/getYoutube';
 
 const HomePage = () => {
 
@@ -61,7 +62,7 @@ const HomePage = () => {
     },[state.userGoal]);
 
     const testAPI = () => {
-        
+        getYoutube();
     };
 
     return (
