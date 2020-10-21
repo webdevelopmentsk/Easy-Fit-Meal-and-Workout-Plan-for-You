@@ -1,9 +1,17 @@
 export const content  = {
+  landingPage:{
+    heading1: 'Create Your Own Fitness & Diet Plan',
+    heading2:'We offer a simple way to customize a routine that works for you!',
+    buttonExplore: 'Explore Easy Fit',
+  },
   homePage:{
     userPersonalInfo:{
-      text: 'Step 1: Specify Information',
-      textAfter: 'Change Your Information',
-      image: 'https://images.unsplash.com/photo-1560169573-5ff6f7f35fe4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1410&q=80',
+      text:{
+        heading1: "Let's get started",
+        heading2: "Specify your personal information.",
+        textbtn: 'Click Here',
+        textAfter: 'Change Your Information',
+      },
       age:{name: 'Age',value: 'age'},
       weight:{
         name: 'Weight', 
@@ -29,20 +37,24 @@ export const content  = {
     },
     userGoal: {
       text: {
-        heading: 'Step 2: Specify Goal',
-        headingAfter: 'Change Your Goal',
-        goal:'Goal:',
-        target: 'Target Weight:',
-        intensity: {
-          text: 'Intensity',
-          options: ['Slow', 'Fast'],
+        heading1: "Let's Set Your Goal",
+        heading2: "Whether you want to lose weight, gain muscle or increase your endurance, it's important to tailor your workout to fit your goals.",
+        textbtn: 'Click Here',
+        textAfter: 'Change Your Goal',
+      },
+
+      goal:'Goal:',
+      target: 'Target:',
+      intensity: {
+        text: 'Intensity',
+        options: ['Slow', 'Fast'],
         },
-        suggestions:'Healthy weight-loss/gain rates are 1-2 pounds/week (0.5 to 1 kg)'},
-      image:'https://culturesync.net/wp-content/uploads/2019/08/goals-setting-960x540.jpg',
+      suggestions:'Healthy weight-loss/gain rates are 1-2 pounds/week (0.5 to 1 kg)',
       submit: {
         buttonText: 'Submit',
         displayComplete: 'Complete! You are good to go!',
-        displayInComplete: 'Your personal information is incomplete.'},
+        displayInComplete: 'Your personal information is incomplete.'
+      },
       options: [
               {name:'Lose Weight', value: 'lose-weight'},
               {name:'Maintain Weight', value: 'maintain-weight'},
@@ -52,9 +64,11 @@ export const content  = {
     results:{
       text: 'Results',
       image:'https://d50b62f6164e0c4a0279-11570554cb5edae3285603e6ab25c978.ssl.cf5.rackcdn.com/html_body_blocks/images/000/007/051/original/HowToStickToYourMealPlan_en0480002f5673756c159558dce0a778f1.jpg?1524197354',
-      textGoal: 'Goal : ',
-      textEstimatedTime: 'Estimated Time to Reach Goal (#weeks) : ',
-      textCalories: 'Your Daily Calorie Need (Kcal) : '
+      textGoal: 'Goal',
+      textEstimatedTime: 'Estimated Time',
+      timeUnit: 'Weeks',
+      textCalories: 'Daily Calorie Need',
+      energyUnit: 'Kcal'
     }
   },
   mealPlan:{

@@ -1,0 +1,26 @@
+.btn{
+  font-family: inherit;
+  display: inline-block;
+  border: none;
+    &-light{
+      padding: 0.5rem;
+      background-color: transparent;
+      border: $black 2px solid;
+    }
+    &-white{
+      padding: 1.5rem;
+      font-size: $font-btn-m;
+      background-color: $white;
+      color: $primary;
+    }
+    &-dark{
+      padding: 1.5rem;
+      font-size: $font-btn-l;
+      color: $white;
+      background-color: $black;
+    }
+}
+
+.btn-moveInTop{
+  animation: moveInTop 1s ease-in-out;  
+}

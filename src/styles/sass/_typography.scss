@@ -1,0 +1,36 @@
+#root{
+	font-family: 'Commissioner', 'Noto Sans JP', sans-serif;
+}
+
+.heading{
+
+	&__h1{
+		text-transform: uppercase;
+		font-size: $font-h1;
+		text-align: center;
+	}
+	&__h2{
+		font-size: $font-h2;
+		text-align: center;
+	}
+	&__h3{
+		font-size: $font-h3;
+		text-align: center;
+	}
+
+}
+
+.paragraph{
+	font-size: $font-p;
+}
+
+.textEffect{
+	&__pin{
+		display: inline-block;
+		font-size: 2rem;
+		font-weight: 700;
+		margin: 1rem 0;
+		padding: 2rem 2rem;
+	}
+}
+

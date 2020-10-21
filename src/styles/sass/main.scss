@@ -1,1 +1,17 @@
-@import 'components';
+
+@import 'mixins';
+@import 'variables';
+@import 'animations';
+@import 'base';
+@import 'typography';
+@import 'utilities';
+@import 'layout';
+
+@import './components/button';
+@import './components/popup';
+@import './components/header';
+@import './components/inputForm';
+@import './components/caloriesRemain';
+@import './components/diary';
+
+@import './pages/homePage';

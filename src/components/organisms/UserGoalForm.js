@@ -1,5 +1,4 @@
 import React , { useState } from 'react'
-
 import Button from '../atoms/Button';
 
 const UserGoalForm = props => {
@@ -35,12 +34,12 @@ const UserGoalForm = props => {
     return(
         <div className ="popup">  
             
-            <div className = "popup_inner">
-                <h2>{props.content.userGoal.text.heading}</h2>
+            <div className = "popup_inner inputForm">
 
-                <div>{props.content.userGoal.text.goal}
+                <div className = "inputForm__field">
+                    <label className = "inputForm__label">{props.content.userGoal.goal}</label>
                     <select 
-                    className="selection dropdown"
+                    className="selection dropdown inputForm__select-m"
                     onChange ={e => onGoalChange(e)}
                     >
                         <option className="text">{props.content.userGoal.options.map(option => option.value === userGoal.goalType ? option.name: null)}
@@ -58,7 +57,9 @@ const UserGoalForm = props => {
 
             { open &&   
                 <div>
-                <div>{props.content.userGoal.text.target}
+                <div className = "inputForm__field">
+
+                    <label className = "inputForm__label">{props.content.userGoal.target}</label>
                     <input 
                     type="range"
                     min= {ranges.minWeight} max= {ranges.maxWeight}
@@ -66,10 +67,10 @@ const UserGoalForm = props => {
                     id={props.content.userPersonalInfo.weight.value}
                     value={userGoal.goalWeight}
                     onChange ={e => setUserGoal({...userGoal,goalWeight:e.target.value})}/>
-                    <span>{userGoal.goalWeight}</span>
+                    <label className = "inputForm__label">{userGoal.goalWeight}</label>
                     
                     <select 
-                    className="selection dropdown"
+                    className="selection dropdown inputForm__select-s"
                     onChange = {e => setUserGoal({...userGoal, goalUnitWeight:e.target.value})}
                     >
                         <option className="text">{userGoal.goalUnitWeight}
@@ -86,26 +87,26 @@ const UserGoalForm = props => {
 
                 </div>
 
-                <div>
-                    <span>{props.content.userGoal.text.intensity.options[0]}</span>
-                    <input 
-                    type="range"
-                    min="0" max="2" 
-                    name={props.content.userGoal.text.intensity.text} 
-                    id={props.content.userGoal.text.intensity.text}
-                    value={userGoal.goalSpeed}
-                    onChange ={e => setUserGoal({...userGoal,goalSpeed:e.target.value})}/>
-                    <span>{props.content.userGoal.text.intensity.options[1]}</span>
-                    
-                </div>
-
+                    <div className = "inputForm__field" >
+                        <label className = "inputForm__label">{props.content.userGoal.intensity.options[0]}</label>
+                        <input 
+                        type="range"
+                        min="0" max="2" 
+                        name={props.content.userGoal.intensity.text} 
+                        id={props.content.userGoal.intensity.text}
+                        value={userGoal.goalSpeed}
+                        onChange ={e => setUserGoal({...userGoal,goalSpeed:e.target.value})}/>
+                        <label className = "inputForm__label">{props.content.userGoal.intensity.options[1]}</label>
+                    </div>
                 </div>
             }
-                
-                <Button 
-                    text = {props.content.userGoal.submit.buttonText}
-                    onClickButton = {() => props.checkInfoComplete('userGoal',userGoal)}
-                />
+                <div className = "inputForm__field u-center-text" >
+                    <Button 
+                        className = "btn btn-light"
+                        text = {props.content.userGoal.submit.buttonText}
+                        onClickButton = {() => props.checkInfoComplete('userGoal',userGoal)}
+                    />
+                </div>
             </div>
         </div>
     );

@@ -10,31 +10,31 @@ const UserInformationForm = props =>{
     
     return(
         <div className ="popup">
-            <div className="ui action input popup_inner" style={{display:"flex",flexWrap:"wrap",flexDirection:"column"}}>
-
-                <h2>{content.text}</h2>
-                <div>
-                    <label htmlFor={content.age.value}>{content.age.name}</label>
-                    <input 
+            <div className="ui action input popup_inner">
+                <div className = "inputForm__field">
+                    <label className = "inputForm__label" htmlFor={content.age.value}>{content.age.name}</label>
+                    <input
+                    className = "popup__input" 
                     type="range"
-                    min="15" max="80" 
+                    min="15" max="50" 
                     name={content.age.value} 
                     id={content.age.value}
                     value={userPersonalInfo.age}
                     onChange ={e => setUserPersonalInfo({...userPersonalInfo,[content.age.value]:e.target.value})}/>
-                    <span>{userPersonalInfo.age}</span>
+                    <label className = "inputForm__label">{userPersonalInfo.age}</label>
                 </div>
 
-                <div>
-                    <label htmlFor={content.weight.value}>{content.weight.name}</label>
-                    <input 
+                <div className = "inputForm__field">
+                    <label className = "inputForm__label" htmlFor={content.weight.value}>{content.weight.name}</label>
+                    <input
+                    className = "popup__input"  
                     type="range"
                     min={userPersonalInfo.unitWeight==='kg'? 35: 70} max={userPersonalInfo.unitWeight==='kg'? 150: 300}
                     name={content.weight.value} 
                     id={content.weight.value}
                     value={userPersonalInfo.weight}
                     onChange ={e => setUserPersonalInfo({...userPersonalInfo,[content.weight.value]:e.target.value})}/>
-                    <span>{userPersonalInfo.weight}</span>
+                    <label className = "inputForm__label">{userPersonalInfo.weight}</label>
                     
                     <select 
                     className="selection dropdown"
@@ -56,16 +56,17 @@ const UserInformationForm = props =>{
 
                 </div>
 
-                <div>
-                    <label htmlFor={content.height.value}>{content.height.name}</label>
-                    <input 
+                <div className = "inputForm__field">
+                    <label className = "inputForm__label" htmlFor={content.height.value}>{content.height.name}</label>
+                    <input
+                    className = "popup__input"  
                     type="range"
                     min={userPersonalInfo.unitHeight==='cm'? 100: 40} max={userPersonalInfo.unitHeight==='cm'? 250: 100 }
                     name={content.height.value} 
                     id={content.height.value}
                     value={userPersonalInfo.height}
                     onChange ={e => setUserPersonalInfo({...userPersonalInfo,[content.height.value]:e.target.value})}/>
-                    <span>{userPersonalInfo.height}</span>
+                    <label className = "inputForm__label">{userPersonalInfo.height}</label>
                     
                     <select 
                     className="selection dropdown"
@@ -83,8 +84,8 @@ const UserInformationForm = props =>{
 
                 </div>
 
-                <div>
-                    <label htmlFor={content.gender.value}>{content.gender.name}</label>
+                <div className = "inputForm__field">
+                    <label className = "inputForm__label" htmlFor={content.gender.value}>{content.gender.name}</label>
                     <select 
                     className="selection dropdown"
                     onChange = {e => setUserPersonalInfo({...userPersonalInfo,gender:e.target.value})}
@@ -100,24 +101,25 @@ const UserInformationForm = props =>{
                     </select>
                 </div>
 
-                <div>
-                    <label htmlFor={content.activity.value}>{content.activity.name}</label>
+                <div className = "inputForm__field">
+                    <label className = "inputForm__label" htmlFor={content.activity.value}>{content.activity.name}</label>
                     <select 
-                    className="selection dropdown"
+                    className="selection dropdown inputForm__select-l"
                     onChange = {e => setUserPersonalInfo({...userPersonalInfo,[content.activity.value]:e.target.value})}
                     >
-                        <option className="text">{userPersonalInfo.activity}</option>
+                        <option className="text option">{userPersonalInfo.activity}</option>
                         {
                             content.activity.options.map((option,index) => {
                                 if(option !== userPersonalInfo.activity){
-                                   return <option key ={index} value={option}>{option}</option>
+                                   return <option className="option" key ={index} value={option}>{option}</option>
                                 } else return null
                             })
                         }
                     </select>
                 </div>
-                
-                <Button text = {content.submit.buttonText} onClickButton = {() => props.checkInfoComplete('userPersonalInfo',userPersonalInfo)}/>
+                <div className = "inputForm__field u-center-text">
+                <Button className = "btn btn-light" text = {content.submit.buttonText} onClickButton = {() => props.checkInfoComplete('userPersonalInfo',userPersonalInfo)}/>
+                </div>
             </div>
         </div>
     );

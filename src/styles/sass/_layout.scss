@@ -1,0 +1,30 @@
+.mainContainer{
+    display: flex;
+    &__landingPage{
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 2rem;
+    }
+    &__homePage{
+        flex-wrap: wrap;
+        margin: 1rem;
+        justify-content: space-evenly;
+    }
+}
+
+.subContainer{
+    &__landingPage{
+        margin: 2rem;
+    }
+    &__homePage{
+        margin: 2rem;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+    }
+}
+.item{
+    &__homePage{
+        margin: 2rem 0;
+    }
+}

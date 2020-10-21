@@ -3,22 +3,25 @@ import React from 'react';
 const ResultEnergyPerDay = props => {
 
     return(
-        <>
-            <br />
-            <div style={{border:"solid 1px black",display:"flex", padding: "1rem"}}>
-                <img alt ="results" src={props.content.results.image} style={{height:"8rem"}}></img>
-                <div>
-                <div>{props.content.results.textGoal}{props.state.userGoal.goalType}</div>
-                    {
-                        props.state.calTrack.weeks !== 0 &&
-                        <div>{props.content.results.textEstimatedTime}{props.state.calTrack.weeks}</div>
-                        
-                    }
-                <div>{props.content.results.textCalories}{props.state.calTrack.goalCal}</div>
-                </div>
-            </div>
 
-        </>
+        <div className = 'resultForm'>
+            <div className="resultForm__goal">
+                {props.content.results.textGoal} 
+                <div className="resultForm__text">{props.state.userGoal.goalType}</div>
+            </div>
+            
+                {
+                    props.state.calTrack.weeks !== 0 &&
+                    <div className="resultForm__time">
+                        {props.content.results.textEstimatedTime}  
+                        <div className="resultForm__text">{`${props.state.calTrack.weeks}  ${props.content.results.timeUnit}`}</div>
+                    </div>
+                    
+                }
+            <div className="resultForm__energy">{props.content.results.textCalories}
+                <div className="resultForm__text">{`${props.state.calTrack.goalCal}  ${props.content.results.energyUnit}`}</div>
+            </div>
+        </div>
     );
 };
 

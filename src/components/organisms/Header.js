@@ -1,16 +1,19 @@
 import React from 'react';
 
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-const Header = ({routes}) => {
+const Header = ({routes,onHeaderClick}) => {
 
     const renderRoutes = routes.map( (route,index) => {
         return(
-            <Link key ={index} to={route.link} className = "item"> <i className= {route.icon}></i> </Link>
+        <Link className = "item header-link" 
+              key ={index} to={route.link}
+              onClick ={onHeaderClick}
+        > <i className= {route.icon}></i> {route.name}</Link>
         );
     })
     return (
-        <div className="ui secondary pointing menu">{renderRoutes}</div>
+        <div className="header">{renderRoutes}</div>
     );
 }
 

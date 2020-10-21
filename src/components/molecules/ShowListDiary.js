@@ -9,13 +9,13 @@ const ShowListDiary = props => {
     const [open, setOpen] = useState(false);
 
     const renderList = props.list.map((item,index) => 
-    <div key={index}>{item.displayItem}
+    <div className = "" key={index}>{item.displayItem}
 
         <IconTrash deleteItem = {props.deleteItem} type={props.type} value = {item.label}/></div>);
 
     return(<> 
     {props.list && renderList}
-    <Button onClickButton = {() => {setOpen(!open)}}text ={props.content.addItem.text} />
+    <Button className = "btn btn-light" onClickButton = {() => {setOpen(!open)}}text ={props.content.addItem.text} />
     {
                 open && <AddUserItem 
                 type ={props.type}

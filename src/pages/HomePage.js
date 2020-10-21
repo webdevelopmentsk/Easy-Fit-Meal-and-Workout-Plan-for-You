@@ -49,8 +49,7 @@ const HomePage = () => {
         }
     };
 
-    useEffect(()=>{
-        //Get goalCal
+    useEffect(()=>{//Get goalCal
         if(state.userPersonalInfo.complete && state.userPersonalInfo.complete){
             let [dailyCalIntake,weeks] = dailyCalorieIntake(state);
             let data = state.calTrack;
@@ -61,22 +60,26 @@ const HomePage = () => {
 
     },[state.userGoal]);
 
-    const testAPI = () => {
-        getYoutube();
-    };
-
     return (
-    <>
-    <button onClick = {testAPI}>Get Data</button>
-    <br />
-    <div style={{display:"flex",flexDirection:"column",width:"10rem"}}>
-            <img alt ="infomation" src = {content_homePage.userPersonalInfo.image} 
-            style ={{height: "5rem"}}/>
-            <Button text = {state.userPersonalInfo.complete ? 
-            content_homePage.userPersonalInfo.textAfter:
-            content_homePage.userPersonalInfo.text} 
-            onClickButton = {() =>togglePopup('userPersonalInfo')}/>
-    </div>
+    <div className= 'mainContainer mainContainer__homePage'>
+
+        {!state.userPersonalInfo.complete &&
+        <div className= 'subContainer__homePage'>
+            <div className = 'item__homePage'>
+                <h2 className = 'heading__h2 u-uppercase'>{content_homePage.userPersonalInfo.text.heading1}</h2>
+            </div>
+            <div className = 'item__homePage'>
+                <p className = 'paragraph'>{content_homePage.userPersonalInfo.text.heading2}</p>
+            </div>
+            <div className = 'item__homePage'>
+                <Button className = 'btn btn-white btn-moveInTop item__homePage u-font-weight-bold' 
+                text = {state.userPersonalInfo.complete ? 
+                content_homePage.userPersonalInfo.text.textAfter:
+                content_homePage.userPersonalInfo.text.textbtn} 
+                onClickButton = {() =>togglePopup('userPersonalInfo')}/>
+            </div>
+        </div>
+        }
     {
         open.userPersonalInfo &&  <UserInformationForm
                         content = {content_homePage}
@@ -84,33 +87,42 @@ const HomePage = () => {
                         checkInfoComplete = {checkInfoComplete}
                         />
     }
-    {state.userPersonalInfo.complete &&
-        <>
-            <br />
-            <div style={{display:"flex",flexDirection:"column",width:"10rem"}}>
-            <img alt = "goal" src = {content_homePage.userGoal.image} style ={{height: "5rem"}} />
-                <Button text = {state.userGoal.complete ? 
-                content_homePage.userGoal.text.headingAfter :
-                content_homePage.userGoal.text.heading} 
+    {(state.userPersonalInfo.complete && !state.userGoal.complete) &&
+        <div className= 'subContainer__homePage'>
+            <div className = 'item__homePage'>
+                <h2 className = 'heading__h2 u-uppercase'>{content_homePage.userGoal.text.heading1}</h2>
+            </div>
+            <div className = 'item__homePage'>
+                <p className = 'paragraph'>{content_homePage.userGoal.text.heading2}</p>
+            </div>
+            <div className = 'item__homePage'>
+                <Button className = 'btn btn-white btn-moveInTop item__homePage u-font-weight-bold' 
+                text = {state.userGoal.complete ? 
+                content_homePage.userGoal.text.textAfter :
+                content_homePage.userGoal.text.textbtn} 
                 onClickButton = {() => togglePopup('userGoal')}/>
             </div>
+
             {open.userGoal &&  <UserGoalForm 
             content = {content_homePage}
             state ={state}
             checkInfoComplete = {checkInfoComplete}
             />}
-        </>
+        </div>
     }
     {state.userGoal.complete && state.userPersonalInfo.complete &&
-        <>
+        <div className= 'subContainer__homePage'>
             <ResultEnergyPerDay 
                 state = {state}
                 content = {content_homePage} />
-
             <CaloriesRemain />
-        </>
+        </div>
     }
-    </>)
+    </div>
+    );
 }
 
 export default HomePage;
+
+//    <button onClick = {testAPI}>Get Data</button>
+// const testAPI = () => getYoutube();

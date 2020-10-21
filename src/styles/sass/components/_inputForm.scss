@@ -1,0 +1,18 @@
+.inputForm{
+    color: $black;
+    &__field{
+    margin-bottom: 1.5rem;
+    }
+    &__label{
+    margin: 0 0.7rem;
+    }
+    &__select-l{
+        width: 75%;
+    }
+    &__select-m{
+        width: 40%;
+    }
+    &__select-s{
+        width: 15%;
+    }
+}

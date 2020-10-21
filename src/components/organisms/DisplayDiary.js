@@ -4,13 +4,12 @@ import ShowListDiary from '../molecules/ShowListDiary';
 const DisplayDiary = props => {
 
     return(
-        <>
-            <br />
-            <div>{props.content.text}</div>
+        <div className ="diary">
+            <div className="diary__heading">{props.content.text}</div>
             {
                 props.content.options.map((obj,index)=>{
                 return  <div key ={index}>
-                            <div>{obj.name}</div>
+                            <div className="diary__item">{obj.name}</div>
                             {props.state[obj.value] ?
                             <ShowListDiary 
                             content = {props.content}
@@ -26,7 +25,7 @@ const DisplayDiary = props => {
                         </div>
                 })
             }
-        </>
+        </div>
 
     );
 }
