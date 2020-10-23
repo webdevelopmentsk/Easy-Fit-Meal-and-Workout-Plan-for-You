@@ -1,0 +1,27 @@
+.autoCompleteInput{
+    &__container{
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        //margin: 1rem 1rem;
+        //background-color: $orange3;
+        border-radius: 4px;
+    }
+    &__item{
+        margin: 0.5rem 1rem;
+        padding: 0.5rem;
+        //width: 90%;
+    }
+    &__ul{
+        margin: 0 1rem;
+        color: $black;
+    }
+    &__li{
+        &::before{
+            content: "- ";
+            height: 100%;
+            width: 3px;
+        }
+    }
+}

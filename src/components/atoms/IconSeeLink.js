@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IconSeeLink = props => {
+const IconSeeLink = () => {
 
     return (
         <i className="hand point right outline icon"></i>

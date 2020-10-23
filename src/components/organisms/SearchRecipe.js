@@ -1,8 +1,8 @@
 import React from 'react';
 import IngredientSearch from './IngredientSearch';
-import CheckBoxGroup from '../molecules/CheckBoxGroup';
+import CheckBoxFilter from '../molecules/CheckBoxFilter';
 import Button from '../atoms/Button';
-import RenderCardList from './RenderCardList';
+import RenderItemCardList from './RenderItemCardList';
 
 const SearchRecipe = props => {
 
@@ -15,7 +15,7 @@ const SearchRecipe = props => {
                 deleteItem = {props.deleteItem}
             />
 
-            <CheckBoxGroup 
+            <CheckBoxFilter 
                 state= {props.state}
                 text={props.content.searchFoodPreferences.text} 
                 options ={props.content.searchFoodPreferences.options}
@@ -32,7 +32,7 @@ const SearchRecipe = props => {
 
             <br />
             {props.state.searchRecipes.rendered &&  
-                <RenderCardList 
+                <RenderItemCardList 
                 content ={props.content.card}
                 contentDiary = {props.content.diary}
                 list = {props.state[props.mainState].rendered}

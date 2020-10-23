@@ -1,8 +1,18 @@
 export const content  = {
+  appLogo:{
+    name: 'Easy Fit'
+  },
   landingPage:{
     heading1: 'Create Your Own Fitness & Diet Plan',
     heading2:'We offer a simple way to customize a routine that works for you!',
     buttonExplore: 'Explore Easy Fit',
+  },
+  caloriesRemain:{
+    heading: 'Calories Remaining',
+    text1: 'Goal',
+    text2: 'Food',
+    text3: 'Exercise',
+    text4: 'Remaining'
   },
   homePage:{
     userPersonalInfo:{
@@ -16,10 +26,10 @@ export const content  = {
       weight:{
         name: 'Weight', 
         value: 'weight', 
-        units: ['kg','pounds']},
+        units: ['kg','lb']},
       height:{name: 'Height', 
               value: 'height', 
-              units: ['cm','inches']},
+              units: ['cm','inch']},
       gender:{name: 'Gender',
               value: 'gender',
               options:['male', 'female']},
@@ -80,7 +90,7 @@ export const content  = {
                   {name: 'Snacks', value:'snacks'},
                   ],
       addItem:{
-            text: '+ Add Food',
+            text: 'Add',
             placeholderSearch: 'Search for a food',
             placeholderQuantity: 'Enter quantity',
             type: 'food',
@@ -185,7 +195,7 @@ export const content  = {
         {name: 'Flexibility', value:'flexibility'},
         {name: 'Other Activities', value:'otherActivities'}],
       addItem:{
-        text: '+ Add Exercise',
+        text: 'Add',
         placeholderSearch: 'Search for an exercise',
         placeholderQuantity: 'Enter duration (min)',
         type: 'exercise',

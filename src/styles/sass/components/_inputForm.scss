@@ -1,5 +1,6 @@
 .inputForm{
-    color: $black;
+    border-radius: 4px;
+    background-color: $lightlyOffWhite;
     &__field{
     margin-bottom: 1.5rem;
     }
@@ -7,12 +8,44 @@
     margin: 0 0.7rem;
     }
     &__select-l{
+        color: $darkHighlight;
         width: 75%;
     }
     &__select-m{
+        color: $darkHighlight;
         width: 40%;
     }
     &__select-s{
-        width: 15%;
+        color: $darkHighlight;
+        width: 20%;
+    }
+    &__input{
+        -webkit-appearance: none;
+        width: 45%;
+        height: 5px;
+        background: $dark-65;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+        &:hover {
+            opacity: 1;
+          }
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: $makeupTan;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow:  10px 10px 20px -5px $dark-65;
+          }
+        &::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background:$makeupTan;
+            cursor: pointer;
+          }
     }
 }

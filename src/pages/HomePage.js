@@ -8,11 +8,9 @@ import dailyCalorieIntake  from '../algorithms/dailyCalorieIntake'
 //Components
 import UserInformationForm from '../components/organisms/UserInformationForm';
 import UserGoalForm from '../components/organisms/UserGoalForm';
-import ResultEnergyPerDay from '../components/molecules/ResultEnergyPerDay';
-import CaloriesRemain from '../components/molecules/CaloriesRemain';
+import RenderDailyCarlorieNeed from '../components/molecules/RenderDailyCarlorieNeed';
+import RenderCaloriesRemain from '../components/molecules/RenderCaloriesRemain';
 import Button from '../components/atoms/Button';
-
-import getYoutube from '../algorithms/getYoutube';
 
 const HomePage = () => {
 
@@ -39,13 +37,9 @@ const HomePage = () => {
 
 
         if(isComplete){
-            //window.alert(content_homePage[type].submit.displayComplete);
             togglePopup(type);
             data.complete = true;
             changeState(type,data);
-        }
-        else{
-            window.alert(content_homePage[type].submit.displayInComplete);
         }
     };
 
@@ -66,13 +60,13 @@ const HomePage = () => {
         {!state.userPersonalInfo.complete &&
         <div className= 'subContainer__homePage'>
             <div className = 'item__homePage'>
-                <h2 className = 'heading__h2 u-uppercase'>{content_homePage.userPersonalInfo.text.heading1}</h2>
+                <div className = 'heading heading__s'>{content_homePage.userPersonalInfo.text.heading1}</div>
             </div>
             <div className = 'item__homePage'>
-                <p className = 'paragraph'>{content_homePage.userPersonalInfo.text.heading2}</p>
+                <div className = 'paragraph paragraph--dark'>{content_homePage.userPersonalInfo.text.heading2}</div>
             </div>
             <div className = 'item__homePage'>
-                <Button className = 'btn btn-white btn-moveInTop item__homePage u-font-weight-bold' 
+                <Button className = 'btn btn--green item__homePage' 
                 text = {state.userPersonalInfo.complete ? 
                 content_homePage.userPersonalInfo.text.textAfter:
                 content_homePage.userPersonalInfo.text.textbtn} 
@@ -90,13 +84,13 @@ const HomePage = () => {
     {(state.userPersonalInfo.complete && !state.userGoal.complete) &&
         <div className= 'subContainer__homePage'>
             <div className = 'item__homePage'>
-                <h2 className = 'heading__h2 u-uppercase'>{content_homePage.userGoal.text.heading1}</h2>
+                <h2 className = 'heading heading__s'>{content_homePage.userGoal.text.heading1}</h2>
             </div>
             <div className = 'item__homePage'>
-                <p className = 'paragraph'>{content_homePage.userGoal.text.heading2}</p>
+                <p className = 'paragraph paragraph--dark'>{content_homePage.userGoal.text.heading2}</p>
             </div>
             <div className = 'item__homePage'>
-                <Button className = 'btn btn-white btn-moveInTop item__homePage u-font-weight-bold' 
+                <Button className = 'btn btn--green item__homePage' 
                 text = {state.userGoal.complete ? 
                 content_homePage.userGoal.text.textAfter :
                 content_homePage.userGoal.text.textbtn} 
@@ -111,12 +105,16 @@ const HomePage = () => {
         </div>
     }
     {state.userGoal.complete && state.userPersonalInfo.complete &&
+        <>
         <div className= 'subContainer__homePage'>
-            <ResultEnergyPerDay 
+            <RenderDailyCarlorieNeed 
                 state = {state}
                 content = {content_homePage} />
-            <CaloriesRemain />
         </div>
+        <RenderCaloriesRemain />
+        </>
+
+        
     }
     </div>
     );
@@ -124,5 +122,7 @@ const HomePage = () => {
 
 export default HomePage;
 
-//    <button onClick = {testAPI}>Get Data</button>
+
+//import getYoutube from '../algorithms/getYoutube';
+// <button onClick = {testAPI}>Get Data</button>
 // const testAPI = () => getYoutube();

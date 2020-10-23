@@ -2,12 +2,8 @@ import React from 'react';
 
 const IconClose = props => {
 
-    const handleClose = () => {
-        props.onClickIcon();
-    };
-
     return (
-        <i className="window close outline icon" onClick={handleClose}></i>
+        <i className="window close outline icon" onClick={() => props.onClickIcon()}></i>
     )
 }
 

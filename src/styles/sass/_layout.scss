@@ -1,30 +1,63 @@
 .mainContainer{
     display: flex;
+    
     &__landingPage{
         flex-direction: column;
         align-items: center;
-        padding: 2rem 2rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: auto;
+        width: 100%;
+        height: 100%;
     }
     &__homePage{
         flex-wrap: wrap;
         margin: 1rem;
         justify-content: space-evenly;
     }
+    &__mealPlan{
+        flex-direction: column;
+        align-items: center;
+        margin: 1rem;
+    }
 }
 
 .subContainer{
     &__landingPage{
-        margin: 2rem;
+        position: fixed;
+        left: 0;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        padding: 7rem 0;
+        align-items: center;
     }
     &__homePage{
         margin: 2rem;
         padding: 2rem;
         display: flex;
         flex-direction: column;
+        align-items: center;
+    }
+    &__mealPlan{
+
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 .item{
+    &__landingPage{
+        margin: 2rem 4rem;
+    }
     &__homePage{
-        margin: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        margin: 1rem 1rem;
+    }
+    &__mealPlan{
+
     }
 }

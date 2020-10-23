@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IconMeal = props => {
+const IconMeal = () => {
 
     return (
         <i className="utensils icon"></i>

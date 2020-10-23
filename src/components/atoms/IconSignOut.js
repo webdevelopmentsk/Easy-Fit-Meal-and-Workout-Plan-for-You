@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IconSignOut = props => {
+const IconSignOut = () => {
 
     return (
         <a href="#"><i className="sign-out icon"></i></a>

@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 //Routers
 import {Switch, Route} from 'react-router-dom';
 
-import CaloriesRemain from '../components/molecules/CaloriesRemain';
+import RenderCaloriesRemain from '../components/molecules/RenderCaloriesRemain';
 import SearchRecipe from '../components/organisms/SearchRecipe';
-import Header from '../components/organisms/Header';
-import FavoriteCards from '../components/organisms/FavoriteCards';
-import SuggestedPlan from '../components/organisms/SuggestedPlan';
-import DisplayDiary from '../components/organisms/DisplayDiary';
+import PageMenuBar from '../components/organisms/PageMenuBar';
+import RenderFavoriteCardList from '../components/organisms/RenderFavoriteCardList';
+import CutomizePlan from '../components/organisms/CutomizePlan';
+import Diary from '../components/organisms/Diary';
 
 //content
 import { content } from '../data/content';
@@ -167,26 +167,30 @@ const onUserFoodItemAdded = async(item) =>{
 const onClickSelectFoodItem = async (item,type) =>{
 
   let newList = [...state[type],item];
-  changeState(type,newList)
+  changeState(type,newList);
 };
-  return <>
-            <CaloriesRemain />
-            <DisplayDiary 
-              content = {content_mealPlan.diary}
-              state ={state}
-              deleteItem ={deleteItem}
-              isItemObject = {true}
-              onUserItemAdded = {onUserFoodItemAdded}
-              searchItemType = 'userFoodItems'
-              onClickSelectItem ={onClickSelectFoodItem} 
-            />
-            <Header routes ={routesRecipeBar} />
+
+
+  return <div className= 'mainContainer mainContainer__mealPlan'>
+          <div className = "subContainer__mealPlan">
+            <RenderCaloriesRemain/>
+              <Diary 
+                content = {content_mealPlan.diary}
+                state ={state}
+                deleteItem ={deleteItem}
+                isItemObject = {true}
+                onUserItemAdded = {onUserFoodItemAdded}
+                searchItemType = 'userFoodItems'
+                onClickSelectItem ={onClickSelectFoodItem} 
+              />
+          </div>
+            <PageMenuBar routes ={routesRecipeBar} />
               <Switch>
                   <Route
                     path="/mealplan/suggestedrecipes"
                     //component={SuggestedRecipe}
                   >
-                    <SuggestedPlan 
+                    <CutomizePlan 
                       state ={state}
                       mainState = 'mealPlanRecipes'
                       content = {content_mealPlan}
@@ -224,7 +228,7 @@ const onClickSelectFoodItem = async (item,type) =>{
                     //component ={FavoriteRecipe}
                   >
                     {state.favoriteRecipes && 
-                    <FavoriteCards 
+                    <RenderFavoriteCardList 
                     content = {content_mealPlan}
                     state ={state}
                     mainState = 'favoriteRecipes'
@@ -235,47 +239,7 @@ const onClickSelectFoodItem = async (item,type) =>{
                   </Route>
               </Switch>
 
-        </>
+        </div>
 }
 
 export default MealPlan;
-
-
-
-    /*
-    const searchTerm_ingredients =  `q=${state.ingredients.join('+')}`;
-    const searchTerm_meal =  "";
-    const diet = "balanced"
-
-    const apiURL = "https://api.edamam.com/search?";
-    const apiKey = "b6862d92194b7d072c3230c20a3dbed1";
-    const apiId = "11d90389";
-
-    const url = `${apiURL}${searchTerm_ingredients}${apiId}${apiKey}`
-
-    const response = await axios.get(url);
-    console.log(response.data.hits)
-
-    //const maxTime = "&time=30";
-    //const maxIngreds = `&ingr=15`;
-    */
-
-    /*
-      const addItem = (item,type) => {
-    let newList = [...state[type],item]; 
-    changeState(type,newList)
-  };
-
-  const deleteItem = (item,type) => {
-        console.log(item + " " + type)
-        let index = state[type].indexOf(item)
-        let newList = [...state[type]]
-        newList.splice(index,1)
-        changeState(type,newList)
-  };
-
-  const onChangeItem = (item,type) =>{
-    let index = state[type].indexOf(item)
-    index > -1 ? deleteItem(item,type) : addItem(item,type)
-  };
-  */

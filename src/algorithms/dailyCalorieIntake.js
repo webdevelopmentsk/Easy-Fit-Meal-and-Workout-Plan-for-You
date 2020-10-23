@@ -3,9 +3,9 @@ const convertTometric = (unit,value) =>{
     let converted;
     switch (unit){
         case 'kg': converted=value*1; break;
-        case 'pounds': converted = value*0.453592;break;
+        case 'lb': converted = value*0.453592;break;
         case 'cm': converted=value*1;break;
-        case 'inches': converted = value*2.54;break;
+        case 'inch': converted = value*2.54;break;
         default: break;
     }
 

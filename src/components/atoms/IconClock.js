@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IconClock = props => {
+const IconClock = () => {
 
     return (
         <i className="clock outline icon"></i>

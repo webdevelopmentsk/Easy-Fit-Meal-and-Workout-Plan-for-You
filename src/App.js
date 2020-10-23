@@ -3,13 +3,13 @@ import {Switch, Route} from 'react-router-dom';
 import Provider from './context/Provider';
 
 //Organisms
-import Header from './components/organisms/Header';
-import Menu from './components/organisms/Menu';
+import TopPageMenu from './components/organisms/TopPageMenu';
 //Pages
 import HomePage from './pages/HomePage';
 import MealPlan from './pages/MealPlan';
 import WorkoutPlan from './pages/WorkoutPlan';
 import LandingPage from './pages/LandingPage';
+import Navigation from './pages/Navigation';
 //data
 import { routes } from './data/routes';
 
@@ -21,7 +21,6 @@ const App = () => {
   const [showHeader, setShowHeader] = useState(false)
   const [showLandingPage, setShowLandingPage] = useState(true);
   const toggleHeader = () => setShowHeader(!showHeader); 
-  const closeLandingPage = ()  => setShowLandingPage(false);
   const onHeaderClick = () => {
     setShowHeader(!showHeader); 
     setShowLandingPage(false);
@@ -30,14 +29,21 @@ const App = () => {
   return (
     <>
     <Provider>
-      <Menu onClickMenu = {toggleHeader}/>
-      {showHeader && <Header routes ={routes} onHeaderClick = {onHeaderClick}/>}
+      <TopPageMenu onClickMenu = {toggleHeader}/>
+      {showHeader && 
+        <Navigation
+        routes ={routes} 
+        onHeaderClick = {onHeaderClick}
+        />
+      }
       <LandingPage 
       onButtonExploreClick = {() => setShowLandingPage(false)} 
       showLandingPage ={showLandingPage} 
       path ={routes[0].link}
       />
-        <Switch>
+      {
+        !showLandingPage &&
+          <Switch>
             <Route
               exact path= {routes[0].link}
               component ={HomePage}
@@ -51,22 +57,10 @@ const App = () => {
               component ={WorkoutPlan}
             />
         </Switch>
-
+      }
     </Provider>
     </>
   );
 };
 
 export default App;
-
-/* Use the router that I created.
-//import Route from './router/Route';
-
-    <>
-      <Header routes ={routes} />
-      <Route path="/"><HomePage /></Route>
-      <Route path="/mealplan">
-      <Provider><MealPlan /></Provider>
-      </Route>
-    </>
-  */

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IconShopping = props => {
+const IconShopping = () => {
 
     return (
         <i className="shopping basket icon"></i>

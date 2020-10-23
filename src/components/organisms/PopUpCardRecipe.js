@@ -10,8 +10,8 @@ import IconAddItem from '../atoms/IconAddItem';
 import Image from '../atoms/Image'
 import IconInfo from '../atoms/IconInfo';
 
-import IngredientCardList from './IngredientCardList';
-import ChooseAddToDiary from '../molecules/ChooseAddToDiary';
+import RenderRecipeIngredientList from './RenderRecipeIngredientList';
+import RenderMealOptionList from '../molecules/RenderMealOptionList';
 
 const PopUpCardRecipe = props =>{
     
@@ -25,7 +25,7 @@ const PopUpCardRecipe = props =>{
             <IconFavorite isLiked = {isLiked} onClickIcon = {props.onChangeItem} item = {props.item} type="favoriteRecipes"/>
             <IconClose onClickIcon = {props.togglePopup} />
             <IconAddItem />
-            <ChooseAddToDiary 
+            <RenderMealOptionList 
             content ={props.contentDiary.options}
             item = {props.item}
             addItem ={props.addItem}
@@ -50,7 +50,7 @@ const PopUpCardRecipe = props =>{
             </div>
             <div className ="content">
             <div className="header">{props.content.popup.ingredients}</div>
-            <IngredientCardList list = {props.item.ingredients}/>
+            <RenderRecipeIngredientList list = {props.item.ingredients}/>
             </div>
             <div className ="content">
             <div className="header"><IconSeeLink /><span> </span>

@@ -1,0 +1,41 @@
+//Navigation Page
+.Navigation{
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    &__group{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        padding-top: 5rem;
+        color: black;
+        background-color:$black;
+        z-index: 100;
+        opacity: 0.5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__link{
+        color: $white;
+        width: 20rem;
+        font-size: 2.5rem;
+        z-index: 100;
+        margin: 2.5rem 0;
+    }
+    &__background{
+        overflow: hidden;
+        width: 100vw;
+        height: 100%;
+        &--content{
+            object-fit: cover;
+        }
+    }
+}
+

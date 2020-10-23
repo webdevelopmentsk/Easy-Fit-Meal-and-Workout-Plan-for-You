@@ -1,28 +1,23 @@
 import React from 'react';
-
-import ShowList from '../molecules/ShowList';
-import AutoComplete from '../molecules/AutoComplete';
+import AutoCompleteInput from '../molecules/AutoCompleteInput';
+import IconTrash from '../atoms/IconTrash';
 
 const IngredientSearch = props => {
 
     return(
         <>
-            <br />
             <div>{props.content.text}</div>
-            <br />
-            <AutoComplete 
+            <AutoCompleteInput 
                 content = {props.content}
                 onSearchSubmit={props.addItem}
                 type ={props.content.type}
                 showQuantity = {false}
             />
-
-            <br />
-            <ShowList 
-                list = {props.state.searchIngredients} 
-                deleteItem = {props.deleteItem} 
-                type ={props.content.type}
-            />
+            {
+                props.state.searchIngredients &&
+                props.state.searchIngredients.map((item,index) => 
+                <div key={index}>{item}<IconTrash deleteItem = {props.deleteItem} type={props.content.type}/></div>)
+            }
 
         </>
     );

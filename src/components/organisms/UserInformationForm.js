@@ -10,11 +10,11 @@ const UserInformationForm = props =>{
     
     return(
         <div className ="popup">
-            <div className="ui action input popup_inner">
+            <div className="ui action input popup_inner inputForm">
                 <div className = "inputForm__field">
                     <label className = "inputForm__label" htmlFor={content.age.value}>{content.age.name}</label>
                     <input
-                    className = "popup__input" 
+                    className = "inputForm__input" 
                     type="range"
                     min="15" max="50" 
                     name={content.age.value} 
@@ -27,7 +27,7 @@ const UserInformationForm = props =>{
                 <div className = "inputForm__field">
                     <label className = "inputForm__label" htmlFor={content.weight.value}>{content.weight.name}</label>
                     <input
-                    className = "popup__input"  
+                    className = "inputForm__input"  
                     type="range"
                     min={userPersonalInfo.unitWeight==='kg'? 35: 70} max={userPersonalInfo.unitWeight==='kg'? 150: 300}
                     name={content.weight.value} 
@@ -37,7 +37,7 @@ const UserInformationForm = props =>{
                     <label className = "inputForm__label">{userPersonalInfo.weight}</label>
                     
                     <select 
-                    className="selection dropdown"
+                    className="selection dropdown inputForm__select-s"
                     onChange = {e => setUserPersonalInfo({...userPersonalInfo, unitWeight:e.target.value})}
                     >
                         <option className="text">
@@ -59,7 +59,7 @@ const UserInformationForm = props =>{
                 <div className = "inputForm__field">
                     <label className = "inputForm__label" htmlFor={content.height.value}>{content.height.name}</label>
                     <input
-                    className = "popup__input"  
+                    className = "inputForm__input"  
                     type="range"
                     min={userPersonalInfo.unitHeight==='cm'? 100: 40} max={userPersonalInfo.unitHeight==='cm'? 250: 100 }
                     name={content.height.value} 
@@ -69,7 +69,7 @@ const UserInformationForm = props =>{
                     <label className = "inputForm__label">{userPersonalInfo.height}</label>
                     
                     <select 
-                    className="selection dropdown"
+                    className="selection dropdown inputForm__select-s"
                     onChange = {e => setUserPersonalInfo({...userPersonalInfo, unitHeight:e.target.value})}
                     >
                         <option className="text">{userPersonalInfo.unitHeight}</option>
@@ -87,7 +87,7 @@ const UserInformationForm = props =>{
                 <div className = "inputForm__field">
                     <label className = "inputForm__label" htmlFor={content.gender.value}>{content.gender.name}</label>
                     <select 
-                    className="selection dropdown"
+                    className="selection dropdown inputForm__select-l"
                     onChange = {e => setUserPersonalInfo({...userPersonalInfo,gender:e.target.value})}
                     >
                         <option className="text">{userPersonalInfo.gender}</option>
@@ -118,7 +118,7 @@ const UserInformationForm = props =>{
                     </select>
                 </div>
                 <div className = "inputForm__field u-center-text">
-                <Button className = "btn btn-light" text = {content.submit.buttonText} onClickButton = {() => props.checkInfoComplete('userPersonalInfo',userPersonalInfo)}/>
+                <Button className = "btn btn--white" text = {content.submit.buttonText} onClickButton = {() => props.checkInfoComplete('userPersonalInfo',userPersonalInfo)}/>
                 </div>
             </div>
         </div>

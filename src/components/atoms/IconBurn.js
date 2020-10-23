@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IconBurn = props => {
+const IconBurn = () => {
 
     return (
     <i className ="fire icon"></i>

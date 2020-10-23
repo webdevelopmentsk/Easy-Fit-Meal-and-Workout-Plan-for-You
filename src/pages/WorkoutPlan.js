@@ -1,10 +1,10 @@
 import React , { useState, useEffect } from 'react';
-import CaloriesRemain from '../components/molecules/CaloriesRemain';
-import DisplayDiary from '../components/organisms/DisplayDiary';
+import RenderCaloriesRemain from '../components/molecules/RenderCaloriesRemain';
+import Diary from '../components/organisms/Diary';
 import caloriesBurned from '../algorithms/caloriesBurned';
-import Header from '../components/organisms/Header';
-import SuggestedPlan from '../components/organisms/SuggestedPlan';
-import FavoriteCards from '../components/organisms/FavoriteCards';
+import PageMenuBar from '../components/organisms/PageMenuBar';
+import CutomizePlan from '../components/organisms/CutomizePlan';
+import RenderFavoriteCardList from '../components/organisms/RenderFavoriteCardList';
 
 //content
 import { content } from '../data/content';
@@ -160,8 +160,8 @@ const WorkoutPlan = () => {
 
     return(
         <>
-         <CaloriesRemain />
-         <DisplayDiary 
+         <RenderCaloriesRemain />
+         <Diary 
               content = {content_workoutPlan.diary}
               state ={state}
               deleteItem ={deleteItem}
@@ -170,12 +170,12 @@ const WorkoutPlan = () => {
               searchItemType = 'userExerciseItems'
               onClickSelectItem ={onClickSelectExerciseItem} 
         />
-        <Header routes ={routesExerciseBar} />
+        <PageMenuBar routes ={routesExerciseBar} />
         <Switch>
                   <Route
                     path="/workoutplan/suggestedexercise"
                   >
-                    <SuggestedPlan 
+                    <CutomizePlan 
                       state ={state}
                       mainState = 'workoutPlans'
                       content = {content_workoutPlan}
@@ -192,7 +192,7 @@ const WorkoutPlan = () => {
                     path="/workoutplan/favoriteexercise"
                   >
                     {state.favoriteRecipes && 
-                    <FavoriteCards 
+                    <RenderFavoriteCardList 
                     content = {content_workoutPlan}
                     state ={state}
                     mainState = 'favoriteExercises'

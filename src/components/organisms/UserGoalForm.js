@@ -61,6 +61,7 @@ const UserGoalForm = props => {
 
                     <label className = "inputForm__label">{props.content.userGoal.target}</label>
                     <input 
+                    className ="inputForm__input"
                     type="range"
                     min= {ranges.minWeight} max= {ranges.maxWeight}
                     name={props.content.userPersonalInfo.weight.value} 
@@ -90,6 +91,7 @@ const UserGoalForm = props => {
                     <div className = "inputForm__field" >
                         <label className = "inputForm__label">{props.content.userGoal.intensity.options[0]}</label>
                         <input 
+                        className ="inputForm__input"
                         type="range"
                         min="0" max="2" 
                         name={props.content.userGoal.intensity.text} 
@@ -102,7 +104,7 @@ const UserGoalForm = props => {
             }
                 <div className = "inputForm__field u-center-text" >
                     <Button 
-                        className = "btn btn-light"
+                        className = "btn btn--white"
                         text = {props.content.userGoal.submit.buttonText}
                         onClickButton = {() => props.checkInfoComplete('userGoal',userGoal)}
                     />
@@ -113,22 +115,3 @@ const UserGoalForm = props => {
 };
 
 export default UserGoalForm;
-
-/*
-const onChangeTargetWeight = () =>{
-    //Calculate Reasonable Weeks
-    let userWeight = props.state.userPersonalInfo.weight
-    let userGoalWeight = userGoal.goalWeight;
-    let unit = userGoal.goalUnitWeight;
-    let weeks;
-
-    switch (unit){
-        case props.content.userPersonalInfo.weight.units.metric: 
-            {weeks = Math.round(Math.abs((userGoalWeight-userWeight)))};
-        case props.content.userPersonalInfo.weight.units.usStandard:
-            {weeks = Math.round(Math.abs((userGoalWeight-userWeight)/2))};
-        default: break;
-    }
-    setUserGoal({...userGoal,goalWeeks:weeks})
-};
-*/

@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const IconSignIn = props => {
+const IconSignIn = () => {
 
     return (
         <a href="#"><i className="sign-in icon"></i></a>

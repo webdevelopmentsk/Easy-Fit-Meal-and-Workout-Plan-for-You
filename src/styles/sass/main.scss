@@ -8,10 +8,21 @@
 @import 'layout';
 
 @import './components/button';
-@import './components/popup';
-@import './components/header';
-@import './components/inputForm';
-@import './components/caloriesRemain';
+@import './components/renderDailyCarlorieNeed';
 @import './components/diary';
+@import './components/renderListInDiary';
+@import './components/userAddItemForm';
+
+@import './components/popup';
+@import './components/navigations';
+@import './components/inputForm';
+@import './components/renderCaloriesRemain';
+
+@import './components/autoCompleteInput';
+@import './components/suggestedPlan';
+@import './components/mainMenuBar';
+@import './components/pageMenuBar';
 
 @import './pages/homePage';
+@import './pages/landingPage';
+@import './pages/mealPlan';

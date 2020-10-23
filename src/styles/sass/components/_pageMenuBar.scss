@@ -1,0 +1,16 @@
+.pageMenuBar{
+
+    padding: 2rem;
+    display: flex;
+    justify-content: space-around;
+    :focus, :active{
+        color: $black;
+        background-color: transparent;
+    }
+    &__link{
+    color: $dark-65;
+    font-size: $font-icon-header;
+    padding: 1rem;
+    }
+
+}

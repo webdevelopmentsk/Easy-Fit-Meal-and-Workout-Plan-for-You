@@ -1,38 +1,18 @@
 .subContainer__homePage{
-    background-color: $primary;
-    color: $white;
+    background-color: $blush;
+    color: $black;
+    border-radius: 4px;
+    &:hover{
+        outline: 2px solid $blush;
+        outline-offset: 10px;
+    }
 }
 .item__homePage{
-    
-}
-.resultForm{
-    display: flex;
-    flex-direction: column;
-    text-transform: uppercase;
-    &__goal{
-        font-size: 2rem;
-        text-align: center;
-        margin: 1rem 0;
-        font-weight: 700;
-    }
-    &__time{
-        font-size: 2rem;
-        text-align: center;
-        margin: 1rem 0;
-        font-weight: 700;
-    }
-    &__energy{
-        font-size: 2rem;
-        text-align: center;
-        margin: 1rem 0;
-        font-weight: 700;
-    }
-    &__text{
-        display: inline-block;
-        font-size: 3rem;
-        margin: 1rem 0;
-        margin-left: 1rem;
-        padding-bottom: 10px;
-        border-bottom: $dark-65 4px solid;
+
+    &__icon{
+        color: $dark-65;
+        font-size: 4rem;
+        font-weight: 100;
     }
 }
+

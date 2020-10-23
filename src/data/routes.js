@@ -2,7 +2,7 @@ export const routes = [
     { name: "Home", link: "/home",compName: "HomePage", icon:"home icon"},
     { name: "Meal Plan", link: "/mealplan",compName: "MealPlan",icon:"utensils icon"},
     { name: "Workout Plan", link: "/workoutplan",compName: "WorkoutPlan",icon:"dumbbell icon"},
-    { name: "Sign In", link: "/signin", compName: "Sign In", icon: "sign-in icon"}
+    { name: "Sign In", link: "/signin", compName: "Sign In", icon: "sign in icon"}
   ];
 
 export const routesRecipeBar = [
@@ -16,3 +16,4 @@ export const routesExerciseBar = [
   //{ name: "Searh Exercise", link: "/workoutplan/searchexercise",compName: "All", icon:"search icon"},
   { name: "Favorite", link: "/workoutplan/favoriteexercise",compName: "Favorites", icon:"heart icon"}
 ];
+
