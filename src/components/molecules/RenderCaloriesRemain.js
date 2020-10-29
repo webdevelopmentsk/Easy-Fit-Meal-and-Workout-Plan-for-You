@@ -14,7 +14,11 @@ const RenderCaloriesRemain = () => {
     return(
         <div className = "renderCaloriesRemain__container">
              <div className = "renderCaloriesRemain__heading">
-               <h3 className = "u-m-auto heading heading__s  heading__dark BG__light">{content_caloriesRemain.heading} </h3> 
+               <h3 className = "renderCaloriesRemain__heading__content u-m-auto heading heading__s  heading__dark">
+                    {content_caloriesRemain.heading} 
+                    <div className = "renderCaloriesRemain__heading__underline BG__whiteOrange"></div>
+               </h3> 
+               
              </div>
             <div className = "renderCaloriesRemain__item">
                  <span className = "renderCaloriesRemain__item__name">{content_caloriesRemain.text1}</span>

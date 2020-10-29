@@ -3,7 +3,7 @@ import RenderCaloriesRemain from '../components/molecules/RenderCaloriesRemain';
 import Diary from '../components/organisms/Diary';
 import caloriesBurned from '../algorithms/caloriesBurned';
 import PageMenuBar from '../components/organisms/PageMenuBar';
-import CutomizePlan from '../components/organisms/CutomizePlan';
+import CustomizePlan from '../components/organisms/CustomizePlan';
 import RenderFavoriteCardList from '../components/organisms/RenderFavoriteCardList';
 
 //content
@@ -159,9 +159,12 @@ const WorkoutPlan = () => {
 
 
     return(
-        <>
-         <RenderCaloriesRemain />
-         <Diary 
+        <div className = "mainContainer mainContainer__workoutPlan">
+          <div className = "subContainer__workoutPlan">
+          <div className = "item__workoutPlan">
+            <RenderCaloriesRemain />
+          </div>
+          <Diary 
               content = {content_workoutPlan.diary}
               state ={state}
               deleteItem ={deleteItem}
@@ -169,13 +172,14 @@ const WorkoutPlan = () => {
               onUserItemAdded = {onUserExerciseItemSelect}
               searchItemType = 'userExerciseItems'
               onClickSelectItem ={onClickSelectExerciseItem} 
-        />
+          />
+          </div>
         <PageMenuBar routes ={routesExerciseBar} />
         <Switch>
                   <Route
                     path="/workoutplan/suggestedexercise"
                   >
-                    <CutomizePlan 
+                    <CustomizePlan 
                       state ={state}
                       mainState = 'workoutPlans'
                       content = {content_workoutPlan}
@@ -204,7 +208,7 @@ const WorkoutPlan = () => {
               </Switch>
 
 
-        </>
+        </div>
     );
 };
 

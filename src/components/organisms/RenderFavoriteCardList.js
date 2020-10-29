@@ -5,7 +5,7 @@ import RenderItemCardList from './RenderItemCardList';
 const RenderFavoriteCardList = props => {
 
     return(
-    <>
+    <div className ="renderFavoriteCardList__container">
         {props.state.favoriteRecipes &&  
         <RenderItemCardList 
         content = {props.content.card}
@@ -16,7 +16,7 @@ const RenderFavoriteCardList = props => {
         onAddItemToDiary ={props.onAddFoodRecipe}
         addItem ={props.addItem}
         />}
-    </>);
+    </div>);
 };
 
 export default RenderFavoriteCardList;

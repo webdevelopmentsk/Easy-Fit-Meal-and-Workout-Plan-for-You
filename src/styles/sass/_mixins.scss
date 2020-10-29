@@ -1,0 +1,19 @@
+//1em = 16px
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone-s{
+        @media only screen and (min-width: 20em) { @content };    //320px
+    }
+    @if $breakpoint == phone-l{
+        @media only screen and (min-width: 30em) { @content };    //480px
+    }
+    @if $breakpoint == tab-port{
+        @media only screen and (min-width: 37.5em) { @content };    //600px
+    }
+    @if $breakpoint == tab-land{
+        @media only screen and (min-width: 50em) { @content };    //800px
+    }
+    @if $breakpoint == desktop{
+        @media only screen and (min-width: 75em) { @content };    //1200px
+    }
+}

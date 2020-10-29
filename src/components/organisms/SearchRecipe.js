@@ -7,31 +7,37 @@ import RenderItemCardList from './RenderItemCardList';
 const SearchRecipe = props => {
 
     return (
-        <>
-            <IngredientSearch 
-                state = {props.state}
-                content ={props.content.searchIngredients} 
-                addItem = {props.addItem}
-                deleteItem = {props.deleteItem}
-            />
-
-            <CheckBoxFilter 
-                state= {props.state}
-                text={props.content.searchFoodPreferences.text} 
-                options ={props.content.searchFoodPreferences.options}
-                onClickCheckBox = {props.onChangeItem}
-                type ={props.content.searchFoodPreferences.type}
-                checkedBoxes ={props.checkedBoxes}
-                showCheckBoxes = {true}/>
-            <div>
-                <br />
-                <Button 
-                text={props.content.searchRecipes.button.text} 
-                onClickButton={props.onClickSearchRecipe} />
+        <div className = "searchRecipe__container">
+            <div className = "searchRecipe__ingredientSearch">
+                <IngredientSearch 
+                    state = {props.state}
+                    content ={props.content.searchIngredients} 
+                    addItem = {props.addItem}
+                    deleteItem = {props.deleteItem}
+                />
+            </div>
+            <div className = "searchRecipe__checkBoxFilter">
+                <CheckBoxFilter 
+                    state= {props.state}
+                    text={props.content.searchFoodPreferences.text} 
+                    options ={props.content.searchFoodPreferences.options}
+                    onClickCheckBox = {props.onChangeItem}
+                    type ={props.content.searchFoodPreferences.type}
+                    checkedBoxes ={props.checkedBoxes}
+                    showCheckBoxes = {true}/>
+            </div>
+            <div className = "searchRecipe__clickSearch"> 
+                 <button
+                className = "searchRecipe__clickSearch__btn btn BG__yellowOrange" 
+                onClick={props.onClickSearchRecipe}> 
+                <span className="searchRecipe__clickSearch__btn__icon__text" >{props.content.searchRecipes.button.text}</span> 
+                <i className="search icon searchRecipe__clickSearch__btn__icon"></i> 
+                </button>
             </div>
 
-            <br />
-            {props.state.searchRecipes.rendered &&  
+
+            {props.state.searchRecipes.rendered && 
+                <div className = "searchRecipe__renderItemCardList">
                 <RenderItemCardList 
                 content ={props.content.card}
                 contentDiary = {props.content.diary}
@@ -39,11 +45,11 @@ const SearchRecipe = props => {
                 onChangeItem = {props.onChangeItem}
                 checkIfFavorite = {props.checkIfFavorite}
                 onAddItemToDiary ={props.onAddFoodRecipe}
-                addItem ={props.addItem}
+                addItem ={props.addItem} />
+                </div> 
+            }
 
-            />}
-
-        </>
+        </div>
     );
 };
 

@@ -1,0 +1,28 @@
+.renderPlanCardList{
+
+    &__container{
+        
+    text-decoration: none;
+    color: $black;
+    padding: 2.5rem 0;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $lightlyOffWhite;
+
+    }
+    &__heading{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    &__group{
+        width: 100%;
+        margin: 2rem 0rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+    }
+}

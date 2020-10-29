@@ -1,41 +1,64 @@
 .renderCaloriesRemain{
     
     &__container{
-    width: 90%;
+    width: 100%;
+    border-radius: 4px;
     font-size: $font-p;
-    color: $lightlyOffWhite;
+    color: $darkHighlight;
     text-transform: uppercase;
     font-weight: 600;
     display: flex;
     flex-wrap: wrap;
     margin: 1rem 0;
     padding: 1rem;
-    border-radius: 5px;
     overflow: hidden;
-    background-color: $black;
+    background-color: $blush;
+        @include respond(tab-port) {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
 
-        &:hover{
-            outline: 2px solid $black;
-            outline-offset: 5px;
+            align-self: center;
+            width: 95%;
+            margin: 0 0;
         }
     }
 
     &__heading{
         flex: 1 1 100%;
+        display: flex;
+        &__content{
+            align-items: center;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+        &__underline{
+            z-index: -1;
+            height: 10px;
+            width: 100%;
+            position: absolute;
+            top: 11px;
+            @include respond(tab-port) {
+                top: 6px;                
+            }
+            @include respond(desktop) {
+                top: 9px;                
+            }
+        }
     }
 
     &__item{
         flex: 1 1 20%;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
-        text-align: center;
         margin-top: 1rem;
         &__name{
             margin-bottom: 1rem;
+            margin-left: 0.5rem;
         }
 
         &__text{
+            margin-left: 0.8rem;
             &:hover{
                 transform: scale(1.3);
             }          

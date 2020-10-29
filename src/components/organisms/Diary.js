@@ -5,7 +5,10 @@ const Diary = props => {
 
     return(
         <div className ="diary__container">
-            <h3 className="u-m-auto heading heading__s heading__dark  BG__light">{props.content.text}</h3>
+            <h3 className="diary__heading u-m-auto heading heading__s heading__dark ">
+                {props.content.text}
+            <div className="diary__heading--underline BG__orangeWhite" ></div>
+            </h3>
             {
                 props.content.options.map((obj,index)=>{
                 return  <div key ={index}>

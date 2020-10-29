@@ -58,19 +58,21 @@ const HomePage = () => {
     <div className= 'mainContainer mainContainer__homePage'>
 
         {!state.userPersonalInfo.complete &&
-        <div className= 'subContainer__homePage'>
-            <div className = 'item__homePage'>
-                <div className = 'heading heading__s'>{content_homePage.userPersonalInfo.text.heading1}</div>
-            </div>
-            <div className = 'item__homePage'>
-                <div className = 'paragraph paragraph--dark'>{content_homePage.userPersonalInfo.text.heading2}</div>
-            </div>
-            <div className = 'item__homePage'>
-                <Button className = 'btn btn--green item__homePage' 
-                text = {state.userPersonalInfo.complete ? 
-                content_homePage.userPersonalInfo.text.textAfter:
-                content_homePage.userPersonalInfo.text.textbtn} 
-                onClickButton = {() =>togglePopup('userPersonalInfo')}/>
+        <div className= 'subContainer__homePage subContainer__homePage--userInfo'>
+            <div className= 'subContainer__homePage--userInfo--content'>
+                <div className = 'item__homePage'>
+                    <h2 className = 'heading heading__s'>{content_homePage.userPersonalInfo.text.heading1}</h2>
+                </div>
+                <div className = 'item__homePage'>
+                    <div className = 'paragraph paragraph--dark u-p-1rem'>{content_homePage.userPersonalInfo.text.heading2}</div>
+                </div>
+                <div className = 'item__homePage'>
+                    <Button className = 'btn btn--green item__homePage' 
+                    text = {state.userPersonalInfo.complete ? 
+                    content_homePage.userPersonalInfo.text.textAfter:
+                    content_homePage.userPersonalInfo.text.textbtn} 
+                    onClickButton = {() =>togglePopup('userPersonalInfo')}/>
+                </div>
             </div>
         </div>
         }
@@ -82,39 +84,43 @@ const HomePage = () => {
                         />
     }
     {(state.userPersonalInfo.complete && !state.userGoal.complete) &&
-        <div className= 'subContainer__homePage'>
-            <div className = 'item__homePage'>
-                <h2 className = 'heading heading__s'>{content_homePage.userGoal.text.heading1}</h2>
-            </div>
-            <div className = 'item__homePage'>
-                <p className = 'paragraph paragraph--dark'>{content_homePage.userGoal.text.heading2}</p>
-            </div>
-            <div className = 'item__homePage'>
-                <Button className = 'btn btn--green item__homePage' 
-                text = {state.userGoal.complete ? 
-                content_homePage.userGoal.text.textAfter :
-                content_homePage.userGoal.text.textbtn} 
-                onClickButton = {() => togglePopup('userGoal')}/>
-            </div>
+        <div className= 'subContainer__homePage subContainer__homePage--userGoal'>
+            <div className= 'subContainer__homePage--userGoal--content'>
+                <div className = 'item__homePage'>
+                    <h2 className = 'heading heading__s'>{content_homePage.userGoal.text.heading1}</h2>
+                </div>
+                <div className = 'item__homePage'>
+                    <p className = 'paragraph paragraph--dark u-p-1rem'>{content_homePage.userGoal.text.heading2}</p>
+                </div>
+                <div className = 'item__homePage'>
+                    <Button className = 'btn btn--green item__homePage' 
+                    text = {state.userGoal.complete ? 
+                    content_homePage.userGoal.text.textAfter :
+                    content_homePage.userGoal.text.textbtn} 
+                    onClickButton = {() => togglePopup('userGoal')}/>
+                </div>
 
-            {open.userGoal &&  <UserGoalForm 
-            content = {content_homePage}
-            state ={state}
-            checkInfoComplete = {checkInfoComplete}
-            />}
+                {open.userGoal &&  <UserGoalForm 
+                content = {content_homePage}
+                state ={state}
+                checkInfoComplete = {checkInfoComplete}
+                />}
+            </div>
         </div>
+
     }
     {state.userGoal.complete && state.userPersonalInfo.complete &&
-        <>
-        <div className= 'subContainer__homePage'>
+    <>
+        <div className= 'subContainer__homePage subContainer__homePage--result'>
+        <div className= 'subContainer__homePage--result--content'>
             <RenderDailyCarlorieNeed 
                 state = {state}
                 content = {content_homePage} />
         </div>
-        <RenderCaloriesRemain />
-        </>
-
         
+        </div>
+        <RenderCaloriesRemain />
+    </>
     }
     </div>
     );

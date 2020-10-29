@@ -1,11 +1,36 @@
+.mainContainer__homePage{
+
+
+}
 .subContainer__homePage{
-    background-color: $blush;
     color: $black;
     border-radius: 4px;
-    &:hover{
-        outline: 2px solid $blush;
-        outline-offset: 10px;
+    background-size: cover;
+    border-radius: 3px;
+    &--userInfo{
+        background-image: linear-gradient(105deg,$makeupTan 0%, $lightlyOffWhite 50%, transparent 50%),
+        url(../../../assets/userInfo.jpg);
+        &--content{
+            width: 55%;
+        }
     }
+    &--userGoal{
+        background-image: linear-gradient(105deg,$makeupTan 0%, $lightlyOffWhite 50%, transparent 50%),
+        url(../../../assets/userGoal.jpg);
+        &--content{
+            width: 55%;
+        }
+    }
+    &--result{
+        padding: 2rem;
+        background-image: linear-gradient(105deg,$makeupTan 0%, $makeupTan 63%, transparent 37%),
+        url(../../../assets/result.jpeg);
+        &--content{
+            width: 65%;
+        }
+    }
+
+
 }
 .item__homePage{
 

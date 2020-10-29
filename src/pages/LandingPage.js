@@ -10,7 +10,7 @@ const LandingPage = props => {
         props.showLandingPage && 
         <div className="mainContainer mainContainer__landingPage">
             <div className = "landingPage__background">
-            <video className = "landingPage__background--content" autoPlay muted loop>
+            <video className = "landingPage__background--content" preload autoPlay muted loop>
             <source src = {videoBG} type="video/mp4" />
             </video>
             </div>

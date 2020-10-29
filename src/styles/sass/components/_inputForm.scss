@@ -1,22 +1,26 @@
 .inputForm{
     border-radius: 4px;
-    background-color: $lightlyOffWhite;
+    background-color: $black;
     &__field{
     margin-bottom: 1.5rem;
     }
     &__label{
     margin: 0 0.7rem;
+    color: $orange2;
     }
     &__select-l{
-        color: $darkHighlight;
+        color: $orange2;
+        background-color: $black;
         width: 75%;
     }
     &__select-m{
-        color: $darkHighlight;
+        color: $orange2;
+        background-color: $black;
         width: 40%;
     }
     &__select-s{
-        color: $darkHighlight;
+        color: $orange2;
+        background-color: $black;
         width: 20%;
     }
     &__input{

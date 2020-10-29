@@ -6,44 +6,54 @@ import IconBurn from '../atoms/IconBurn';
 import IconFavorite from '../atoms/IconFavorite';
 import IconClose from '../atoms/IconClose';
 import IconAddItem from '../atoms/IconAddItem';
-import IconInfo from '../atoms/IconInfo';
-//import ChooseAddToDiary from '../molecules/ChooseAddToDiary';
 
 const PopUpCardWorkout = props =>{
 
-    
     const isLiked = props.checkIfFavorite(props.item);
 
     return(
-        <>
-            <div className ="popup">
-            <div className ="popup_inner">
-            <div>
-            <IconFavorite isLiked = {isLiked} onClickIcon = {props.onChangeItem} item = {props.item} type="favoriteExercises"/>
-            <IconClose onClickIcon = {props.togglePopup} />
-            <IconAddItem text = {props.content.popup.textAddToDiary} item = {props.item} onClickIcon ={props.addItem}/>
-
+        
+        <div className ="popup">
+            <div className ="popup_inner popUpCardWorkout__container">
+                <div className ="popUpCardWorkout__header">
+                        <IconFavorite isLiked = {isLiked} onClickIcon = {props.onChangeItem} item = {props.item} type="favoriteExercises"/>
+                        <IconClose onClickIcon = {props.togglePopup} />
+                </div>
+                <div className ="popUpCardWorkout__content">
+                    <div className ="popUpCardWorkout__content__video">
+                        <iframe className ="popUpCardWorkout__video--content" title="video player" src={props.item.src} />
+                    </div>
+                    <div className ="popUpCardWorkout__content__main">
+                        <div className="popUpCardWorkout__content__main__heading heading heading__m">{props.item.label}</div>
+                    </div>
+                    <div className ="popUpCardWorkout__content__addToExercise">
+                        <button 
+                            className="popUpCardWorkout__content__addToExercise__btn btn btn--addToDiary"
+                            onClick={ () => props.addItem(props.item,props.item.type)}
+                            >
+                            <IconAddItem />
+                            {props.content.popup.textAddToDiary}
+                        </button>
+                    </div>
+                    <div className ="popUpCardWorkout__content__info">
+                        <div className="popUpCardWorkout__content__info__item"><IconClock />{`${props.item.totalTime===0? 30: props.item.totalTime}  ${props.content.units.time}`}</div>
+                        <div className="popUpCardWorkout__content__info__item">
+                            <IconPerson />{props.item.suitableFor.map((gender,index)=>
+                                <span 
+                                className ="popUpCardWorkout__content__info__item--item"
+                                key={index}>
+                                {gender + " "}
+                                </span>)}
+                            </div>
+                        <div className="popUpCardWorkout__content__info__item"><IconBurn />{`${Math.round(props.item.calories)}  ${props.content.units.calories}`}</div>
+                    </div>
+                    <div className ="popUpCardWorkout__content__tag">
+                                {props.item.equipment.map((label,index)=> <div className="popUpCardWorkout__content__tag--item" key={index}>{label}</div>)}
+                                <div className="popUpCardWorkout__content__tag--item">{props.item.level}</div>
+                    </div>
+                </div>
             </div>
-            <div><iframe title="video player" src={props.item.src} /></div>
-            <div className ="content">
-            <div className="header">{props.item.label}</div>
-            <div className="meta">
-            <div><IconClock />{props.item.totalTime}<span> </span>{props.content.units.time}</div>
-            <div><IconPerson />{props.item.suitableFor.map((gender,index)=><span key={index}>{gender + " "}</span>)}</div>
-            <div><IconBurn />{Math.round(props.item.calories)} <span> </span>{props.content.units.calories}</div>
-
-            <div><IconInfo /> {props.item.equipment}</div>
-            <div><IconInfo /> {props.item.level}</div>
-
-            </div>
-            </div>
-            <div className ="content">
-            <div className="header">{props.item.description}</div>
-            <div className="header">{props.item.equipment}</div>
-            </div>
-            </div>
-            </div>
-        </>
+        </div>
     );
 
 }

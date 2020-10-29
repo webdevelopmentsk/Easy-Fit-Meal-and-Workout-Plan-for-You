@@ -8,7 +8,7 @@ const RenderDailyCarlorieNeed = props => {
             <div className="renderDailyCarlorieNeed--subContainer">
                 {props.content.results.textGoal} 
                 <div className="renderDailyCarlorieNeed--text">{props.state.userGoal.goalType}
-                <div className="renderDailyCarlorieNeed--text--line"></div>
+                <div className="renderDailyCarlorieNeed--text--underline"></div>
                 </div>
             </div>
             
@@ -17,7 +17,7 @@ const RenderDailyCarlorieNeed = props => {
                     <div className="renderDailyCarlorieNeed--subContainer">
                         {props.content.results.textEstimatedTime}  
                         <div className="renderDailyCarlorieNeed--text">{`${props.state.calTrack.weeks}  ${props.content.results.timeUnit}`}
-                        <div className="renderDailyCarlorieNeed--text--line"></div>
+                        <div className="renderDailyCarlorieNeed--text--underline"></div>
                         </div>
                     </div>
                     
@@ -25,7 +25,7 @@ const RenderDailyCarlorieNeed = props => {
             <div className="renderDailyCarlorieNeed--subContainer">
                 {props.content.results.textCalories}
                 <div className="renderDailyCarlorieNeed--text">{`${props.state.calTrack.goalCal}  ${props.content.results.energyUnit}`}
-                <div className="renderDailyCarlorieNeed--text--line"></div>
+                <div className="renderDailyCarlorieNeed--text--underline"></div>
                 </div>
             </div>
         </div>

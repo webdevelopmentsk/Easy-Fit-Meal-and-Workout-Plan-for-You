@@ -10,7 +10,7 @@ export const ingredients = {
         snacks:['cherry, pineapple,blueberry,kiwi,strawberry,grapefruit'],
         dinner:['beef','chicken','pork','fish']
     },
-    'Immune System Booster':{
+    'Immune Booster':{
         breakfast:['coconut','banana','rice milk','orange','carrot','celery','greek yogurt','porridge','yogurt','almond'],
         lunch:['soup','chicken','coriander','chicken breast','asparagus','sprouts','salad','squash','tomato','ginger','shellfish'],
         snacks:['mango','blueberry','sunflower seed','green tea','papaya','kiwi'],

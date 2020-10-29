@@ -18,24 +18,17 @@ import './styles/sass/main.scss'
 
 const App = () => {
 
-  const [showHeader, setShowHeader] = useState(false)
+  const [showNavigation, setShowNavigation] = useState(false)
   const [showLandingPage, setShowLandingPage] = useState(true);
-  const toggleHeader = () => setShowHeader(!showHeader); 
+  const toggleMainNavigation = () => setShowNavigation(!showNavigation); 
   const onHeaderClick = () => {
-    setShowHeader(!showHeader); 
+    setShowNavigation(!showNavigation); 
     setShowLandingPage(false);
   };
 
   return (
     <>
     <Provider>
-      <TopPageMenu onClickMenu = {toggleHeader}/>
-      {showHeader && 
-        <Navigation
-        routes ={routes} 
-        onHeaderClick = {onHeaderClick}
-        />
-      }
       <LandingPage 
       onButtonExploreClick = {() => setShowLandingPage(false)} 
       showLandingPage ={showLandingPage} 
@@ -43,6 +36,14 @@ const App = () => {
       />
       {
         !showLandingPage &&
+        <>
+          <TopPageMenu onClickMenu = {toggleMainNavigation} />
+          {showNavigation && 
+            <Navigation
+            routes ={routes} 
+            onHeaderClick = {onHeaderClick}
+            />
+          }
           <Switch>
             <Route
               exact path= {routes[0].link}
@@ -56,7 +57,8 @@ const App = () => {
               path= {routes[2].link}
               component ={WorkoutPlan}
             />
-        </Switch>
+          </Switch>
+        </>
       }
     </Provider>
     </>

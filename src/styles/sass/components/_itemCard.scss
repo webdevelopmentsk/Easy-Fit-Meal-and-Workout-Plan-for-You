@@ -1,0 +1,75 @@
+.itemCard{
+    &__wrapper{
+        width: 90%;
+        margin-bottom: 2rem;
+        border-radius: 5px;
+        overflow: hidden;
+        background-color: $orange2;
+        @include respond(tab-port) {
+            width: 45%;
+        }
+        @include respond(tab-land) {
+            width: 30%;
+        }
+        @include respond(desktop) {
+            width: 45%;
+        }
+    }
+    &__container{
+        display: flex;
+        flex-direction: column;
+        @include respond(phone-l) {
+            flex-direction: row;
+        }        
+        @include respond(tab-port) {
+            flex-direction: column;
+        }
+        @include respond(desktop) {
+            flex-direction: row;
+        }
+    }
+    &__image{
+        width: 100%;
+        @include respond(phone-l) {
+            width: 50%;
+        }
+        @include respond(tab-port) {
+            width: 100%;
+        }
+        @include respond(desktop) {
+            width: 50%;
+        }
+    }
+    &__content{
+        padding: 2rem;
+    }
+    &__heading{
+        font-family: 'Nanum Gothic', sans-serif !important;
+        font-size: $font-m;
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+    &__meta{
+        padding: 1rem 0;
+        color: $darkHighlight;
+        &__tag{
+            display: flex;
+            margin: 0.5rem 0;
+            text-transform: capitalize;
+            &__group{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                &--item{
+                    border-radius: 3px;
+                    font-size: 1.2rem;
+                    color: $white;
+                    background-color: $complimentaryGreen;
+                    padding: 3px 4px;
+                    margin: 3px 3px;
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+}

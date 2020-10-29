@@ -7,9 +7,9 @@ import RenderCaloriesRemain from '../components/molecules/RenderCaloriesRemain';
 import SearchRecipe from '../components/organisms/SearchRecipe';
 import PageMenuBar from '../components/organisms/PageMenuBar';
 import RenderFavoriteCardList from '../components/organisms/RenderFavoriteCardList';
-import CutomizePlan from '../components/organisms/CutomizePlan';
+import CustomizePlan from '../components/organisms/CustomizePlan';
 import Diary from '../components/organisms/Diary';
-
+import RenderFoodKnowledge from '../components/organisms/RenderFoodKnowledge';
 //content
 import { content } from '../data/content';
 import { routesRecipeBar } from '../data/routes';
@@ -173,7 +173,10 @@ const onClickSelectFoodItem = async (item,type) =>{
 
   return <div className= 'mainContainer mainContainer__mealPlan'>
           <div className = "subContainer__mealPlan">
-            <RenderCaloriesRemain/>
+              <div className = "item__mealPlan">
+                <RenderCaloriesRemain/>
+                <RenderFoodKnowledge />
+              </div>
               <Diary 
                 content = {content_mealPlan.diary}
                 state ={state}
@@ -190,7 +193,7 @@ const onClickSelectFoodItem = async (item,type) =>{
                     path="/mealplan/suggestedrecipes"
                     //component={SuggestedRecipe}
                   >
-                    <CutomizePlan 
+                    <CustomizePlan 
                       state ={state}
                       mainState = 'mealPlanRecipes'
                       content = {content_mealPlan}

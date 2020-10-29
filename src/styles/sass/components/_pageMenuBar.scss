@@ -1,14 +1,18 @@
 .pageMenuBar{
-
-    padding: 2rem;
+    width: 95%;
+    border-radius: 4px;
     display: flex;
-    justify-content: space-around;
-    :focus, :active{
+    justify-content: space-evenly;
+    background-color: $blush;
+    :hover, :focus, :active{
         color: $black;
         background-color: transparent;
     }
+    @include respond(tab-port) {
+        width: 98%;
+    }
     &__link{
-    color: $dark-65;
+    color: $dark-85;
     font-size: $font-icon-header;
     padding: 1rem;
     }

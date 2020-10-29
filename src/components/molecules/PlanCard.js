@@ -2,24 +2,24 @@ import React from 'react';
 
 const PlanCard = props => {
 
-    const {type,option,onClickOption} = props;
-    
+    const {type,option,cardKey,setClassName} = props;
+
     return(
-        <>
-            <a className = "optionCard__container" href="#/" onClick = {() => onClickOption(option,type)}>
-
-                <div className="optionCard__image">
-                    <img className="optionCard__image--content" alt = "option" src={option.image} />
+            <a className= {setClassName} onClick = {() => props.onClickOption(option,type,cardKey)}>
+                <div className="planCard__heading BG__yellowOrange">{option.name}</div>
+                <div className="planCard__image">
+                    <div 
+                        className="planCard__image--content"
+                        style = {{backgroundImage: `url(${option.image})`}}
+                    >
+                    </div>
                 </div>
-                <div className="optionCard__content">
-                    <div className="optionCard__heading">{option.name}</div>
-                    <div className="optionCard__detail">{option.text}</div>
-                </div>
-
+                <div className="planCard__detail paragraph paragraph--dark">{option.text}</div>
             </a>
-        </>
     )
 
 }
 
 export default PlanCard;
+//<h3 className="planCard__content__heading--underline BG__whiteOrange"></h3>
+//style = {{backgroundImage: `url(${option.image})`}}

@@ -5,8 +5,12 @@ import IconTrash from '../atoms/IconTrash';
 const IngredientSearch = props => {
 
     return(
-        <>
-            <div>{props.content.text}</div>
+        <div className = "ingredientSearch__container">
+
+            <h3 className ="ingredientSearch__heading heading heading__s"> {props.content.text}
+                <div className ="ingredientSearch__heading--underline BG__yellowOrange"></div>
+            </h3>
+
             <AutoCompleteInput 
                 content = {props.content}
                 onSearchSubmit={props.addItem}
@@ -16,10 +20,17 @@ const IngredientSearch = props => {
             {
                 props.state.searchIngredients &&
                 props.state.searchIngredients.map((item,index) => 
-                <div key={index}>{item}<IconTrash deleteItem = {props.deleteItem} type={props.content.type}/></div>)
+                <div className = "ingredientSearch__item" 
+                key={index}>{item}
+                <span className = "ingredientSearch__trash">
+                    <IconTrash 
+                    deleteItem = {props.deleteItem} 
+                    type={props.content.type}/>
+                </span>
+                </div>)
             }
 
-        </>
+        </div>
     );
 };
 

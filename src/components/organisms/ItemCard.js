@@ -1,7 +1,5 @@
 import React , {useState} from 'react';
 
-import Image from '../atoms/Image';
-
 import IconClock from '../atoms/IconClock';
 import IconPerson from '../atoms/IconPerson';
 import IconBurn from '../atoms/IconBurn';
@@ -19,29 +17,35 @@ const ItemCard = props =>{
     }
 
     return(
-        <>
-        <div className= "ui card">
-            < Image alt={props.item.label} src={props.item.image} href="#" onClickImage={togglePopup} />
-            <div className ="content">
-                <div className="header">{props.item.label}</div>
-                <div className="meta">
-                <div><IconClock />{props.item.totalTime===0? 30: props.item.totalTime}<span>  </span>{props.content.units.time}</div>
-                <div><IconPerson />{props.item.yield ? props.item.yield : props.item.suitableFor.map(gender => gender + " ") }
-                                    <span>  </span>{props.content.units.portion}</div>
-                <div><IconBurn />{props.item.yield ? Math.round(props.item.calories/props.item.yield): Math.round(props.item.calories)}<span>  </span>{props.content.units.calories}</div>
+        <div className = "itemCard__wrapper">
+        <div className= "itemCard__container">
+            <img className="itemCard__image" 
+                alt={props.item.label} src={props.item.image} 
+                href="#" onClick={togglePopup} />
+            <div className ="itemCard__content ">
+                <div className="itemCard__heading">{props.item.label}</div>
+                <div className="itemCard__meta">
+                <div className="itemCard__meta__tag"><IconClock />{`${props.item.totalTime===0? 30: props.item.totalTime} ${props.content.units.time}`}</div>
+                <div className="itemCard__meta__tag"><IconPerson />{`${props.item.yield ? `${props.item.yield}  ${props.content.units.portion}`: props.item.suitableFor.map(gender => `${gender}`) }`}</div>
+                <div className="itemCard__meta__tag"><IconBurn />{`${props.item.yield ? Math.round(props.item.calories/props.item.yield): Math.round(props.item.calories)}  ${props.content.units.calories}`}</div>
+                
                 {
                     props.content.popup.type === 'workout' &&
-                    <>
-                    <div><IconInfo /> {props.item.equipment}</div>
-                    <div><IconInfo /> {props.item.level}</div>
-                    </>
+                    <div className="itemCard__meta__tag__group">
+                        {props.item.equipment.map((equipment,index)=> 
+                        <div className="itemCard__meta__tag__group--item" key={index}>{equipment}</div>)}
+                        <div className="itemCard__meta__tag__group--item"><IconInfo /> {props.item.level}</div>
+                    </div>
                 }
                 {
                     props.content.popup.type === 'recipe' &&
-                    <>
-                    <div><IconInfo /> {props.item.dietLabels.map(label=>`${label}, `)}</div>
-                    <div><IconInfo /> {props.item.healthLabels.map(label=>`${label}, `)}</div>
-                    </>
+
+                    <div className="itemCard__meta__tag__group">
+                        {props.item.dietLabels.map((label,index)=> 
+                        <div className="itemCard__meta__tag__group--item" key={index}>{label}</div>)}
+                        {props.item.healthLabels.map((label,index)=> 
+                        <div className="itemCard__meta__tag__group--item" key={index}>{label}</div>)}
+                    </div>
                 }
                 </div>
             </div>
@@ -71,7 +75,7 @@ const ItemCard = props =>{
         :null}
         
     
-        </>
+        </div>
     );
 }
 

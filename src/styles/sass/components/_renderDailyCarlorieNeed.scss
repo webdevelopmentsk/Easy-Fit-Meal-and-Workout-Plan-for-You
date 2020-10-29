@@ -13,13 +13,13 @@
     }
     &--text{
         display: inline-block;
-        font-size: 2rem;
+        font-size: $font-m;
         font-weight: 800;
-        margin: 0.5rem 0;
+        margin: 1rem 0;
         margin-left: 1rem;
         position: relative;
         z-index: 1;
-        &--line{
+        &--underline{
             z-index: -1;
             position: absolute;
             top: 12px; left: 0;

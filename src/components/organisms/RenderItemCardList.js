@@ -3,10 +3,10 @@ import ItemCard from './ItemCard';
 
 const RenderItemCardList = props =>{
 
-        return(<> 
+        return(<div className ="renderItemCardList__container"> 
                 {props.list && props.list.map((item,index) =>
-                    <div key={index}>
                     <ItemCard 
+                    key={index}
                     item={item} 
                     content ={props.content} 
                     contentDiary ={props.contentDiary}
@@ -14,9 +14,9 @@ const RenderItemCardList = props =>{
                     onChangeItem={props.onChangeItem}
                     checkIfFavorite ={props.checkIfFavorite}
                     addItem ={props.addItem}
-                    /></div>
+                    />
                 )}
-            </>);
+            </div>);
 }
 
 export default RenderItemCardList;

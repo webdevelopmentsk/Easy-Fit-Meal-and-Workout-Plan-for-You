@@ -1,0 +1,40 @@
+.checkBoxFilter{
+
+    &__container{
+        margin: 1rem 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    &__heading{
+
+        flex: 0 0 100%;
+        margin: 0 1rem;
+
+        &--content{
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+        &--underline{
+            z-index: -1;
+            height: 10px;
+            width: 100%;
+            position: absolute;
+            top: 9px;
+        }
+    }
+    &__list{
+        flex: 0 0 100%;
+        margin: 1rem 1rem;
+    }
+    &__item{
+        font-size: $font-p;
+        &__input{
+            margin-right: 0.8rem;
+        }
+        &__label{
+
+        }
+    }
+}

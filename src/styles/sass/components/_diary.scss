@@ -1,15 +1,35 @@
 .diary{
     &__container{
-        border-radius: 5px;
-        background-color: $black ;
-        border: $darkHighlight 2px solid;
-        color: $lightlyOffWhite;
+        border-radius: 4px;
+        background-color: $blush ;
+        color: $darkHighlight;
     
-        width: 90%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         margin: 1rem;
         padding: 1.5rem 1rem;
+    }
+
+    &__heading{
+        align-items: center;
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+
+        &--underline{
+            z-index: -1;
+            height: 10px;
+            width: 100%;
+            position: absolute;
+            top: 11px;
+            @include respond(tab-port) {
+                top: 6px;                
+            }
+            @include respond(desktop) {
+                top: 9px;                
+            }
+        }
     }
 
     &__item{

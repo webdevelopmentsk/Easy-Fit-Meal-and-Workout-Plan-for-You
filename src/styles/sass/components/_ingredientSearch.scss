@@ -1,0 +1,28 @@
+.ingredientSearch{
+    &__container{
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+    &__heading{
+        z-index: 1;
+        display: inline-block;
+        font-size: $font-s;
+        margin: 1rem 1rem;
+        position: relative;
+        &--underline{
+            z-index: -1;
+            height: 6px;
+            width: 100%;
+            position: absolute;
+            top: 7px;
+        }
+    }
+    &__item{
+        margin: 1rem 1rem;
+        text-transform: capitalize;
+    }
+    &__trash{
+        margin-left: 1rem;
+    }
+}

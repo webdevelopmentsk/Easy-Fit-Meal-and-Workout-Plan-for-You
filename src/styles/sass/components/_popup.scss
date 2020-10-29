@@ -6,16 +6,16 @@
     left: 0;
     right: 0;
     bottom: 0;
-    margin: auto;
     background-color: rgba(0,0,0, 0.5);
+    z-index: 100;
+
     &_inner{
+      margin-top: 6rem;
+      padding: 2rem 1rem;
       position: absolute;
-      top: 10%;
-      left: 5%;
-      background: white;
-      //adjusted
-      padding: 2rem;
-      width: 90%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 33rem;
       display: flex;
       flex-direction: column;
     }

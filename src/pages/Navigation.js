@@ -7,22 +7,28 @@ const Navigation = ({routes,onHeaderClick}) => {
 
     const renderRoutes = routes.map( (route,index) => {
         return(
-        <Link className = "navigation__link" 
+          <Link className = "navigation__link"
               key ={index} to={route.link}
               onClick ={onHeaderClick}
-        > <i className= {route.icon}></i> {route.name}</Link>
+            > <i className= {route.icon}></i> {route.name}</Link>
         );
     })
     return (
-        <div className = "Navigation">
-            <div className = "Navigation__background">
-                <video className = "Navigation__background--content" autoPlay muted loop>
-                    <source src = {bgVideo} type="video/mp4" />
+        <div className = "navigation">
+            <div className = "navigation__background">
+                <video className = "navigation__background--content" autoPlay muted loop>
+                <source src = {bgVideo} type="video/mp4" />
                 </video>
             </div>
-            <div className = "Navigation__group" >{renderRoutes}</div>
+            <div className = "navigation__group" >{renderRoutes}</div>
         </div>
     );
 }
 
 export default Navigation;
+
+/*
+<video className = "navigation__background--content" autoPlay muted loop>
+<source src = {bgVideo} type="video/mp4" />
+</video>
+*/

@@ -1,0 +1,16 @@
+.renderMealOptionList{
+
+    &__container{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 1rem;
+        width: 100%;
+    }
+    &__item{
+        margin-right: 1rem;
+        @include respond(desktop) {
+            font-size: 1.5rem;
+        }
+    }
+
+}

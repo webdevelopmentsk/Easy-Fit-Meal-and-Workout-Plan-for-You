@@ -3,13 +3,20 @@
   display: inline-block;
   border: none;
   margin-top: 1rem;
+  cursor: pointer;
+
+    &:active , &:focus{
+      transform: translateY(2px);
+    }
+
     &--green{
       border-radius: 4px;
       font-weight: 300;
       background-color: $complimentaryGreen;
-      padding: 1.5rem;
+      padding: 1rem;
       font-size: $font-btn-m;
       color: $white;
+      margin-bottom: 2rem;
       &:hover{
         transform: translateY(-3px);
       }
@@ -27,6 +34,17 @@
         color: $lightlyOffWhite;
         background-color: $black;
         border: $black 2px solid;
+      }
+    }
+    &--addToDiary{
+      border-radius: 4px;
+      background-color: $white;
+      color: $black;
+      padding: 0.5rem;
+      border: $black 2px solid;
+      &:hover{
+        background-color: $black;
+        color: $white;
       }
     }
     &--light{
@@ -61,12 +79,12 @@
     &--add{
       padding: 0.3rem 0.5rem;
       border-radius: 4px;
-      border: $white 1px solid;
-      background-color: $black;
+      //border: $white 1px solid;
+      background-color: $darkHighlight;
       color: $white;
       &:hover{
-        color: $orange3;
-        border: $orange3 2px solid;
+        background-color: $black;
+        //border: $darkHighlight 2px solid;
       }
     }
 }

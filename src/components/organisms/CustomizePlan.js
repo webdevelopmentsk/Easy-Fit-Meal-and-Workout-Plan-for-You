@@ -2,11 +2,11 @@ import React  from 'react';
 import RenderPlanCardList from './RenderPlanCardList';
 import RenderItemCardList from './RenderItemCardList';
 import CheckBoxFilter from '../molecules/CheckBoxFilter';
-const CutomizePlan = props =>{
+const CustomizePlan = props =>{
     
 
     return (
-    <div className="suggestedPlan__container">
+    <>
         <RenderPlanCardList 
         content = {props.content.plans}
         onClickOption = {props.onSelectPlan}
@@ -36,10 +36,10 @@ const CutomizePlan = props =>{
             </>
 
         }
-    </div>);
+    </>);
 }
 
-export default CutomizePlan;
+export default CustomizePlan;
 
 
 

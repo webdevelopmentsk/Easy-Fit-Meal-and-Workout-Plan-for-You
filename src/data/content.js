@@ -106,25 +106,25 @@ export const content  = {
               name: 'Classic Plan',text:'Just healthy balanced diet',
               parameter: 'diet', 
               value: 'balanced', 
-              image:'https://3i77hz2byv5n1pii73412ndb-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/iStock-665132286-1.jpg'
+              image:'https://static1.squarespace.com/static/59f0e6beace8641044d76e9c/5a09a41dec212d1131bde7ee/5a1d4b7ee2c483f5ad52809e/1566312153281/Web+size+photo+for+Balanced+Meals+blog.jpg?format=1500w'
             },
             {
-              name: 'Immune System Booster',text:'Keeping immune system strong', 
+              name: 'Immune Booster',text:'Keeping immune system strong', 
               parameter: 'diet', 
               value: 'low-fat', 
-              image:'https://www.wcrf.org/sites/default/files/Immunity-656x410.png'
+              image:'https://www.uspm.com/wp-content/uploads/2018/02/Heart-health-heart-month-Stethoscope-organic-food-and-sport-equipment.jpg'
             },
             {
               name: 'High Protein Diet',text:'Less carbs & more protein', 
               parameter: 'diet', 
               value: 'high-protein', 
-              image:'https://static.toiimg.com/thumb/msid-67851393,width-800,height-600,resizemode-75,imgsize-1219516,pt-32,y_pad-40/67851393.jpg'
+              image:'https://mamgrsfreaks.com/wp-content/uploads/2020/04/HighProteinFoods_enb321660c23cfad1ed2613b6739f369de.jpg'
             },
             {
               name: 'Simple Plan',text:'Easy, time-saving recipes', 
               parameter: 'time', 
               value: 30, 
-              image:'https://assets.rebelmouse.io/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vd3d3LmJyaXQuY28vbWVkaWEtbGlicmFyeS9leUpoYkdjaU9pSklVekkxTmlJc0luUjVjQ0k2SWtwWFZDSjkuZXlKcGJXRm5aU0k2SW1oMGRIQnpPaTh2WVhOelpYUnpMbkppYkM1dGN5OHlNVGd5TURJd055OXZjbWxuYVc0dWFuQm5JaXdpWlhod2FYSmxjMTloZENJNk1UWXhOVE00Tnpnd01YMC44SEJaa09LdHA3cUpkcWdDRllFb2tWdWFrOGZqaXlkN2gxQ1VyalM5QmJZL2ltYWdlLmpwZz93aWR0aD05ODAiLCJleHBpcmVzX2F0IjoxNjQwNDc0MjExfQ.UEd4vbW92fsIb-phlyx-x2CGnwBRWg_N4yWWg04G_Q8/img.jpg?width=2000&height=2000'
+              image:'https://bryantarchway.com/wp-content/uploads/2018/11/food-and-time.jpg'
             },
           ],
         },
@@ -176,13 +176,12 @@ export const content  = {
           units:{
             time: 'mins',
             portion: 'portions',
-            calories: 'Kcal/portion'
+            calories: 'Kcal/pp'
           },
           popup:{
             type: 'recipe',
             ingredients: 'Ingredients:',
-            preparation: 'Preparation:',
-            healthLabels: 'Health Labels:'
+            preparation: 'Go to Preparation',
           }, 
     }
   },
@@ -208,16 +207,16 @@ export const content  = {
       text: "Choose a plan you'd like to follow",
       options: [
         {
-          name: 'Full Body Workout',text: 'One of the best workout splits for muscle growth and strength regardless of your training experience.',
-          image:'https://builtwithscience.com/wp-content/uploads/2019/01/full-body-workout-A-thumbnail-min-e1568692521525.jpg'
+          name: 'Full Body Workout',text: 'For muscle growth and strength',
+          image:'https://content.active.com/Assets/Active.com+Content+Site+Digital+Assets/Fitness/580x350/Squats.jpg'
         },
         {
-          name: 'Yoga',text: 'Yoga is an ancient practice that brings together mind and body.',
-          image:'https://static.onecms.io/wp-content/uploads/sites/35/2019/04/16045733/benefits-yoga-fb.jpg'
+          name: 'Yoga',text: 'Yoga brings together mind and body.',
+          image:'https://miro.medium.com/max/700/0*C5Y8W-6e9OVIB3AM'
         },
         {
           name: 'Flexibility Routine',text: 'Stretches for the Inflexible',
-          image:'https://www.verywellfit.com/thmb/SmjIwmy0AhURbEpqO3Kbh3TeryI=/1887x1415/smart/filters:no_upscale()/GettyImages-536906989-566ef3c03df78ce161a406c4.jpg'
+          image:'https://htpartners.com/wp-content/uploads/2017/07/iStock_000007946674Small.jpg'
         },
       ],
     },

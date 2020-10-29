@@ -1,0 +1,50 @@
+.renderRecipeIngredientList{
+
+    &__container{
+        align-self: center;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+    }
+    &__item{
+        flex: 0 0 100%;
+        margin-top: 0.5rem;
+        display: flex;
+        height: 100%;
+
+        :hover{
+            transform: scale(1.1);
+        }
+
+            @include respond(phone-l) {
+                flex: 0 0 50%;
+            }
+            @include respond(tab-port) {
+                flex: 0 0 33%;
+            }
+            @include respond(tab-land) {
+                flex: 0 0 90%;
+            }
+            @include respond(desktop) {
+                flex: 0 0 50%;
+            }
+
+        &__image{
+            width: 25%;
+            height: 100%;
+            border-radius: 5px;
+            @include respond(phone-l) {
+                width: 40%;
+            }
+        }
+        &__text{
+            color: $darkHighlight;
+            align-self: center;
+            padding: 0 1.5rem;
+            width: 75%;
+            @include respond(phone-l) {
+                width: 60%;
+            }
+        }
+    }
+}
