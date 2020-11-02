@@ -4,10 +4,10 @@
 }
 
 .heading{
-
 	font-family: 'Nanum Gothic', sans-serif;
 	text-align: center;
 	text-transform: uppercase;
+	
 	&__l{
 		font-size: $font-l;
 	}
@@ -25,6 +25,20 @@
 		color: $black;
 	}
 }
+
+.paragraph{
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size: $font-p;
+	&--light{
+		color: $lightlyOffWhite;
+	}
+	&--dark{
+		color: $darkHighlight
+	}
+}
+
+
+
 
 .BG{
 	&__yellowOrange{
@@ -51,15 +65,6 @@
 	}
 }
 
-.paragraph{
-	font-family: 'Nanum Gothic', sans-serif;
-	font-size: $font-p;
-	&--light{
-		color: $lightlyOffWhite;
-	}
-	&--dark{
-		color: $darkHighlight
-	}
-}
+
 
 

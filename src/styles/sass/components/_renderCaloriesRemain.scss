@@ -9,17 +9,15 @@
     font-weight: 600;
     display: flex;
     flex-wrap: wrap;
-    margin: 1rem 0;
     padding: 1rem;
+    margin-bottom: 2rem;
     overflow: hidden;
     background-color: $blush;
         @include respond(tab-port) {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-
-            align-self: center;
-            width: 95%;
-            margin: 0 0;
+            border-bottom-left-radius: 0;  
+            border-bottom-right-radius: 0;   
+            margin-bottom: 0;
+            width: 100%;
         }
     }
 

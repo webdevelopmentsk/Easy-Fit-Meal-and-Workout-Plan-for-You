@@ -1,7 +1,9 @@
 import React from 'react';
 import { content } from '../data/content';
-import { Link } from 'react-router-dom'
-import videoBG from '../assets/landingPage-BG.mov';
+import { Link } from 'react-router-dom';
+import ReactPlayer from 'react-player';
+import videoBG from '../assets/landingPage-BG.mp4';
+import { Height } from '@material-ui/icons';
 
 const LandingPage = props => {
 
@@ -10,7 +12,7 @@ const LandingPage = props => {
         props.showLandingPage && 
         <div className="mainContainer mainContainer__landingPage">
             <div className = "landingPage__background">
-            <video className = "landingPage__background--content" preload autoPlay muted loop>
+            <video className = "landingPage__background--content" preload="true"  autoPlay muted loop>
             <source src = {videoBG} type="video/mp4" />
             </video>
             </div>
@@ -36,3 +38,16 @@ const LandingPage = props => {
 };
 
 export default LandingPage;
+/*            <video className = "landingPage__background--content" preload autoPlay muted loop>
+            <source src = {videoBG} type="video/mp4" />
+            </video>
+*/
+/*
+            <ReactPlayer 
+            url={videoBG} 
+            playing = {true}
+            loop = {true}
+            style ={{objectFit: "cover",height:"100%"}}
+            className = "landingPage__background--content"
+            />
+*/

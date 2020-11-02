@@ -14,11 +14,11 @@ const RenderMealOptionList = props => {
     );
 
     return (
-        <>
-            <div className ="renderMealOptionList__container">
-                {props.content && renderOptions}
-            </div>
-        </>
+
+        <div className ="renderMealOptionList__container">
+        {props.content && renderOptions}
+        </div>
+
     );
 
 }

@@ -17,3 +17,7 @@ export const routesExerciseBar = [
   { name: "Favorite", link: "/workoutplan/favoriteexercise",compName: "Favorites", icon:"heart icon"}
 ];
 
+export const routesArticleBar = [
+  {name: "Popular Mindfulness Articles", link: "/home/populararticles",compName: "Popular Mindfulness Articles", icon:"newspaper icon"},
+  {name: "Favorite", link: "/home/favoritearticles",compName: "Favorites", icon:"heart icon"},
+];

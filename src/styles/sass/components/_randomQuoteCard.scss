@@ -1,0 +1,66 @@
+.randomQuoteCard{
+
+    &__container{
+        background-color: $brown1;
+        border-radius: 4px;
+        padding: 2rem;
+        background-size: cover;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+
+        animation: displayQuoteBackground 5s infinite ease-in-out;
+
+        @include respond(phone-l) {
+             border-top-right-radius: 0; 
+             border-top-left-radius: 0;
+        }
+        @include respond(tab-port) {
+            width: 100%;
+        }
+    }
+
+    &__content{
+        margin-top: 2rem;
+        width: 55%;
+
+            @include respond(phone-l) {
+                width: 60%;
+            }
+            @include respond(tab-port) {
+                margin-top: 0;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            @include respond(tab-land) {
+                margin-top: 1rem;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            @include respond(desktop) {
+                margin-bottom: 2rem;
+            }
+        &__quote{
+            font-family: inherit;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            text-align: end;
+            @include respond(phone-l) {
+                margin-bottom: 2rem;
+            }
+            @include respond(tab-port) {
+                margin-bottom: 0;
+            }
+            @include respond(desktop) {
+                line-height: 120%;
+                margin-bottom: 1rem;
+            }
+        }
+        &__author{
+            font-size: 1.3rem;
+            font-family: inherit;
+            text-align: end;
+            font-style: italic;
+        }
+    }
+}

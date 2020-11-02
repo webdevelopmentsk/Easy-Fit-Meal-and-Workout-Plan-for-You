@@ -1,6 +1,11 @@
 .inputForm{
     border-radius: 4px;
     background-color: $black;
+
+    @include respond(tab-port) {
+        margin-top: 12rem;
+        width: 40yarem;
+    }
     &__field{
     margin-bottom: 1.5rem;
     }

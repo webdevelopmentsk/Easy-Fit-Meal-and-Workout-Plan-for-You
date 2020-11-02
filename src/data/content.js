@@ -15,6 +15,7 @@ export const content  = {
     text4: 'Remaining'
   },
   homePage:{
+    pageName: 'homePage',
     userPersonalInfo:{
       text:{
         heading1: "Let's get started",
@@ -79,9 +80,17 @@ export const content  = {
       timeUnit: 'Weeks',
       textCalories: 'Daily Calorie Need',
       energyUnit: 'Kcal'
+    },
+    articles:{
+      heading: 'Popular Mindfulness Articles Today',
+      searchText: 'Search Articles'
+    },
+    favoriteArticles:{
+      heading: 'Your Favorite Articles',
     }
   },
   mealPlan:{
+    pageName: 'mealPlan',
     diary:{
       text: 'Food Diary',
       options:[{name: 'Breakfast', value:'breakfast'},
@@ -186,6 +195,7 @@ export const content  = {
     }
   },
   workOutPlan:{
+    pageName: 'workOutPlan',
     diary:{
       text: 'Exercise/Activity',
       options:[

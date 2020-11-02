@@ -1,5 +1,5 @@
 import React from 'react';
-import bgVideo from '../assets/mainNavigation-BG.mov'
+import bgVideo from '../assets/landingPage-BG.mp4'
 
 import { Link } from 'react-router-dom'
 

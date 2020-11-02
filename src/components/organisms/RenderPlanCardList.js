@@ -14,9 +14,12 @@ const RenderPlanCardList = props => {
     return(
         <div className ="renderPlanCardList__container">
             <div className ="renderPlanCardList__heading">
-                <h2 className= "heading heading__s BG__orangeYellow">{content.text}
-                </h2>
+                <h3 className= "heading heading__s">
+                <i className="caret square down icon"></i>
+                    {` ${content.text}`}
+                </h3>
             </div>
+
                 <div className ="renderPlanCardList__group">
                 {
                     content.options.map((option,index) => 

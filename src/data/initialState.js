@@ -62,4 +62,9 @@ export const initialState = {
     },
     workoutPlanSelectLevels:['beginner', 'intermediate','advanced'],
     favoriteExercises: [],
+    //Articles
+    articles_homePage: [],
+    articles_mealPlan: [],
+    articles_workoutPlan: [],
+    favoriteArticles: [],
 }

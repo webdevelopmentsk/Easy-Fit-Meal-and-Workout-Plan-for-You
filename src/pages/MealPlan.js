@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import $ from 'jquery';
 //Routers
 import {Switch, Route} from 'react-router-dom';
 
@@ -9,7 +9,7 @@ import PageMenuBar from '../components/organisms/PageMenuBar';
 import RenderFavoriteCardList from '../components/organisms/RenderFavoriteCardList';
 import CustomizePlan from '../components/organisms/CustomizePlan';
 import Diary from '../components/organisms/Diary';
-import RenderFoodKnowledge from '../components/organisms/RenderFoodKnowledge';
+import RandomQuoteCard from '../components/molecules/RandomQuoteCard';
 //content
 import { content } from '../data/content';
 import { routesRecipeBar } from '../data/routes';
@@ -27,7 +27,7 @@ const MealPlan = () => {
   const content_mealPlan = content.mealPlan;
   const {state,changeState} = React.useContext(Context);
   const [showCheckBoxes, setShowCheckBoxes] = useState(false);
-  //const [report, SetReport ] = useState('');
+  const [randomQuote, setRandomQuote] = useState([]);
 
 const addItem = (item,type) => {
   let newList = [...state[type],item];
@@ -126,9 +126,6 @@ const onClickSearchRecipe = async() => {
 
     changeState('searchRecipes',{total:results,rendered:results});
   }
-  else{
-    //SetReport(content_mealPlan.searchRecipe.errors.noSearchOption);
-  }
 };
 
 const onSelectPlan = async item =>{
@@ -170,14 +167,27 @@ const onClickSelectFoodItem = async (item,type) =>{
   changeState(type,newList);
 };
 
+const getRandomQuote = async () => {
+  let totalQuotes = []
+  for( let i=0; i < 2; i++){
+    let result = await $.ajax({
+      url: "https://api.forismatic.com/api/1.0/",
+      jsonp: "jsonp",dataType: "jsonp",data: 
+      {method: "getQuote",lang: "en",format: "jsonp"}
+  });
+  totalQuotes.push(result)
+  }
+  setRandomQuote(totalQuotes);
+}
+
+useEffect(() =>{ //Get Random Quote
+  getRandomQuote();
+},[])
+
 
   return <div className= 'mainContainer mainContainer__mealPlan'>
           <div className = "subContainer__mealPlan">
-              <div className = "item__mealPlan">
-                <RenderCaloriesRemain/>
-                <RenderFoodKnowledge />
-              </div>
-              <Diary 
+          <Diary 
                 content = {content_mealPlan.diary}
                 state ={state}
                 deleteItem ={deleteItem}
@@ -186,6 +196,14 @@ const onClickSelectFoodItem = async (item,type) =>{
                 searchItemType = 'userFoodItems'
                 onClickSelectItem ={onClickSelectFoodItem} 
               />
+          </div>
+          <div className = "subContainer__mealPlan">
+              <div className = "item__mealPlan">
+                <RenderCaloriesRemain/>
+                <RandomQuoteCard 
+                  items = {randomQuote}
+                />
+              </div>
           </div>
             <PageMenuBar routes ={routesRecipeBar} />
               <Switch>

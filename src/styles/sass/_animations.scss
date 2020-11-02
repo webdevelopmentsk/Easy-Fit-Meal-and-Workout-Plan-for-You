@@ -10,3 +10,12 @@
     100%{opacity: 1; transform: translateY(0rem);}
 }
 
+@keyframes displayQuoteBackground{
+    0%{background-image:linear-gradient(rgba($white,0.01), rgba($white,0.2)),
+        url("../../assets/randomQuoteCard-BG-0.jpg");}
+    50%{background-image:linear-gradient(rgba($white,0.01), rgba($white,0.2)),
+        url("../../assets/randomQuoteCard-BG-0.jpg");}
+    100%{background-image:linear-gradient(rgba($white,0.01), rgba($white,0.2)),
+        url("../../assets/randomQuoteCard-BG-1.jpg");}
+}
+

@@ -1,8 +1,6 @@
 import React from 'react'
 
 const ShowSuggestionList = props =>{
-
-    console.log(props)
     
     const onUserSelectItem = (item,type) =>{
         if(type === 'searchIngredients'){
