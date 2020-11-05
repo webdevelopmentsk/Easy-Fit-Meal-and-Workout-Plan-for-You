@@ -53,7 +53,6 @@ export const content  = {
         textbtn: 'Click Here',
         textAfter: 'Change Your Goal',
       },
-
       goal:'Goal:',
       target: 'Target:',
       intensity: {
@@ -93,6 +92,7 @@ export const content  = {
     pageName: 'mealPlan',
     diary:{
       text: 'Food Diary',
+      textAddToDiary: 'Add to Diary',
       options:[{name: 'Breakfast', value:'breakfast'},
                   {name: 'Lunch', value:'lunch'},
                   {name: 'Dinner', value:'dinner'},
@@ -190,7 +190,8 @@ export const content  = {
           popup:{
             type: 'recipe',
             ingredients: 'Ingredients:',
-            preparation: 'Go to Preparation',
+            preparation: 'Click Here To Cook',
+            tags: 'Health Lables'
           }, 
     }
   },
@@ -198,6 +199,7 @@ export const content  = {
     pageName: 'workOutPlan',
     diary:{
       text: 'Exercise/Activity',
+      textAddToDiary: 'Add this exercise to your diary',
       options:[
         {name: 'Cardio', value:'cardio'},
         {name: 'Strength', value:'strength'},

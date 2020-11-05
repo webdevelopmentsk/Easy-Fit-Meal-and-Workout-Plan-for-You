@@ -4,7 +4,6 @@
         
     text-decoration: none;
     color: $black;
-    padding: 2.5rem 0;
     width:100%;
     display: flex;
     flex-direction: column;
@@ -19,7 +18,7 @@
     }
     &__group{
         width: 100%;
-        margin: 2rem 0rem;
+        margin: 1rem 0rem;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;

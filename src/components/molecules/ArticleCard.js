@@ -29,7 +29,7 @@ const ArticleCard = props => {
             </div>
             <div className = "articleCard__description">
                 {props.item.description} 
-                <a className = "articleCard__description__link"
+                <a className = "btn btn--readMore"
                 href={props.item.url} target="_blank"
                 >
                     Read More &#x2192;

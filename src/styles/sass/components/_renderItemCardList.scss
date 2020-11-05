@@ -1,8 +1,9 @@
 .renderItemCardList__container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2rem;
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+
     @include respond(tab-port) {
         flex-direction: row;
         flex-wrap: wrap;

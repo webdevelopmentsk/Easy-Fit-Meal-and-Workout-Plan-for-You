@@ -1,74 +1,31 @@
 .btn{
+  text-decoration: none;
   font-family: inherit;
   display: inline-block;
   border: none;
-  margin-top: 1rem;
+  margin: 1rem 0;
   cursor: pointer;
-
+  border-radius: 4px;
     &:active , &:focus{
       transform: translateY(2px);
     }
-
-    &--green{
-      border-radius: 4px;
-      font-weight: 300;
-      background-color: $complimentaryGreen;
-      padding: 1rem;
-      font-size: $font-btn-m;
-      color: $white;
-      margin-bottom: 2rem;
-      &:hover{
-        transform: translateY(-3px);
+    &__animation{
+      display: inline-flex;
+      justify-items: center;
+      
+      &--arrow{
+        font-size: 3rem !important;
+        color: $black;
+        animation: moveInRight 1s infinite ease-in-out;  
       }
     }
-    &--white{
-      border-radius: 4px;
-      font-weight: 300;
-      background-color: $lightlyOffWhite;
-      padding: 1rem;
-      font-size: $font-btn-m;
-      color: $darkHighlight;
-      border: $darkHighlight 2px solid;
-      &:hover{
-        transform: translateY(-3px);
-        color: $lightlyOffWhite;
-        background-color: $black;
-        border: $black 2px solid;
-      }
-    }
-    &--addToDiary{
-      border-radius: 4px;
-      background-color: $white;
-      color: $black;
-      padding: 0.5rem;
-      border: $black 2px solid;
-      &:hover{
-        background-color: $black;
-        color: $white;
-      }
-    }
-    &--light{
-      border-radius: 4px;
-      font-weight: 300;
-      background-color: $lightlyOffWhite;
-      padding: 0.5rem;
-      font-size: $font-btn-m;
-      color: $darkHighlight;
-      border: $darkHighlight 2px solid;
-      &:hover{
-        transform: translateY(-3px);
-        color: $lightlyOffWhite;
-        background-color: $black;
-        border: $black 2px solid;
-      }
-    }
-    &--transparent{
+    &--transparent{//btn landing page
       background-color: transparent;
       padding: 1.5rem;
       font-size: $font-btn-l;
       border: $white 2px solid;
       color: $white;
-      border-radius: 4px;
+      animation: moveInTop 2s ease-in-out;  
       &:hover{
         transform: translateY(-3px);
         color: $lightlyOffWhite;
@@ -76,19 +33,65 @@
         border: $black 2px solid;
       }
     }
-    &--add{
+    &--green{//btn homepage
+      font-weight: 300;
+      background-color: $complimentaryGreen;
+      padding: 1rem;
+      font-size: $font-btn-m;
+      color: $white;
+
+      &:hover{
+        transform: translateY(-3px);
+      }
+    }
+    &--addInDiary{//btn add in diary
       padding: 0.3rem 0.5rem;
-      border-radius: 4px;
-      //border: $white 1px solid;
       background-color: $darkHighlight;
       color: $white;
       &:hover{
         background-color: $black;
-        //border: $darkHighlight 2px solid;
       }
     }
-}
-
-.btn-moveInTop{
-  animation: moveInTop 1s ease-in-out;  
+    &--addToDiary{//btn add to diary
+      color: $black;
+      padding: 4px 4px;
+      border-radius: 0;
+      border-bottom: $black 2px solid;
+      background-color: $white;
+      &:hover{
+        color: $white;
+        background-color: $black;
+      }
+    }
+    &--white{//btn user info and goal form
+      font-weight: 300;
+      background-color: $lightlyOffWhite;
+      padding: 1rem;
+      font-size: $font-btn-m;
+      color: $darkHighlight;
+      border: $darkHighlight 2px solid;
+      &:hover{
+        transform: translateY(-3px);
+        color: $lightlyOffWhite;
+        background-color: $black;
+        border: $black 2px solid;
+      }
+    }
+    &--readMore{
+      color: $complimentaryGreen;
+      border-bottom: $complimentaryGreen 1px solid;
+      &:hover{
+        background-color: $black;
+        color: $white;
+        font-weight: 600;
+      }
+    }
+    &--goToCook{
+      background-color: $black;
+      font-size: $font-btn-s;
+      color: $white;
+      padding: 0.5rem;
+      margin: 0rem;
+      text-align: center;
+    }
 }

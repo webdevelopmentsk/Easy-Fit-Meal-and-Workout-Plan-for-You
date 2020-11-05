@@ -1,135 +1,107 @@
 .popUpCardRecipe{
 
     &__container{
+
         background-color: $white;
-        width: 95vw;
-        height: 90vh;
+        width: 95%;
+        height: 80%;
         border-radius: 4px;
         display: flex;
         flex-direction: column;
         overflow: scroll;
+
+        @include respond(phone-l) {width: 90%;}
+        @include respond(phone-l) {width: 80%;}
+
     }
     &__header{//Top Left Menu
         width: 100%;
         display: flex;
-        justify-content: flex-end;
-        font-size: 2rem;
+        margin-bottom: 1rem;
+        &__left{
+            flex: 0 0 50%;
+            display: flex; 
+            margin-left: 1.5rem;
+        }
+        &__right{
+            flex: 0 0 45%;
+            font-size: 2rem;
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 1.5rem;
+        }
     }
     &__content{//The rest 
-        margin: 1rem 1rem;
         display: grid;
 
             grid-template-columns: 1fr;
-            grid-template-rows:  .001fr 0.1fr 0.01fr 0.06fr 0.1fr 1fr;
-            gap: 0 1rem;
+            grid-template-rows:  0.1fr 0.01fr 0.01fr 0.001fr 0.01fr 0.01fr 0.0001fr;
+            gap: 1rem 0;
             grid-template-areas:
               "popUpCardRecipe__content__image"
-              "popUpCardRecipe__content__main"
-              "popUpCardRecipe__content__addToMeal"
+              "popUpCardRecipe__content__heading"
               "popUpCardRecipe__content__info"
               "popUpCardRecipe__content__tag"
+              "popUpCardRecipe__content__addToMeal"
               "popUpCardRecipe__content__ingred";
             
             @include respond(phone-l) {
                 grid-template-columns: 1fr 1fr;
-                grid-template-rows: 0.3fr 0.1fr 0.1fr 0.1fr 2fr;
+                grid-template-rows:  0.01fr 0.1fr 0.01fr 0.01fr 0.01fr;
                 grid-template-areas:
-                "popUpCardRecipe__content__image popUpCardRecipe__content__main"
+                "popUpCardRecipe__content__image popUpCardRecipe__content__heading"
                 "popUpCardRecipe__content__image popUpCardRecipe__content__addToMeal"
                 "popUpCardRecipe__content__info popUpCardRecipe__content__info"
                 "popUpCardRecipe__content__tag popUpCardRecipe__content__tag"
                 "popUpCardRecipe__content__ingred popUpCardRecipe__content__ingred";
             }
-            @include respond(tab-port) {
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 0.3fr 0.1fr 0.1fr 0.1fr 2fr;
-                grid-template-areas:
-                "popUpCardRecipe__content__image popUpCardRecipe__content__main"
-                "popUpCardRecipe__content__image popUpCardRecipe__content__addToMeal"
-                "popUpCardRecipe__content__image popUpCardRecipe__content__info"
-                "popUpCardRecipe__content__image popUpCardRecipe__content__tag"
-                "popUpCardRecipe__content__ingred popUpCardRecipe__content__ingred";
-            }
-            @include respond(tab-land) {
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 0.1fr 0.01fr 0.1fr 0.05fr 1fr;
-                grid-template-areas:
-                "popUpCardRecipe__content__main popUpCardRecipe__content__ingred"
-                "popUpCardRecipe__content__image popUpCardRecipe__content__ingred"
-                "popUpCardRecipe__content__addToMeal popUpCardRecipe__content__ingred"
-                "popUpCardRecipe__content__info popUpCardRecipe__content__ingred"
-                "popUpCardRecipe__content__tag popUpCardRecipe__content__ingred";
-            }
-            @include respond(desktop) {
-                gap: 1rem 1rem;
-            }
-
 
         &__image{
             grid-area: popUpCardRecipe__content__image ;
+            display: flex;
+            justify-content: center;
             &--content{
-                width: 100%;
-                height: 100%;
+                width: 90%;
+                
                 border-radius: 5px;
                 overflow: hidden;
             }
         }
-        &__main{
-            grid-area: popUpCardRecipe__content__main;
-            &__heading{
-                margin: 1rem 0;
-                padding: 0.5rem 0;
-                background-image: linear-gradient(90deg,rgba($orange3,1) 0%, rgba($orange3,1) 50%, rgba($yellow1,1) 50%);
-                border-radius: 3px;
-            }
-            &__preparation{
-                border-radius: 3px;
-                margin-bottom: 1rem;
-                padding: 0.5rem 0.5rem;
-                background-color: $black;
-                @include respond(desktop) {font-size: 1.4rem;}
 
-                &--link{
-                    text-decoration: none;
-                    color: $white;
+        &__heading{
+            grid-area: popUpCardRecipe__content__heading;
+            line-height: 130%;
+            @include respond(phone-l) {margin: 1rem 0; text-align: start; margin-left: 1rem;}    
+        }
+        &__info{
+            grid-area: popUpCardRecipe__content__info;
+            margin: 0 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            font-size: $font-p;
+            border-top: $darkHighlight 1px dashed;
+            padding-top: 1rem;
 
-                    &:hover{
-                        transform: scale(1.2);
-                    }
+            @include respond(phone-l) {border: none;}
+
+                &__item{
+                    width: 33.33%;
                 }
             }
-        }
 
         &__addToMeal{
             grid-area: popUpCardRecipe__content__addToMeal;
-            margin: 0.5rem 0;
-        }
-
-        &__info{
-
-            grid-area: popUpCardRecipe__content__info;
-            margin-top: 1rem;
-            margin-left: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            font-size: 1.3rem;
-
-            @include respond(phone-l) {margin-left: 0;}
-            @include respond(tab-port) {font-size: 1.5rem; margin-left: 1rem;}
-
-            &__item{
-                margin-right: 0.5rem;
-                
-            }
+            margin: 0 1rem;
+            padding-top: 1rem 0;
         }
 
         &__tag{
 
             grid-area: popUpCardRecipe__content__tag;
-            margin-left: 1rem;
+            margin: 0 1rem;
+            color: $darkHighlight;
 
-            @include respond(phone-l) {margin-left: 0;}
-            @include respond(tab-port) {margin-left: 1rem;}
             &--item{
                 display: inline-block;
                 border-radius: 3px;
@@ -144,11 +116,13 @@
         }
         &__ingred{
             grid-area: popUpCardRecipe__content__ingred;
-            margin-top: 1rem;
-            padding: 1rem;
+            border-radius: 4px;
+            @include respond(phone-l){width: 100%;}
             @include respond(desktop) {font-size: 1.4rem;}
             &__heading{
-                text-align: center;
+                color: $darkHighlight;
+                margin: 1rem 2rem;
+                @include respond(phone-l){margin: 0 1rem;}
             }
         }
     }

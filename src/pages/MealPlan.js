@@ -185,8 +185,8 @@ useEffect(() =>{ //Get Random Quote
 },[])
 
 
-  return <div className= 'mainContainer mainContainer__mealPlan'>
-          <div className = "subContainer__mealPlan">
+  return <div className= 'mainContainer mainContainer'>
+          <div className = "subContainer subContainer__pageInput">
           <Diary 
                 content = {content_mealPlan.diary}
                 state ={state}
@@ -197,19 +197,19 @@ useEffect(() =>{ //Get Random Quote
                 onClickSelectItem ={onClickSelectFoodItem} 
               />
           </div>
-          <div className = "subContainer__mealPlan">
-              <div className = "item__mealPlan">
+          <div className = "subContainer subContainer__caloriesRemain">
                 <RenderCaloriesRemain/>
-                <RandomQuoteCard 
-                  items = {randomQuote}
-                />
-              </div>
           </div>
+          <div className = "subContainer subContainer__randomQuotes">
+                <RandomQuoteCard items = {randomQuote}/>
+          </div>
+          <div className = "subContainer subContainer__pageMenuBar">
             <PageMenuBar routes ={routesRecipeBar} />
+          </div>
+          <div className = "subContainer subContainer__cards">
               <Switch>
                   <Route
-                    path="/mealplan/suggestedrecipes"
-                    //component={SuggestedRecipe}
+                    path= {routesRecipeBar[0].link}
                   >
                     <CustomizePlan 
                       state ={state}
@@ -225,8 +225,7 @@ useEffect(() =>{ //Get Random Quote
                     />
                   </Route>
                   <Route
-                    path="/mealplan/searchrecipes"
-                    //component ={SearchRecipe}
+                    path= {routesRecipeBar[1].link}
                   >              
                     <SearchRecipe
                     content = {content_mealPlan}
@@ -245,8 +244,7 @@ useEffect(() =>{ //Get Random Quote
                     />
                   </Route>
                   <Route
-                    path="/mealplan/favoriterecipes"
-                    //component ={FavoriteRecipe}
+                    path= {routesRecipeBar[2].link}
                   >
                     {state.favoriteRecipes && 
                     <RenderFavoriteCardList 
@@ -259,7 +257,7 @@ useEffect(() =>{ //Get Random Quote
                     />}
                   </Route>
               </Switch>
-
+          </div>
         </div>
 }
 

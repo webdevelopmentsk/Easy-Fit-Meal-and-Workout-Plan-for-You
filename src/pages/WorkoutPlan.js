@@ -5,6 +5,8 @@ import caloriesBurned from '../algorithms/caloriesBurned';
 import PageMenuBar from '../components/organisms/PageMenuBar';
 import CustomizePlan from '../components/organisms/CustomizePlan';
 import RenderFavoriteCardList from '../components/organisms/RenderFavoriteCardList';
+import $ from 'jquery';
+import RandomQuoteCard from '../components/molecules/RandomQuoteCard';
 
 //content
 import { content } from '../data/content';
@@ -22,6 +24,7 @@ const WorkoutPlan = () => {
     const content_workoutPlan = content.workOutPlan;
     const {state,changeState} = React.useContext(Context);
     const [showCheckBoxes, setShowCheckBoxes] = useState(false);
+    const [randomQuote, setRandomQuote] = useState([]);
 
     const onSelectPlan = item =>{
       setShowCheckBoxes(true);
@@ -157,13 +160,27 @@ const WorkoutPlan = () => {
   
   },[state.cardio,state.strength,state.flexibility,state.otherActivities]);
 
+  const getRandomQuote = async () => {
+    let totalQuotes = []
+    for( let i=0; i < 2; i++){
+      let result = await $.ajax({
+        url: "https://api.forismatic.com/api/1.0/",
+        jsonp: "jsonp",dataType: "jsonp",data: 
+        {method: "getQuote",lang: "en",format: "jsonp"}
+    });
+    totalQuotes.push(result)
+    }
+    setRandomQuote(totalQuotes);
+  }
+  
+  useEffect(() =>{ //Get Random Quote
+    getRandomQuote();
+  },[])
+
 
     return(
-        <div className = "mainContainer mainContainer__workoutPlan">
-          <div className = "subContainer__workoutPlan">
-          <div className = "item__workoutPlan">
-            <RenderCaloriesRemain />
-          </div>
+        <div className = "mainContainer mainContainer">
+          <div className = "subContainer subContainer__pageInput">
           <Diary 
               content = {content_workoutPlan.diary}
               state ={state}
@@ -174,8 +191,19 @@ const WorkoutPlan = () => {
               onClickSelectItem ={onClickSelectExerciseItem} 
           />
           </div>
-        <PageMenuBar routes ={routesExerciseBar} />
-        <Switch>
+          <div className = "subContainer subContainer__caloriesRemain">
+                <RenderCaloriesRemain/>
+          </div>
+          <div className = "subContainer subContainer__randomQuotes">
+                <RandomQuoteCard 
+                  items = {randomQuote}
+                />
+          </div>
+          <div className ="subContainer subContainer__pageMenuBar">
+          <PageMenuBar routes ={routesExerciseBar} />
+          </div>
+          <div className ="subContainer subContainer__cards">
+            <Switch>
                   <Route
                     path="/workoutplan/suggestedexercise"
                   >
@@ -205,9 +233,8 @@ const WorkoutPlan = () => {
                     addItem ={addItem}
                     />}
                   </Route>
-              </Switch>
-
-
+            </Switch>
+          </div>
         </div>
     );
 };

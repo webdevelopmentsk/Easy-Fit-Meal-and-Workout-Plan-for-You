@@ -15,9 +15,7 @@ import RenderArticleCardList from '../components/molecules/RenderArticleCardList
 import Button from '../components/atoms/Button';
 import RandomQuoteCard from '../components/molecules/RandomQuoteCard';
 
-//import PageMenuBar from '../components/organisms/PageMenuBar';
-//import { routesArticleBar } from '../data/routes';
-//import { Switch, Route} from 'react-router';
+import { routesArticleBar } from '../data/routes';
 
 const HomePage = () => {
 
@@ -30,6 +28,25 @@ const HomePage = () => {
     });
 
     const [randomQuote, setRandomQuote] = useState([]);
+
+    const [renderPopularArticles, setRenderPopularArticles] = useState(
+        {
+            popularMindfulnessArticles: true,
+            favorites: false
+        }
+    );
+
+    const onPageMenuBarClick = type => {
+        type === 'popularMindfulnessArticles' ?
+        setRenderPopularArticles({
+            popularMindfulnessArticles: true,
+            favorites: false
+        }):
+        setRenderPopularArticles({
+            popularMindfulnessArticles: false,
+            favorites: true
+        })
+    }
 
     const togglePopup = type => {setOpen({...open,[type] : !open[type]});};
 
@@ -68,6 +85,7 @@ const HomePage = () => {
         changeState('articles_homePage',articles_homePage);
     };
 
+    
     const getRandomQuote = async () => {
         let totalQuotes = [];
         let result = await $.ajax({
@@ -78,12 +96,13 @@ const HomePage = () => {
         totalQuotes.push(result) 
         setRandomQuote(totalQuotes);
     };
-
+    
+    /*
     useEffect(() =>{ //Get articles and a random quote
         getArticles();
         getRandomQuote();
-
     },[])
+    */
 
     const addItem = (item,type) => {
         let newList = [...state[type],item];
@@ -125,50 +144,54 @@ const HomePage = () => {
     };
 
     return (
-    <div className= 'mainContainer mainContainer__homePage'>
-
-
-        {!state.userPersonalInfo.complete &&
-        <div className= 'subContainer__homePage subContainer__homePage--userInfo'>
-            <div className= 'subContainer__homePage--userInfo--content'>
-                <div className = 'item__homePage'>
+    <div className= 'mainContainer mainContainer'>
+        <div className = 'subContainer subContainer__pageInput'>
+            {!state.userPersonalInfo.complete &&
+            <div className= 'item item__userInfo'>
+                <div className = 'item__userInfo__heading'>
                     <h2 className = 'heading heading__s'>{content_homePage.userPersonalInfo.text.heading1}</h2>
                 </div>
-                <div className = 'item__homePage'>
-                    <div className = 'paragraph paragraph--dark u-p-1rem'>{content_homePage.userPersonalInfo.text.heading2}</div>
+                <div className = 'item__userInfo__text'>
+                     <div className = 'paragraph paragraph--dark'>{content_homePage.userPersonalInfo.text.heading2}</div>
                 </div>
-                <div className = 'item__homePage'>
-                    <Button className = 'btn btn--green item__homePage' 
+                <div className = 'item__userInfo__btn'>
+                    <Button className = 'btn btn--green' 
                     text = {state.userPersonalInfo.complete ? 
                     content_homePage.userPersonalInfo.text.textAfter:
                     content_homePage.userPersonalInfo.text.textbtn} 
-                    onClickButton = {() =>togglePopup('userPersonalInfo')}/>
+                    onClickButton = {() =>togglePopup('userPersonalInfo')}
+                    />  
+                    <div className= "btn__animation btn__animation">
+                        <i className="caret left icon btn__animation btn__animation--arrow"></i>
+                    </div>
+                    
                 </div>
             </div>
-        </div>
-        }
-        {
-        open.userPersonalInfo &&  <UserInformationForm
-                        content = {content_homePage}
-                        state ={state}
-                        checkInfoComplete = {checkInfoComplete}
-                        />
-        }
-        {(state.userPersonalInfo.complete && !state.userGoal.complete) &&
-        <div className= 'subContainer__homePage subContainer__homePage--userGoal'>
-            <div className= 'subContainer__homePage--userGoal--content'>
-                <div className = 'item__homePage'>
+            }
+            {
+            open.userPersonalInfo &&  <UserInformationForm
+                            content = {content_homePage}
+                            state ={state}
+                            checkInfoComplete = {checkInfoComplete}
+                            />
+            }
+            {(state.userPersonalInfo.complete && !state.userGoal.complete) &&
+                <div className= 'item item__userGoal'>
+                <div className = 'item__userGoal__heading'>
                     <h2 className = 'heading heading__s'>{content_homePage.userGoal.text.heading1}</h2>
                 </div>
-                <div className = 'item__homePage'>
-                    <p className = 'paragraph paragraph--dark u-p-1rem'>{content_homePage.userGoal.text.heading2}</p>
+                <div className = 'item__userGoal__text'>
+                    <p className = 'paragraph paragraph--dark'>{content_homePage.userGoal.text.heading2}</p>
                 </div>
-                <div className = 'item__homePage'>
-                    <Button className = 'btn btn--green item__homePage' 
+                <div className = 'item__userGoal__btn'>
+                    <Button className = 'btn btn--green' 
                     text = {state.userGoal.complete ? 
                     content_homePage.userGoal.text.textAfter :
                     content_homePage.userGoal.text.textbtn} 
                     onClickButton = {() => togglePopup('userGoal')}/>
+                    <div className= "btn__animation btn__animation">
+                        <i className="caret left icon btn__animation btn__animation--arrow"></i>
+                    </div>
                 </div>
 
                 {open.userGoal &&  <UserGoalForm 
@@ -177,46 +200,35 @@ const HomePage = () => {
                 checkInfoComplete = {checkInfoComplete}
                 />}
             </div>
+           }
+            {state.userGoal.complete && state.userPersonalInfo.complete &&
+            <div className= 'item item__result'>
+                <RenderDailyCarlorieNeed state = {state}content = {content_homePage} />
+            </div>
+            }
         </div>
 
-        }
-        {state.userGoal.complete && state.userPersonalInfo.complete &&
-        <>
-            <div className= 'subContainer__homePage subContainer__homePage--result'>
-                <div className= 'subContainer__homePage--result--content'>
-                    <RenderDailyCarlorieNeed 
-                        state = {state}
-                        content = {content_homePage} />
-                </div>
-            </div>
-            <div className= 'subContainer__homePage subContainer__homePage--calories'>
-                <RenderCaloriesRemain />
+        <div className = 'subContainer subContainer__caloriesRemain'>
+            <RenderCaloriesRemain />
+        </div>
+        <div className = 'subContainer subContainer__randomQuotes'>
                 <RandomQuoteCard items = {randomQuote}/>
+        </div>
+
+        <div className = "subContainer subContainer__pageMenuBar">
+            <div className ="pageMenuBar">
+            {routesArticleBar.map((item,index)=>{
+                return(
+                    <div className = "item pageMenuBar__link" 
+                    key ={index} 
+                    onClick={() => onPageMenuBarClick(item.compName)}
+                    > <i className= {item.icon}></i>
+                    </div>
+                )
+            })
+            }
             </div>
-            
-        </>
-        }
-
-
-    {state.articles_homePage.length > 0 && 
-        <RenderArticleCardList 
-        items = {state.articles_homePage}
-        heading = {content_homePage.articles.heading}
-        checkIfFavorite = {checkIfFavorite}
-        onChangeItem ={onChangeItem}
-        type ="favoriteArticles"
-    />}
-
-    {
-    state.favoriteArticles.length > 0 && <RenderArticleCardList 
-    items = {state.favoriteArticles}
-    heading = {content_homePage.favoriteArticles.heading}
-    checkIfFavorite = {checkIfFavorite}
-    onChangeItem ={onChangeItem}
-    type ="favoriteArticles"
-    />
-    }
-
+        </div>
 
     </div>
     );
@@ -225,83 +237,24 @@ const HomePage = () => {
 export default HomePage;
 
 /*
+        {renderPopularArticles.popularMindfulnessArticles ? 
+            <div className = 'subContainer subContainer__cards'>
             <RenderArticleCardList 
             items = {state.articles_homePage}
             heading = {content_homePage.articles.heading}
             checkIfFavorite = {checkIfFavorite}
             onChangeItem ={onChangeItem}
+            type ="favoriteArticles"/>
+            </div>
+            :
+            <div className = 'subContainer subContainer__favoriteCards'>
+            <RenderArticleCardList 
+            items = {state.favoriteArticles}
+            heading = {content_homePage.favoriteArticles.heading}
+            checkIfFavorite = {checkIfFavorite}
+            onChangeItem ={onChangeItem}
             type ="favoriteArticles"
-            getArticles ={getArticles}
             />
-*/
-
-/*
-        {!state.userPersonalInfo.complete &&
-        <div className= 'subContainer__homePage subContainer__homePage--userInfo'>
-            <div className= 'subContainer__homePage--userInfo--content'>
-                <div className = 'item__homePage'>
-                    <h2 className = 'heading heading__s'>{content_homePage.userPersonalInfo.text.heading1}</h2>
-                </div>
-                <div className = 'item__homePage'>
-                    <div className = 'paragraph paragraph--dark u-p-1rem'>{content_homePage.userPersonalInfo.text.heading2}</div>
-                </div>
-                <div className = 'item__homePage'>
-                    <Button className = 'btn btn--green item__homePage' 
-                    text = {state.userPersonalInfo.complete ? 
-                    content_homePage.userPersonalInfo.text.textAfter:
-                    content_homePage.userPersonalInfo.text.textbtn} 
-                    onClickButton = {() =>togglePopup('userPersonalInfo')}/>
-                </div>
             </div>
-        </div>
-        }
-        {
-        open.userPersonalInfo &&  <UserInformationForm
-                        content = {content_homePage}
-                        state ={state}
-                        checkInfoComplete = {checkInfoComplete}
-                        />
-        }
-        {(state.userPersonalInfo.complete && !state.userGoal.complete) &&
-        <div className= 'subContainer__homePage subContainer__homePage--userGoal'>
-            <div className= 'subContainer__homePage--userGoal--content'>
-                <div className = 'item__homePage'>
-                    <h2 className = 'heading heading__s'>{content_homePage.userGoal.text.heading1}</h2>
-                </div>
-                <div className = 'item__homePage'>
-                    <p className = 'paragraph paragraph--dark u-p-1rem'>{content_homePage.userGoal.text.heading2}</p>
-                </div>
-                <div className = 'item__homePage'>
-                    <Button className = 'btn btn--green item__homePage' 
-                    text = {state.userGoal.complete ? 
-                    content_homePage.userGoal.text.textAfter :
-                    content_homePage.userGoal.text.textbtn} 
-                    onClickButton = {() => togglePopup('userGoal')}/>
-                </div>
-
-                {open.userGoal &&  <UserGoalForm 
-                content = {content_homePage}
-                state ={state}
-                checkInfoComplete = {checkInfoComplete}
-                />}
-            </div>
-        </div>
-
-        }
-        {state.userGoal.complete && state.userPersonalInfo.complete &&
-        <>
-            <div className= 'subContainer__homePage subContainer__homePage--result'>
-            <div className= 'subContainer__homePage--result--content'>
-                <RenderDailyCarlorieNeed 
-                    state = {state}
-                    content = {content_homePage} />
-            </div>
-            </div>
-            <div className= 'subContainer__homePage subContainer__homePage--calories'>
-                <RenderCaloriesRemain />
-                <RandomQuoteCard item = {randomQuote}/>
-            </div>
-            
-        </>
         }
 */

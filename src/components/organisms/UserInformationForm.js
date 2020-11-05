@@ -118,7 +118,7 @@ const UserInformationForm = props =>{
                     </select>
                 </div>
                 <div className = "inputForm__field u-center-text">
-                <Button className = "btn btn--white" text = {content.submit.buttonText} onClickButton = {() => props.checkInfoComplete('userPersonalInfo',userPersonalInfo)}/>
+                    <Button className = "btn btn--white" text = {content.submit.buttonText} onClickButton = {() => props.checkInfoComplete('userPersonalInfo',userPersonalInfo)}/>
                 </div>
             </div>
         </div>

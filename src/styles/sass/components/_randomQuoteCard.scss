@@ -9,15 +9,12 @@
         flex-wrap: wrap;
         justify-content: flex-end;
 
-        animation: displayQuoteBackground 5s infinite ease-in-out;
+        animation: displayQuoteBackground 20s infinite ease-in-out;
 
         @include respond(phone-l) {
-             border-top-right-radius: 0; 
-             border-top-left-radius: 0;
+            height: 100%;
         }
-        @include respond(tab-port) {
-            width: 100%;
-        }
+
     }
 
     &__content{

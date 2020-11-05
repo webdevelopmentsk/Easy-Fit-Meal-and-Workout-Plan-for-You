@@ -1,44 +1,25 @@
 .itemCard{
     &__wrapper{
-        width: 90%;
+        width: 100%;
         margin-bottom: 2rem;
         border-radius: 5px;
         overflow: hidden;
         background-color: $orange2;
-        @include respond(tab-port) {
-            width: 45%;
-        }
-        @include respond(tab-land) {
-            width: 30%;
-        }
-        @include respond(desktop) {
-            width: 45%;
-        }
+        @include respond(phone-l) {width: 90%;}
+        @include respond(tab-port) {width: 45%;}
+        @include respond(tab-land) {width: 30%;}
+        @include respond(desktop) {width: 23%;}
+
     }
     &__container{
         display: flex;
         flex-direction: column;
-        @include respond(phone-l) {
-            flex-direction: row;
-        }        
-        @include respond(tab-port) {
-            flex-direction: column;
-        }
-        @include respond(desktop) {
-            flex-direction: row;
-        }
+        cursor: pointer;
+
     }
     &__image{
         width: 100%;
-        @include respond(phone-l) {
-            width: 50%;
-        }
-        @include respond(tab-port) {
-            width: 100%;
-        }
-        @include respond(desktop) {
-            width: 50%;
-        }
+
     }
     &__content{
         padding: 2rem;
@@ -47,6 +28,7 @@
         font-family: 'Nanum Gothic', sans-serif !important;
         font-size: $font-m;
         font-weight: 600;
+        line-height: 120%;
         text-transform: capitalize;
     }
     &__meta{

@@ -4,28 +4,28 @@ const RenderDailyCarlorieNeed = props => {
 
     return(
 
-        <div className = 'renderDailyCarlorieNeed--container'>
-            <div className="renderDailyCarlorieNeed--subContainer">
-                {props.content.results.textGoal} 
-                <div className="renderDailyCarlorieNeed--text">{props.state.userGoal.goalType}
-                <div className="renderDailyCarlorieNeed--text--underline"></div>
+        <div className = 'renderDailyCarlorieNeed__container'>
+            <div className="renderDailyCarlorieNeed__subContainer">
+                <div className="renderDailyCarlorieNeed__topic">{props.content.results.textGoal}</div>
+                <div className="renderDailyCarlorieNeed__text">{props.state.userGoal.goalType}
+                <div className="renderDailyCarlorieNeed__text--underline"></div>
                 </div>
             </div>
             
                 {
                     props.state.calTrack.weeks !== 0 &&
-                    <div className="renderDailyCarlorieNeed--subContainer">
-                        {props.content.results.textEstimatedTime}  
-                        <div className="renderDailyCarlorieNeed--text">{`${props.state.calTrack.weeks}  ${props.content.results.timeUnit}`}
-                        <div className="renderDailyCarlorieNeed--text--underline"></div>
-                        </div>
+                    <div className="renderDailyCarlorieNeed__subContainer">
+                    <div className="renderDailyCarlorieNeed__topic">{props.content.results.textEstimatedTime} </div>
+                    <div className="renderDailyCarlorieNeed__text">{`${props.state.calTrack.weeks}  ${props.content.results.timeUnit}`}
+                    <div className="renderDailyCarlorieNeed__text--underline"></div>
+                    </div>
                     </div>
                     
                 }
-            <div className="renderDailyCarlorieNeed--subContainer">
-                {props.content.results.textCalories}
-                <div className="renderDailyCarlorieNeed--text">{`${props.state.calTrack.goalCal}  ${props.content.results.energyUnit}`}
-                <div className="renderDailyCarlorieNeed--text--underline"></div>
+            <div className="renderDailyCarlorieNeed__subContainer">
+                <div className="renderDailyCarlorieNeed__topic">{props.content.results.textCalories}</div>
+                <div className="renderDailyCarlorieNeed__text">{`${props.state.calTrack.goalCal}  ${props.content.results.energyUnit}`}
+                <div className="renderDailyCarlorieNeed__text--underline"></div>
                 </div>
             </div>
         </div>

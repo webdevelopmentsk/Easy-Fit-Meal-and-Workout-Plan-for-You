@@ -1,22 +1,42 @@
 .renderDailyCarlorieNeed{
-    &--container{
+    &__container{
+
+        border-radius: 4px;
+        color: $darkHighlight;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 1rem;
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
         text-transform: uppercase;
         color: $darkHighlight;
         font-size: $font-p;
+        background-image: linear-gradient(105deg,$makeupTan 0%, $lightlyOffWhite 50%, transparent 50%),
+        url(../../../assets/result.jpeg);
+        padding: 2rem;
+
     }
-    &--subcontainer{
+    &__subcontainer{
         text-align: center;
         margin: 0.5rem 0;
         font-weight: 400;
+        display: flex;
+        flex-wrap: wrap;
+        width: 40%;
     }
-    &--text{
+
+    &__topic{
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+    &__text{
         display: inline-block;
         font-size: $font-m;
         font-weight: 800;
         margin: 1rem 0;
-        margin-left: 1rem;
         position: relative;
         z-index: 1;
         &--underline{
@@ -29,4 +49,3 @@
     }
 
 }
-
