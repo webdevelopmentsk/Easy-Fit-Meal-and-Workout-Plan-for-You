@@ -7,7 +7,7 @@ Created By: Sawitree Kalakul
 GitHub: https://github.com/webdevelopmentsk
 LinkedIn: https://www.linkedin.com/in/sawitree-kalakul/
 
-
+![Image of Yaktocat](./src/assets/landingPage.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
