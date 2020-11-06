@@ -1,4 +1,11 @@
+Project Name: Easy Fit
 
+Project Description: 
+A website that design meal plan and workout plan for your goal (weight loss, weight gain or wight maintenance)
+
+Created By: Sawitree Kalakul
+GitHub: https://github.com/webdevelopmentsk
+LinkedIn: https://www.linkedin.com/in/sawitree-kalakul/
 
 
 

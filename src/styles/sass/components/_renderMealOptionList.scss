@@ -5,15 +5,17 @@
         flex-wrap: wrap;
         width: 100%;
         border-radius: 4px;
-        border: $darkHighlight 1px dashed;
         padding-left: 1rem;
+        background-color: $complimentaryGreen;
+        @include respond(tab-land) {padding-left: 0;}
     }
     &__heading{
-        width: 22%;
-        color: $darkHighlight;
+        width: 20%;
+        color: $white;
         display: flex;
         justify-content: center;
         align-items: center;
+        @include respond(tab-land) {width: 100%; padding-top: 1rem;}
         &__text{
             font-size: $font-p;
         }
@@ -24,10 +26,11 @@
     }
 
     &__item__container{
-        width: 78%;
+        width: 80%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        @include respond(tab-land) {width: 100%;}
     }
     &__item{
         display: inline-block;

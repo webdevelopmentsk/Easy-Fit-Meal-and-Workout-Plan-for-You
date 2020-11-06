@@ -97,12 +97,12 @@ const HomePage = () => {
         setRandomQuote(totalQuotes);
     };
     
-    /*
+    
     useEffect(() =>{ //Get articles and a random quote
         getArticles();
         getRandomQuote();
     },[])
-    */
+    
 
     const addItem = (item,type) => {
         let newList = [...state[type],item];
@@ -229,14 +229,7 @@ const HomePage = () => {
             }
             </div>
         </div>
-
-    </div>
-    );
-}
-
-export default HomePage;
-
-/*
+        
         {renderPopularArticles.popularMindfulnessArticles ? 
             <div className = 'subContainer subContainer__cards'>
             <RenderArticleCardList 
@@ -257,4 +250,11 @@ export default HomePage;
             />
             </div>
         }
-*/
+
+
+    </div>
+    );
+}
+
+export default HomePage;
+

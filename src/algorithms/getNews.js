@@ -1,7 +1,7 @@
 import { news } from '../data/news';
 
 const getNews =  async (page) => {
-    let articles;
+
     try{
         let pickedIndex = Math.floor(Math.random() * news[page].topics.length);
         let searchTerm = news[page].topics[pickedIndex];

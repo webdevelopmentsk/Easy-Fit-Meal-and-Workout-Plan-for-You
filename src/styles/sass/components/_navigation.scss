@@ -13,9 +13,9 @@
         height: 100%;
         padding-top: 10rem;
         @include respond(phone-l) {padding-top: 15rem;}
-        @include respond(tab-port) {padding-top: 20rem;}
-        @include respond(tab-land) {padding-top: 25rem;}
-        @include respond(desktop) {padding-top: 30rem;}
+        @include respond(tab-port) {padding-top: 18;}
+        @include respond(tab-land) {padding-top: 21;}
+        @include respond(desktop) {padding-top: 22;}
         left: 0;
         top: 0;
         z-index: 100;

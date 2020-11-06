@@ -2,94 +2,91 @@
 
     &__container{
         background-color: $white;
-        width: 95vw;
+        width: 90%;        
+        height: auto;        
         border-radius: 4px;
         display: flex;
-        flex-direction: column;
-        height: 70%;
-        @include respond(phone-l) {height: 50%;}
+        @include respond(tab-port) {width: 80%;}
+        @include respond(tab-land) {width: 70%;}
+        @include respond(desktop) {width: 60%;}
     }
     &__header{//Top Left Menu
         width: 100%;
         display: flex;
-        justify-content: flex-end;
-        font-size: 2rem;
+        align-items: center;
+        &__left{
+            flex: 0 0 50%;
+            display: flex; 
+            margin-left: 1.5rem;
+        }
+        &__right{
+            flex: 0 0 45%;
+            font-size: 2rem;
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 1.5rem;
+        }
     }
     &__content{//The rest 
-        margin: 1rem 1rem;
+        width: 100%;
         display: grid;
 
             grid-template-columns: 1fr;
-            grid-template-rows:  0.1fr 0.1fr 0.01fr  0.1fr 0.1fr;
-            gap: 0rem 0rem;
+            grid-template-rows:  0.1fr 0.1fr 0.01fr  0.1fr;
+            gap: 2rem 0;
             grid-template-areas:
-              "popUpCardWorkout__content__video"
               "popUpCardWorkout__content__main"
+              "popUpCardWorkout__content__video"
               "popUpCardWorkout__content__info"
-              "popUpCardWorkout__content__tag"
-              "popUpCardWorkout__content__addToExercise";
+              "popUpCardWorkout__content__tag";
             
-            @include respond(phone-l) {
-                gap: 0rem 1rem;
+              @include respond(tab-land) {
                 grid-template-columns: 1fr 1fr;
-                grid-template-rows: 0.01fr 0.1fr 0.1fr 0.1fr;
+                grid-template-rows:  0.1fr 0.1fr 0.01fr  0.1fr;
+                gap: 2rem 0;
                 grid-template-areas:
-                "popUpCardWorkout__content__main popUpCardWorkout__content__main"
-                "popUpCardWorkout__content__video popUpCardWorkout__content__addToExercise"
+                "popUpCardWorkout__content__video popUpCardWorkout__content__main"
                 "popUpCardWorkout__content__video popUpCardWorkout__content__info"
-                "popUpCardWorkout__content__video popUpCardWorkout__content__tag"
-            }
+                "popUpCardWorkout__content__video popUpCardWorkout__content__tag";
+              }
 
-        &__video{
-            grid-area: popUpCardWorkout__content__video ;
-            @include respond(phone-l) {
-                margin-top: 1rem;
-            }
-            &--content{
-                
-                width: 100%;
-                height: 100%;
-                border-radius: 5px;
-                overflow: hidden;
-            }
-        }
         &__main{
 
             grid-area: popUpCardWorkout__content__main;
-
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1rem;
             &__heading{
-                margin: 1rem 0;
-                padding: 0.5rem 0;
+                width: 90%;
+                padding: 0.5rem;
                 background-image: linear-gradient(90deg,rgba($orange3,1) 0%, rgba($orange3,1) 50%, rgba($yellow1,1) 50%);
                 border-radius: 3px;
-            }
-            &__addToExercise{
-                display: inline-block;
-                @include respond(desktop) {font-size: 1.4rem;}
-
+                line-height: 130%;
             }
         }
+        &__video{
+            grid-area: popUpCardWorkout__content__video ;
+            display: flex; 
+            justify-content: center;
 
-        &__addToExercise{
-        
-            grid-area: popUpCardWorkout__content__addToExercise;
+            &--content{
+
+            }
         }
 
         &__info{
             
-            
             grid-area: popUpCardWorkout__content__info;
-            margin-top: 1rem;
+            width: 90%;
             display: flex;
-            flex-wrap: wrap;
-            font-size: 1.3rem;
-
-            @include respond(phone-l) {margin-left: 0;}
-            @include respond(tab-port) {font-size: 1.5rem; margin-left: 1rem;}
-
+            justify-content: center;
+            margin: 0 auto;
+            border-top: $darkHighlight 1px dashed;
+            font-size: $font-p;
+            padding-top: 1rem;
             &__item{
                 margin-right: 0.5rem;
-            
                 &--item{
                     text-transform: capitalize;
                 }
@@ -99,9 +96,12 @@
         &__tag{
 
             grid-area: popUpCardWorkout__content__tag;
-
-            @include respond(phone-l) {margin-left: 0;}
-            @include respond(tab-port) {margin-left: 1rem;}
+            width: 90%;
+            border-bottom: $darkHighlight 1px dashed;
+            padding-bottom: 1rem;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
             &--item{
                 display: inline-block;
                 border-radius: 3px;
@@ -111,7 +111,7 @@
                 padding: 3px 4px;
                 margin: 3px 3px;
                 text-transform: capitalize;
-                @include respond(tab-port) {font-size: 1.4rem;}
+
             }
         }
     }

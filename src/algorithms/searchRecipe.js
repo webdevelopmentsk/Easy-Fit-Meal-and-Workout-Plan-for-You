@@ -4,8 +4,8 @@ const filterDietLables = (foodPreferences,recipe) =>{
 
     let match = 0;
     let length = foodPreferences.length;
-    foodPreferences.map(preference =>{
-        recipe.dietLabels.map(label => {label.toLowerCase()===preference && match++;})
+    foodPreferences.forEach(preference =>{
+        recipe.dietLabels.forEach(label => {label.toLowerCase() === preference && match++;})
     });
     if(match === length){
         return true;
@@ -26,7 +26,7 @@ const generateRecipes = async searchObj =>{
                     diet: dietLabel
                 },
             });
-            response.data.hits.map(hit =>
+            response.data.hits.forEach(hit =>
                 {
                     const isPreferable = filterDietLables(searchObj.foodPreferences,hit.recipe);
                     isPreferable && filterResponses.push(hit)
@@ -50,7 +50,7 @@ const generateRecipes = async searchObj =>{
 export const searchRecipe = async searchObj =>{
     const results = await generateRecipes(searchObj);
     const filterResults = [];
-    results.map(hit => {
+    results.forEach(hit => {
         let data = hit.recipe;
         data.unitEnergy = 'Kcal';
         data.displayItem = `${data.label}  ${Math.round(data.calories/data.yield)}  ${data.unitEnergy}`

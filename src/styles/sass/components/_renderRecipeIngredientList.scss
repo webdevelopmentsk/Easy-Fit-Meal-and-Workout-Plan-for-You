@@ -6,44 +6,39 @@
         flex-wrap: wrap;
         margin: 1rem 2rem;
         @include respond(phone-l){margin: 1rem 1rem;}
-
+        justify-content: space-between;
     }
     &__item{
         flex: 0 0 100%;
         margin-top: 0.5rem;
         display: flex;
-        height: 100%;
 
         :hover{
             transform: scale(1.1);
         }
 
             @include respond(phone-l) {
-                flex: 0 0 50%;
+                flex: 0 0 100%;
             }
             @include respond(tab-land) {
-                flex: 0 0 90%;
+                flex: 0 0 50%;
             }
             @include respond(desktop) {
-                flex: 0 0 50%;
+                flex: 0 0 32%;
             }
 
         &__image{
-            width: 25%;
-            height: 100%;
+            width: 15%;
             border-radius: 5px;
-            @include respond(phone-l) {
-                width: 40%;
-            }
+            @include respond(phone-l) {width: 20%;}
+            @include respond(tab-port) {width: 20%;}
         }
         &__text{
+            font-size: $font-p;
             color: $darkHighlight;
             align-self: center;
             padding: 0 1.5rem;
             width: 75%;
-            @include respond(phone-l) {
-                width: 60%;
-            }
         }
     }
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import IngredientSearch from './IngredientSearch';
 import CheckBoxFilter from '../molecules/CheckBoxFilter';
-import Button from '../atoms/Button';
 import RenderItemCardList from './RenderItemCardList';
 
 const SearchRecipe = props => {

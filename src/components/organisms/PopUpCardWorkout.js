@@ -5,7 +5,6 @@ import IconPerson from '../atoms/IconPerson';
 import IconBurn from '../atoms/IconBurn';
 import IconFavorite from '../atoms/IconFavorite';
 import IconClose from '../atoms/IconClose';
-import IconAddItem from '../atoms/IconAddItem';
 
 const PopUpCardWorkout = props =>{
 
@@ -16,24 +15,29 @@ const PopUpCardWorkout = props =>{
         <div className ="popup">
             <div className ="popup_inner popUpCardWorkout__container">
                 <div className ="popUpCardWorkout__header">
-                        <IconFavorite isLiked = {isLiked} onClickIcon = {props.onChangeItem} item = {props.item} type="favoriteExercises"/>
-                        <IconClose onClickIcon = {props.togglePopup} />
+                    <div className ="popUpCardWorkout__header__left">
+                        <button 
+                            className="btn btn--addToDiary"
+                            onClick={ () => props.addItem(props.item,props.item.type)}
+                            >
+                            {props.content.popup.textAddToDiary}
+                        </button>
+                        <div className= "btn__animation btn__animation">
+                            <i className="caret left icon btn__animation btn__animation--arrow"></i>
+                        </div>
+                    </div>
+                    <div className ="popUpCardRecipe__header__right">
+                    <IconFavorite isLiked = {isLiked} onClickIcon = {props.onChangeItem} item = {props.item} type="favoriteExercises"/>
+                    <IconClose onClickIcon = {props.togglePopup} />
+                    </div>
                 </div>
+
                 <div className ="popUpCardWorkout__content">
                     <div className ="popUpCardWorkout__content__video">
-                        <iframe className ="popUpCardWorkout__video--content" title="video player" src={props.item.src} />
+                        <iframe className ="popUpCardWorkout__video--content" title="video player" src={props.item.src} frameBorder="0" />
                     </div>
                     <div className ="popUpCardWorkout__content__main">
                         <div className="popUpCardWorkout__content__main__heading heading heading__m">{props.item.label}</div>
-                    </div>
-                    <div className ="popUpCardWorkout__content__addToExercise">
-                        <button 
-                            className="popUpCardWorkout__content__addToExercise__btn btn btn--addToDiary"
-                            onClick={ () => props.addItem(props.item,props.item.type)}
-                            >
-                            <IconAddItem />
-                            {props.content.popup.textAddToDiary}
-                        </button>
                     </div>
                     <div className ="popUpCardWorkout__content__info">
                         <div className="popUpCardWorkout__content__info__item"><IconClock />{`${props.item.totalTime===0? 30: props.item.totalTime}  ${props.content.units.time}`}</div>

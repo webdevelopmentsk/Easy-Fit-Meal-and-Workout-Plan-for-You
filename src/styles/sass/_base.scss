@@ -6,18 +6,18 @@
 
 html {
     // This defines what 1rem is
-    font-size: 50%; //1 rem = 10px; 10px/16px = 62.5%
-    @include respond(phone-l) { // width < 900?
-        font-size: 50%; //1 rem = 8px, 8/16 = 50%
+    font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+    @include respond(phone-l) { // width > 480?
+        font-size: 68.75%; //1 rem = 11px
     }
-    @include respond(tab-port) { // width < 900?
-        font-size: 50%; //1 rem = 8px, 8/16 = 50%
+    @include respond(tab-port) { // width > 600?
+        font-size: 75%; //1 rem = 12px
     }
-    @include respond(tab-land) { // width < 1200?
-        font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
+    @include respond(tab-land) { // width > 800?
+        font-size: 81.125%; //1 rem = 13px,
     }
-    @include respond(desktop) {
-        font-size: 75%; //1rem = 12, 12/16
+    @include respond(desktop) {// width > 1200?
+        font-size: 87.5%; //1rem = 14, 12/16
     }
 }
 

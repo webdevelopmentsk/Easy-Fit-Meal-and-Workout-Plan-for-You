@@ -4,24 +4,28 @@
 
         background-color: $white;
         width: 95%;
-        height: 80%;
+        height: 90%;
         border-radius: 4px;
         display: flex;
         flex-direction: column;
         overflow: scroll;
 
         @include respond(phone-l) {width: 90%;}
-        @include respond(phone-l) {width: 80%;}
+        @include respond(tab-port) {width: 80%;}
+        @include respond(tab-land) {width: 85%;}
+        @include respond(desktop) {width: 85%;}
 
     }
     &__header{//Top Left Menu
         width: 100%;
         display: flex;
         margin-bottom: 1rem;
+        @include respond(phone-l) {margin-bottom: 2rem;}
         &__left{
             flex: 0 0 50%;
             display: flex; 
             margin-left: 1.5rem;
+
         }
         &__right{
             flex: 0 0 45%;
@@ -49,12 +53,32 @@
                 grid-template-columns: 1fr 1fr;
                 grid-template-rows:  0.01fr 0.1fr 0.01fr 0.01fr 0.01fr;
                 grid-template-areas:
-                "popUpCardRecipe__content__image popUpCardRecipe__content__heading"
-                "popUpCardRecipe__content__image popUpCardRecipe__content__addToMeal"
-                "popUpCardRecipe__content__info popUpCardRecipe__content__info"
-                "popUpCardRecipe__content__tag popUpCardRecipe__content__tag"
+                "popUpCardRecipe__content__heading popUpCardRecipe__content__heading"
+                "popUpCardRecipe__content__image popUpCardRecipe__content__info"
+                "popUpCardRecipe__content__image popUpCardRecipe__content__tag"
+                "popUpCardRecipe__content__addToMeal popUpCardRecipe__content__addToMeal"
                 "popUpCardRecipe__content__ingred popUpCardRecipe__content__ingred";
             }
+            @include respond(tab-land) {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows:  0.01fr 0.1fr 0.01fr 0.01fr;
+                grid-template-areas:
+                "popUpCardRecipe__content__heading popUpCardRecipe__content__info"
+                "popUpCardRecipe__content__image popUpCardRecipe__content__tag"
+                "popUpCardRecipe__content__image popUpCardRecipe__content__addToMeal"
+                "popUpCardRecipe__content__ingred popUpCardRecipe__content__ingred";
+            }
+            @include respond(desktop) {
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows:  0.01fr 0.1fr 0.01fr 0.01fr 0.01fr;
+                grid-template-areas:
+                "popUpCardRecipe__content__image popUpCardRecipe__content__heading popUpCardRecipe__content__heading"
+                "popUpCardRecipe__content__image popUpCardRecipe__content__info popUpCardRecipe__content__info"
+                "popUpCardRecipe__content__image popUpCardRecipe__content__tag popUpCardRecipe__content__tag"
+                "popUpCardRecipe__content__image popUpCardRecipe__content__addToMeal popUpCardRecipe__content__addToMeal"
+                "popUpCardRecipe__content__ingred popUpCardRecipe__content__ingred popUpCardRecipe__content__ingred";
+            }
+
 
         &__image{
             grid-area: popUpCardRecipe__content__image ;
@@ -71,7 +95,8 @@
         &__heading{
             grid-area: popUpCardRecipe__content__heading;
             line-height: 130%;
-            @include respond(phone-l) {margin: 1rem 0; text-align: start; margin-left: 1rem;}    
+            @include respond(phone-l) {margin: 1rem 0;} 
+            @include respond(tab-land) {text-align: start;margin: 0 1rem;}   
         }
         &__info{
             grid-area: popUpCardRecipe__content__info;
@@ -82,18 +107,19 @@
             font-size: $font-p;
             border-top: $darkHighlight 1px dashed;
             padding-top: 1rem;
-
-            @include respond(phone-l) {border: none;}
-
+            @include respond(desktop) {justify-content: start;} 
                 &__item{
-                    width: 33.33%;
+                    width: 32%;
+                    word-wrap: break-word;
+                    text-align: center;
+                    @include respond(desktop) {width: 32%;text-align: start;} 
                 }
             }
 
         &__addToMeal{
             grid-area: popUpCardRecipe__content__addToMeal;
             margin: 0 1rem;
-            padding-top: 1rem 0;
+            padding: 1rem 0;
         }
 
         &__tag{
@@ -101,7 +127,8 @@
             grid-area: popUpCardRecipe__content__tag;
             margin: 0 1rem;
             color: $darkHighlight;
-
+            border-bottom: $darkHighlight 1px dashed;
+            padding-bottom: 1rem;
             &--item{
                 display: inline-block;
                 border-radius: 3px;
