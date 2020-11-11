@@ -6,9 +6,19 @@
     top: 0;
     left: 0;
     margin: auto;
+    width: 100vw;
+    height: 100vh;
+
+}
+.landingPage__background{
+    overflow: hidden;
     width: 100%;
     height: 100%;
-
+    &--content{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 }
 .subContainer__landingPage{
     position: fixed;
@@ -16,36 +26,25 @@
     top: 0;
     width: 100%;
     height: 100%;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    background-color: rgba($black,0.5);
-
+    background-color: rgba($black,0.55);
+    padding: 7rem 0;
     &__wrapper{
-        width: 90%;
+        width: 75%;
         @include respond(phone-l){width: 85%;}
         @include respond(tab-port){width: 70%;}
         @include respond(tab-land){width: 50%;}
-        align-self: center;
+        margin: 0 auto;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
     }
 
 }
 .item__landingPage{
-    margin: 2rem 4rem;
+    text-align: center;
+    margin: 2rem 0;
 }
 
-.landingPage__background{
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    &--content{
-        object-fit: cover;
-    }
-}
 
 //(2) Homepage & Meal Plan & Workout Plan-------------------------------
 .mainContainer{
@@ -54,7 +53,7 @@
     display: grid;
     gap: 2rem 0;
     grid-template-columns: 1fr;
-    grid-template-rows:  0.01fr 0.01fr 0.01fr  0.001fr 0.001fr 0.001fr;
+    grid-template-rows:  0.001fr 0.001fr 0.01fr 0.001fr 0.001fr 0.001fr;
     grid-template-areas:
       "subContainer__pageInput"
       "subContainer__caloriesRemain"
@@ -68,7 +67,7 @@
         width: 95%;
         margin: 3rem auto;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows:  0.01fr 0.01fr 0.01fr 0.01fr 0.01fr;
+        grid-template-rows:  0.01 0.01fr 0.01fr 0.01fr 0.01fr;
         grid-template-areas:
         "subContainer__pageInput subContainer__randomQuotes"
         "subContainer__caloriesRemain subContainer__randomQuotes"
@@ -85,16 +84,16 @@
         width: 85%;
         justify-self: center;
         @include respond(tab-port){ width: 90%;}
+
         &__pageInput{
             grid-area: subContainer__pageInput;
+
         }
         &__caloriesRemain{
             grid-area: subContainer__caloriesRemain;
         }
         &__randomQuotes{
             grid-area: subContainer__randomQuotes;
-            @include respond(phone-l) { height: 30rem; }
-            @include respond(tab-port) { height: 95%; }
         }
         &__pageMenuBar{
             grid-area: subContainer__pageMenuBar;
@@ -113,69 +112,9 @@
 
 .item{
 
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
-        &__userInfo{
-            
-            padding: 2rem;
-            &__heading{
-                margin: 2rem 0;
-            }
-            &__text{
-                width: 50%;
-                margin-bottom: 1rem;
-            }
-            &__btn{
-                display: flex;
-                align-items: center;
-            }
-        }
-        &__userGoal{
-            padding: 2rem;
-            &__heading{
-                margin: 2rem 0;
-            }
-            &__text{
-                width: 50%;
-                margin-bottom: 1rem;
-            }
-            &__btn{
-                display: flex;
-                align-items: center;
-            }
-        }
-        &__result{
-            margin-bottom: 0;
-            height: 25rem;
-        }
-
-}
-
-.item{
-
-    border-radius: 4px;
-    color: $black;
-    background-size: cover;
-
-    &__userInfo{
-        background-image: linear-gradient(105deg,$makeupTan 0%, $lightlyOffWhite 50%, transparent 50%),
-        url(../../assets/userInfo.jpg);
-    }
-    &__userGoal{
-        background-image: linear-gradient(105deg,$makeupTan 0%, $lightlyOffWhite 50%, transparent 50%),
-        url(../../assets/userGoal.jpg);
-    }
-
-    &__result{
-
-    }
-
-    &__icon{
-        color: $dark-65;
-        font-size: 4rem;
-        font-weight: 100;
-    }
 }

@@ -8,16 +8,16 @@ export const routes = [
 export const routesRecipeBar = [
   { name: "Suggested Recipes", link: "/mealplan/suggestedrecipes",compName: "suggestedRecipes", icon:"clipboard list icon"},
   { name: "Searh Recipes", link: "/mealplan/searchrecipes",compName: "all", icon:"search icon"},
-  { name: "Favorite", link: "/mealplan/favoriterecipes",compName: "favorites", icon:"heart icon"}
+  { name: "Favorites", link: "/mealplan/favoriterecipes",compName: "favorites", icon:"heart icon"}
 ];
 
 export const routesExerciseBar = [
   { name: "Suggested Workout Plans", link: "/workoutplan/suggestedexercise",compName: "suggestedWorkoutPlans", icon:"clipboard list icon"},
   //{ name: "Searh Exercise", link: "/workoutplan/searchexercise",compName: "All", icon:"search icon"},
-  { name: "Favorite", link: "/workoutplan/favoriteexercise",compName: "favorites", icon:"heart icon"}
+  { name: "Favorites", link: "/workoutplan/favoriteexercise",compName: "favorites", icon:"heart icon"}
 ];
 
 export const routesArticleBar = [
   {name: "Popular Mindfulness Articles", link: "/home/populararticles",compName: "popularMindfulnessArticles", icon:"clipboard icon"},
-  {name: "Favorite", link: "/home/favoritearticles",compName: "favorites", icon:"heart icon"},
+  {name: "Favorites", link: "/home/favoritearticles",compName: "favorites", icon:"heart icon"},
 ];

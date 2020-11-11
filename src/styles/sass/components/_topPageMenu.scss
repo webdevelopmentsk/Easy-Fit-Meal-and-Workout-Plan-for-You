@@ -1,6 +1,7 @@
 .topPageMenu{
+    
     &__container{
-        z-index: 1000;
+        z-index: 100;
         width: 100%;
         position: fixed;
         top: 0; left: 0;
@@ -30,7 +31,7 @@
             z-index: -1;
             display: inline-block;
             position: absolute;top: 15px; left: 0;
-            background-color: $orange1;
+            background-color: $blush;
         }
     }
     &__burger{

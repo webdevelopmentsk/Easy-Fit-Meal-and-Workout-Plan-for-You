@@ -88,6 +88,7 @@ const checkIfFavorite = item => {
 
 //CalTotalCalories from Food
 useEffect(()=>{
+  
   let totalCal = 0;
   state.breakfast.forEach(food => {
     let itemCal = Math.round(food.calories/food.yield);
@@ -237,7 +238,6 @@ useEffect(() =>{ //Get Random Quote
                     addItem = {addItem}
                     deleteItem ={deleteItem}
                     checkIfFavorite = {checkIfFavorite} 
-                    addItem ={addItem} 
                     type = {content_mealPlan.searchRecipes.type}
                     checkedBoxes = {[...state.searchFoodPreferences,...state.searchMeals]}
                     showCheckBoxes = {showCheckBoxes}

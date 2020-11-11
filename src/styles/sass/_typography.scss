@@ -4,66 +4,45 @@
 }
 
 .heading{
+
 	font-family: 'Nanum Gothic', sans-serif;
-	text-align: center;
 	text-transform: uppercase;
-	
 	&__l{
-		font-size: $font-l;
+		font-size: $font-l;line-height: 130%;
 	}
 	&__m{
-		font-size: $font-m;
+		font-size: $font-m;line-height: 125%;
 	}
 	&__s{
-		font-size: $font-s;
-		line-height: 120%;
+		font-size: $font-s;line-height: 120%;
 	}
-	&__light{
-		color: $lightlyOffWhite;
-	}
-	&__dark{
-		color: $black;
+
+	&__text{
+		display: inline-block;
+		position: relative;
+		z-index: 1;
+		width: auto;
+		&__underline{
+			z-index: -1;
+			height: 10px;
+			width: 100%;
+			padding: 0 0.5rem;
+			position: absolute;
+			top: 11px;
+			background-image: linear-gradient(90deg,$white 0%, $white 50%, $orange 50%);
+			@include respond(tab-port) {height: 12px;}
+			@include respond(tab-land) {height: 13px;}
+			@include respond(desktop) {height: 14px;}
+		}
 	}
 }
 
 .paragraph{
 	font-family: 'Nanum Gothic', sans-serif;
 	font-size: $font-p;
-	&--light{
-		color: $lightlyOffWhite;
-	}
-	&--dark{
-		color: $darkHighlight
-	}
 }
 
 
-
-
-.BG{
-	&__yellowOrange{
-		padding: 0.5rem;
-		width: 65%;
-		background-image: linear-gradient(90deg,$yellow1 0%, $yellow2 50%, $orange3 50%);
-	}
-	&__whiteOrange{
-		//opacity: 0.8;
-		padding: 0.5rem;
-		width: 65%;
-		background-image: linear-gradient(90deg,$white 0%, $white 50%, $orange3 50%);
-	}
-	&__orangeWhite{
-		//opacity: 0.8;
-		padding: 0.5rem;
-		width: 65%;
-		background-image: linear-gradient(90deg,$orange3 0%, $orange3 50%, $white 50%);
-	}
-	&__orangeYellow{
-		padding: 0.5rem;
-		width: 65%;
-		background-image: linear-gradient(90deg,rgba($orange3,1) 0%, rgba($orange3,1) 50%, rgba($yellow1,1) 50%);
-	}
-}
 
 
 

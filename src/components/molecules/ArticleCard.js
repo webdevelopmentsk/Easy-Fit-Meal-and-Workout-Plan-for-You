@@ -14,14 +14,14 @@ const ArticleCard = props => {
                 type = {props.type} 
                 />
             </div>
-            <div className = "articleCard__heading">
+            <div className = "articleCard__heading heading heading__s">
                 {props.item.title}
             </div>
             <a 
             href={props.item.url} target="_blank" rel="noopener noreferrer"
             className = "articleCard__image"
             >
-                <img className = "articleCard__image--content" src={props.item.urlToImage} alt="Article"/>
+                <img className = "articleCard__image--content" src={props.item.image} alt="Article"/>
             </a>
             <div className = "articleCard__meta">
                 <div className = "articleCard__meta__date">{props.item.publishedAt}</div>
@@ -29,10 +29,12 @@ const ArticleCard = props => {
             </div>
             <div className = "articleCard__description">
                 {props.item.description} 
-                <a className = "btn btn--readMore"
+            </div>
+            <div className = "articleCard__btn">
+                <a className = "btn btn--blush"
                 href={props.item.url} target="_blank" rel="noopener noreferrer"
                 >
-                    Read More &#x2192;
+                    {`Read Article ->`}
                 </a>
             </div>
 

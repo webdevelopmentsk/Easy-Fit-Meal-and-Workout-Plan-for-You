@@ -1,60 +1,37 @@
 .inputForm{
     border-radius: 4px;
-    background-color: $black;
-
-    @include respond(tab-port) {
-        margin-top: 12rem;
-        width: 40rem;
-    }
+    background-color: $blush;
+    padding-top: 4rem;
+    padding-bottom: 0;
+    width: 27rem;
+    @include respond(phone-l) {width: 30rem;}
     &__field{
-    margin-bottom: 1.5rem;
+       font-size: $font-s;
+       display: flex;
+       margin-bottom: 1rem;
+       justify-content: center;
     }
     &__label{
-    margin: 0 0.7rem;
-    color: $orange2;
+        width: 6rem;
+
     }
-    &__select-l{
-        color: $orange2;
-        background-color: $black;
-        width: 75%;
-    }
-    &__select-m{
-        color: $orange2;
-        background-color: $black;
-        width: 40%;
-    }
-    &__select-s{
-        color: $orange2;
-        background-color: $black;
-        width: 20%;
+    &__select{
+        background-color: $white;
+        color: $black;
+        border-radius: 3px;
+        border: $darkHighlight 1px solid;
+
+        &-l{width: 17rem;}
+        &-m{width: 70%;}
+        &-s{width: 8rem;}
+
     }
     &__input{
-        -webkit-appearance: none;
-        width: 45%;
-        height: 5px;
-        background: $dark-65;
-        outline: none;
-        opacity: 0.7;
-        -webkit-transition: .2s;
-        transition: opacity .2s;
-        &:hover {
-            opacity: 1;
-          }
-        &::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: $makeupTan;
-            cursor: pointer;
-            border-radius: 50%;
-            box-shadow:  10px 10px 20px -5px $dark-65;
-          }
-        &::-moz-range-thumb {
-            width: 25px;
-            height: 25px;
-            background:$makeupTan;
-            cursor: pointer;
-          }
+        width: 8rem;
+        margin-right: 1rem;
+        color: $darkHighlight;
+        border-radius: 3px;
+        border: $darkHighlight 1px solid;
+        text-align: center;
     }
 }

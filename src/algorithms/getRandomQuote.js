@@ -12,8 +12,3 @@ const getRandomQuote = async () => {
 
 export default getRandomQuote;
 
-
-//response.quoteText
-//response.quoteAuthor
-
-//.done(response => {console.log(response); return response })

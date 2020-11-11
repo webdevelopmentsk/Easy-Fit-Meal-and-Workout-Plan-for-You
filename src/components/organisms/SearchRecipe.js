@@ -27,7 +27,7 @@ const SearchRecipe = props => {
             </div>
             <div className = "searchRecipe__clickSearch"> 
                  <button
-                className = "searchRecipe__clickSearch__btn btn BG__yellowOrange" 
+                className = "searchRecipe__clickSearch__btn btn btn--black btn--black--m" 
                 onClick={props.onClickSearchRecipe}> 
                 <span className="searchRecipe__clickSearch__btn__icon__text" >{props.content.searchRecipes.button.text}</span> 
                 <i className="search icon searchRecipe__clickSearch__btn__icon"></i> 

@@ -1,0 +1,111 @@
+.popUpCardItem{
+
+    &__container{
+
+        background-color: $white;
+        width: 32rem;
+        height: 85vh;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        overflow: scroll;
+    }
+    &__header{//Top Left Menu
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 1rem;
+    }
+    &__content{//The rest 
+        display: grid;
+
+            grid-template-columns: 1fr;
+            grid-template-rows:  0.1fr 0.01fr 0.01fr 0.001fr 0.01fr 0.01fr 0.01fr;
+            gap: 1rem 0;
+            grid-template-areas:
+              "popUpCardItem__content__image"
+              "popUpCardItem__content__heading"
+              "popUpCardItem__content__info"
+              "popUpCardItem__content__tag"
+              "popUpCardItem__content__addToDiary"
+              "popUpCardItem__content__ingred";
+            
+        &__image{
+            grid-area: popUpCardItem__content__image ;
+            display: flex;
+            justify-content: center;
+
+            &--content{
+                width: 90%;
+                border-radius: 5px;
+                overflow: hidden;
+                @include respond(phone-l) {  width: 70%; }
+                @include respond(desktop) {  width: 60%; }
+            }
+        }
+
+        &__heading{
+            grid-area: popUpCardItem__content__heading;
+            text-align: center;
+            margin: 0 1rem;
+
+        }
+        &__info{
+            grid-area: popUpCardItem__content__info;
+            margin: 0 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            font-size: $font-p;
+            border-top: $darkHighlight 1px dashed;
+            padding-top: 1rem;
+ 
+                &__item{
+                    width: 32%;
+                    word-wrap: break-word;
+                    text-align: center;
+
+                    &--subItem{
+                        text-transform: capitalize;
+                    }
+                }
+            }
+
+        &__addToDiary{
+            grid-area: popUpCardItem__content__addToDiary;
+            //margin-left: 2.5rem;
+        }
+
+        &__tag{
+
+            grid-area: popUpCardItem__content__tag;
+            margin: 0 1rem;
+            color: $darkHighlight;
+            border-bottom: $darkHighlight 1px dashed;
+            padding-bottom: 1rem;
+            padding-left: 1rem;
+            &--item{
+                display: inline-block;
+                border-radius: 3px;
+                font-size: 1.2rem;
+                color: $white;
+                background-color: $complimentaryGreen;
+                padding: 3px 4px;
+                margin: 3px 3px;
+                text-transform: capitalize;
+
+            }
+        }
+        &__ingred{
+            grid-area: popUpCardItem__content__ingred;
+            border-radius: 4px;
+
+            &__heading{
+                color: $darkHighlight;
+                margin: 1rem 2rem;
+                font-size: $font-p;
+            }
+        }
+    }
+
+}

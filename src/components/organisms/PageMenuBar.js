@@ -8,7 +8,7 @@ const PageMenuBar = ({routes}) => {
         return(
         <Link className = "item pageMenuBar__link" 
               key ={index} to={route.link}
-        > <i className= {route.icon}></i> </Link>
+        ><i className= {route.icon}></i></Link>
         );
     })
     return (

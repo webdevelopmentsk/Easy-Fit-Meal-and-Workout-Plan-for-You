@@ -1,32 +1,17 @@
 .checkBoxFilter{
 
     &__container{
-        margin: 1rem auto;
+        margin: 1rem 0;
         width: 100%;
         display: flex;
         flex-direction: column;
     }
     &__heading{
-
-        flex: 0 0 100%;
-        margin: 0 1rem;
-
-        &--content{
-            display: inline-block;
-            position: relative;
-            z-index: 1;
-        }
-        &--underline{
-            z-index: -1;
-            height: 10px;
-            width: 100%;
-            position: absolute;
-            top: 9px;
-        }
+        flex: 1 1 100%;
     }
     &__list{
-        flex: 0 0 100%;
-        margin: 1rem 1rem;
+        flex: 1 1 100%;
+        margin: 1rem 0;
     }
     &__item{
         font-size: $font-p;

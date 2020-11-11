@@ -1,22 +1,16 @@
-//Colors
+//Color Palette
 $black: rgb(0, 0, 0);
 $white: rgb(255, 255, 255);
-$dark-65: rgb(89, 89, 89);
-$dark-85:rgb(64, 64, 64);
 $makeupTan: #DDAF94;
 $blush: #E8CEBF;
 $complimentaryGreen: #266150;
 $darkHighlight: #4F4846;
 $lightlyOffWhite: #FDF8F5;
-$orange1: #FFD9B3;
-$orange2: #FFCC99;
-$orange3: #FD9A24;
-$yellow1: #FFFF33;
-$yellow2: #FFE800;
-$brown1: #F4E4C1;
+$orange: #FD9A24;
+$yellow: #FFE800;
 
 
-//Font
+//Font Sizes
 $font-icon-header: 1.5rem;
 
 $font-l: 4rem;
@@ -27,4 +21,4 @@ $font-btn-l: 2rem;
 $font-btn-m: 1.5rem;
 $font-btn-s: 1.2rem;
 
-$font-p: 1.3rem;
+$font-p: 1.2rem;

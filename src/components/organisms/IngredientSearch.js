@@ -7,9 +7,7 @@ const IngredientSearch = props => {
     return(
         <div className = "ingredientSearch__container">
 
-            <h3 className ="ingredientSearch__heading heading heading__s"> {props.content.text}
-                <div className ="ingredientSearch__heading--underline BG__yellowOrange"></div>
-            </h3>
+            <h3 className ="ingredientSearch__heading heading heading__s"> {props.content.text}</h3>
 
             <AutoCompleteInput 
                 content = {props.content}

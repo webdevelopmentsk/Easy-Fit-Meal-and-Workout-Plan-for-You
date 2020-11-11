@@ -1,6 +1,6 @@
 import React from 'react';
 import bgVideo from '../assets/landingPage-BG.mp4'
-
+import { content } from '../data/content';
 import { Link } from 'react-router-dom'
 
 const Navigation = ({routes,onHeaderClick}) => {
@@ -20,15 +20,14 @@ const Navigation = ({routes,onHeaderClick}) => {
                 <source src = {bgVideo} type="video/mp4" />
                 </video>
             </div>
-            <div className = "navigation__group" >{renderRoutes}</div>
+            <div className = "navigation__group" >
+            <div className ="navigation__heading"> 
+                    <h1 className ="navigation__heading--text heading__l">{content.appLogo.name}</h1>
+            </div>
+                {renderRoutes}
+            </div>
         </div>
     );
 }
 
 export default Navigation;
-
-/*
-<video className = "navigation__background--content" autoPlay muted loop>
-<source src = {bgVideo} type="video/mp4" />
-</video>
-*/

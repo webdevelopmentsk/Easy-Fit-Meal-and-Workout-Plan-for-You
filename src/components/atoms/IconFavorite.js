@@ -9,7 +9,7 @@ const IconFavorite = props => {
     };
 
     return (
-        <i className= "fa fa-heart iconLike"
+        <i className= "fa fa-heart iconLike u-font-btn-l u-m-left-small"
         style = {{color: `${like? "#266150": "grey"}`}}
         onClick={toggleIcon}></i>
     )

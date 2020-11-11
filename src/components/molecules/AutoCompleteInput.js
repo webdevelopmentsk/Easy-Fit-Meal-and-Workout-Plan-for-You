@@ -28,10 +28,14 @@ const AutoCompleteInput = props =>{
     const onTextChanged = async e => {
         const value = e.target.value;
         let suggestions = [];
-        if (value.length > 0){
-            suggestions = await createSuggestions(props.type,value)
+        try{
+            if (value.length > 0){
+                suggestions = await createSuggestions(props.type,value)
+            }
+            setSuggestions(suggestions);
+        }catch (error) {
+
         }
-        setSuggestions(suggestions);
         setText(value);
     };
     

@@ -14,46 +14,39 @@ const PopUpCardRecipe = props =>{
 
     return(
             <div className ="popup">
-                <div className ="popup_inner popUpCardRecipe__container">
-                    <div className ="popUpCardRecipe__header">
-                        <div className ="popUpCardRecipe__header__left">
-                            <a className="btn btn--goToCook" href= {props.item.url} target="_blank" rel="noopener noreferrer">{props.content.popup.preparation}</a>
-                            <div className= "btn__animation btn__animation">
-                                <i className="caret left icon btn__animation btn__animation--arrow"></i>
-                            </div>
-                        </div>
-                        <div className ="popUpCardRecipe__header__right">
-                            <IconFavorite isLiked = {isLiked} onClickIcon = {props.onChangeItem} item = {props.item} type="favoriteRecipes"/>
-                            <IconClose onClickIcon = {props.togglePopup} />
-                        </div>
+                <div className ="popup_inner popUpCardItem__container">
+                    <div className ="popUpCardItem__header">
+                        <a className="btn btn--blush" href= {props.item.url} target="_blank" rel="noopener noreferrer">{`${props.content.popup.preparation} ->`}</a>
+                        <IconFavorite isLiked = {isLiked} onClickIcon = {props.onChangeItem} item = {props.item} type="favoriteRecipes"/>
+                        <IconClose onClickIcon = {props.togglePopup} />
                     </div>
-                    <div className ="popUpCardRecipe__content">
-                            <div className ="popUpCardRecipe__content__image">
-                            <img className ="popUpCardRecipe__content__image--content" alt={props.item.label} src={props.item.image} href="#" />
+                    <div className ="popUpCardItem__content">
+                            <div className ="popUpCardItem__content__image">
+                            <img className ="popUpCardItem__content__image--content" alt={props.item.label} src={props.item.image} href="#" />
                             </div>
 
-                            <div className="popUpCardRecipe__content__heading heading heading__m">{props.item.label}</div>
-                            <div className ="popUpCardRecipe__content__info">
-                                <div className="popUpCardRecipe__content__info__item"><IconClock />{`${props.item.totalTime===0? 30: props.item.totalTime}  ${props.content.units.time}`}</div>
-                                <div className="popUpCardRecipe__content__info__item"><IconPerson />{`${props.item.yield}  ${props.content.units.portion}`}</div>
-                                <div className="popUpCardRecipe__content__info__item"><IconBurn />{`${Math.round(props.item.calories/props.item.yield)}  ${props.content.units.calories}`}</div>
+                            <div className="popUpCardItem__content__heading heading heading__m">{props.item.label}</div>
+                            <div className ="popUpCardItem__content__info">
+                                <div className="popUpCardItem__content__info__item"><IconClock />{`${props.item.totalTime===0? 30: props.item.totalTime}  ${props.content.units.time}`}</div>
+                                <div className="popUpCardItem__content__info__item"><IconPerson />{`${props.item.yield}  ${props.content.units.portion}`}</div>
+                                <div className="popUpCardItem__content__info__item"><IconBurn />{`${Math.round(props.item.calories/props.item.yield)}  ${props.content.units.calories}`}</div>
                             </div>
 
-                            <div className ="popUpCardRecipe__content__addToMeal">
+                            <div className ="popUpCardItem__content__addToDiary">
                                 <RenderMealOptionList 
                                 content ={props.contentDiary}
                                 item = {props.item}
                                 addItem ={props.addItem}
                                 />
                             </div>
-                            <div className ="popUpCardRecipe__content__tag">
+                            <div className ="popUpCardItem__content__tag">
                                 {props.item.dietLabels.map((label,index)=> 
-                                <div className="popUpCardRecipe__content__tag--item" key={index}>{label}</div>)}
+                                <div className="popUpCardItem__content__tag--item" key={index}>{label}</div>)}
                                 {props.item.healthLabels.map((label,index)=> 
-                                <div className="popUpCardRecipe__content__tag--item" key={index}>{label}</div>)}
+                                <div className="popUpCardItem__content__tag--item" key={index}>{label}</div>)}
                             </div>
-                            <div className ="popUpCardRecipe__content__ingred">
-                                <div className="popUpCardRecipe__content__ingred__heading">
+                            <div className ="popUpCardItem__content__ingred">
+                                <div className="popUpCardItem__content__ingred__heading">
                                 {`${props.content.popup.ingredients} `}<i className="caret square down icon"></i>
                                 </div>
                                 <RenderRecipeIngredientList list = {props.item.ingredients}/>

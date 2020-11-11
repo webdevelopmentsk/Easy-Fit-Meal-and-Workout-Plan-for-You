@@ -22,7 +22,14 @@ const dailyCalorieIntake = state => {
     let activity = state.userPersonalInfo.activity;
     let goalType = state.userGoal.goalType;
     let goalWeight = state.userGoal.goalWeight;
-    let goalSpeed = state.userGoal.goalSpeed;
+    let goalSpeed = 0;
+    switch (state.userGoal.goalSpeed){
+        case 'Slow ~ (0.5 kg/week)': goalSpeed = 0.5;break;
+        case 'Medium ~ (0.75 kg/week)': goalSpeed = 0.75;break;
+        case 'Fast ~ (1 kg/week)': goalSpeed = 1;break;
+        default: break;
+    }
+    
 
     let bmr;
     switch (gender){
@@ -48,7 +55,7 @@ const dailyCalorieIntake = state => {
         return [Math.round(calMaintain),time];
     }
     else{
-        let speed = 0.25*goalSpeed + 0.5;  // kgs/week
+        let speed = goalSpeed;  // kgs/week
         let calToBurn = 7700*speed/7; // kcal/day
         let time = Math.round(Math.abs(goalWeight-weight)/speed);
         let dailyCalIntake;

@@ -1,101 +1,87 @@
 .btn{
   text-decoration: none;
   font-family: inherit;
+  font-size: inherit;
   display: inline-block;
   border: none;
   margin: 1rem 0;
+  padding: 1rem;
   cursor: pointer;
   border-radius: 4px;
-    &:active , &:focus{
-      transform: translateY(2px);
+
+    &:active , 
+    &:focus{
+      transform: translateY(3px);
     }
-    &__animation{
-      display: inline-flex;
-      justify-items: center;
-      align-items: center;
-      &--arrow{
-        font-size: 3rem !important;
-        color: $black;
-        animation: moveInRight 1s infinite ease-in-out;  
-      }
+
+    &:hover{
+      transform: translateY(-3px);
     }
+
     &--transparent{//btn landing page
       background-color: transparent;
-      padding: 1.5rem;
-      font-size: $font-btn-l;
-      border: $white 2px solid;
       color: $white;
+      border: $white 1px solid;
       animation: moveInTop 2s ease-in-out;  
+      
       &:hover{
         transform: translateY(-3px);
-        color: $lightlyOffWhite;
-        background-color: $black;
-        border: $black 2px solid;
+        color: $black;
+        background-color: $lightlyOffWhite;
+      }
+
+      &--green{
+        border-radius: 0;
+        color: $complimentaryGreen;
+        border-bottom: $complimentaryGreen 1px solid;
+        &:hover{
+          background-color: $black;
+          color: $white;
+        }
       }
     }
+
     &--green{//btn homepage
       font-weight: 300;
       background-color: $complimentaryGreen;
-      padding: 1rem;
-      font-size: $font-btn-m;
       color: $white;
+    }
 
-      &:hover{
-        transform: translateY(-3px);
-      }
-    }
-    &--addInDiary{//btn add in diary
-      padding: 0.3rem 0.5rem;
-      background-color: $darkHighlight;
-      color: $white;
-      &:hover{
-        background-color: $black;
-      }
-    }
-    &--addToDiary{//btn add to diary
-      color: $black;
-      padding: 4px 4px;
+    &--blush{
+      color:$black;
+      margin: 0 0;
+      padding: 0.3rem;
       border-radius: 0;
-      border-bottom: $black 2px solid;
-      background-color: $white;
+      background-color: $blush;
+      border-bottom: $darkHighlight 2px solid;
+      
       &:hover{
-        color: $white;
-        background-color: $black;
-      }
-    }
-    &--white{//btn user info and goal form
-      font-weight: 300;
-      background-color: $lightlyOffWhite;
-      padding: 1rem;
-      font-size: $font-btn-m;
-      color: $darkHighlight;
-      border: $darkHighlight 2px solid;
-      &:hover{
-        transform: translateY(-3px);
         color: $lightlyOffWhite;
         background-color: $black;
-        border: $black 2px solid;
+        border-bottom: none;
       }
     }
-    &--readMore{
-      color: $complimentaryGreen;
-      border-bottom: $complimentaryGreen 1px solid;
-      &:hover{
-        background-color: $black;
-        color: $white;
-        font-weight: 600;
-      }
-    }
-    &--goToCook{
-      background-color: $black;
-      font-size: $font-btn-s;
+
+    &--black{
       color: $white;
+      background-color: $black;
       padding: 0.5rem;
-      text-align: center;
+      border-radius: 0;
+      margin: 0 0;
+        font-size: $font-btn-s;
+        &::before{
+          content:"+ "
+        }
+      &--s{
+        border-radius: 4px;padding: 0.3rem 0.5rem; margin: 1rem 0;
+      }
+    
+
       &:hover{
-        color: $black;
         background-color: $white;
+        color: $black;
         border: $black 1px solid;
       }
+
     }
 }

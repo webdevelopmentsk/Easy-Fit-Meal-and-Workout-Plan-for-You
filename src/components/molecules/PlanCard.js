@@ -6,7 +6,7 @@ const PlanCard = props => {
 
     return(
             <div className= {setClassName} onClick = {() => props.onClickOption(option,type,cardKey)}>
-                <div className="planCard__heading BG__yellowOrange">{option.name}</div>
+                <div className="planCard__heading heading heading__s u-color-white u-bg-color-black u-p-05rem">{option.name}</div>
                 <div className="planCard__image">
                     <div 
                         className="planCard__image--content"

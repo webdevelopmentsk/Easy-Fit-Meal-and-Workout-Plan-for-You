@@ -7,25 +7,18 @@ import { Context } from '../context/Provider';
 import dailyCalorieIntake  from '../algorithms/dailyCalorieIntake';
 import getNews from '../algorithms/getNews';
 //Components
-import UserInformationForm from '../components/organisms/UserInformationForm';
-import UserGoalForm from '../components/organisms/UserGoalForm';
 import RenderDailyCarlorieNeed from '../components/molecules/RenderDailyCarlorieNeed';
 import RenderCaloriesRemain from '../components/molecules/RenderCaloriesRemain';
 import RenderArticleCardList from '../components/molecules/RenderArticleCardList';
-import Button from '../components/atoms/Button';
 import RandomQuoteCard from '../components/molecules/RandomQuoteCard';
-
+import InputForm from '../components/organisms/InputForm';
 import { routesArticleBar } from '../data/routes';
 
 const HomePage = () => {
 
     const content_homePage = content.homePage;
-    const {state,changeState} = React.useContext(Context);
 
-    const [open, setOpen] = useState({
-        userPersonalInfo: false,
-        userGoal:false
-    });
+    const {state,changeState} = React.useContext(Context);
 
     const [randomQuote, setRandomQuote] = useState([]);
 
@@ -48,25 +41,8 @@ const HomePage = () => {
         })
     }
 
-    const togglePopup = type => {setOpen({...open,[type] : !open[type]});};
-
-    const checkInfoComplete = (type,data) =>{
-
-        let dataUserGoal = state.userGoal
-        dataUserGoal.complete = false;
-        changeState('userGoal',dataUserGoal);
-
-       let isComplete = true;
-       for (let key in data) {
-           if(data[key] === 0) {isComplete = false;}
-       };
-
-
-        if(isComplete){
-            togglePopup(type);
-            data.complete = true;
+    const updateUserData = (type,data) =>{
             changeState(type,data);
-        }
     };
 
     useEffect(()=>{//Get goalCal
@@ -87,19 +63,21 @@ const HomePage = () => {
 
     
     const getRandomQuote = async () => {
-        let totalQuotes = [];
-        let result = await $.ajax({
+        let totalQuotes = []
+        for( let i=0; i < 2; i++){
+          let result = await $.ajax({
             url: "https://api.forismatic.com/api/1.0/",
             jsonp: "jsonp",dataType: "jsonp",data: 
             {method: "getQuote",lang: "en",format: "jsonp"}
         });
-        totalQuotes.push(result) 
+        totalQuotes.push(result)
+        }
         setRandomQuote(totalQuotes);
-    };
+      }
     
     
     useEffect(() =>{ //Get articles and a random quote
-        getArticles();
+        //getArticles();
         getRandomQuote();
     },[])
     
@@ -147,61 +125,22 @@ const HomePage = () => {
     <div className= 'mainContainer mainContainer'>
         <div className = 'subContainer subContainer__pageInput'>
             {!state.userPersonalInfo.complete &&
-            <div className= 'item item__userInfo'>
-                <div className = 'item__userInfo__heading'>
-                    <h2 className = 'heading heading__s'>{content_homePage.userPersonalInfo.text.heading1}</h2>
-                </div>
-                <div className = 'item__userInfo__text'>
-                     <div className = 'paragraph paragraph--dark'>{content_homePage.userPersonalInfo.text.heading2}</div>
-                </div>
-                <div className = 'item__userInfo__btn'>
-                    <Button className = 'btn btn--green' 
-                    text = {state.userPersonalInfo.complete ? 
-                    content_homePage.userPersonalInfo.text.textAfter:
-                    content_homePage.userPersonalInfo.text.textbtn} 
-                    onClickButton = {() =>togglePopup('userPersonalInfo')}
-                    />  
-                    <div className= "btn__animation btn__animation">
-                        <i className="caret left icon btn__animation btn__animation--arrow"></i>
-                    </div>
-                    
-                </div>
-            </div>
-            }
-            {
-            open.userPersonalInfo &&  <UserInformationForm
-                            content = {content_homePage}
-                            state ={state}
-                            checkInfoComplete = {checkInfoComplete}
-                            />
-            }
-            {(state.userPersonalInfo.complete && !state.userGoal.complete) &&
-                <div className= 'item item__userGoal'>
-                <div className = 'item__userGoal__heading'>
-                    <h2 className = 'heading heading__s'>{content_homePage.userGoal.text.heading1}</h2>
-                </div>
-                <div className = 'item__userGoal__text'>
-                    <p className = 'paragraph paragraph--dark'>{content_homePage.userGoal.text.heading2}</p>
-                </div>
-                <div className = 'item__userGoal__btn'>
-                    <Button className = 'btn btn--green' 
-                    text = {state.userGoal.complete ? 
-                    content_homePage.userGoal.text.textAfter :
-                    content_homePage.userGoal.text.textbtn} 
-                    onClickButton = {() => togglePopup('userGoal')}/>
-                    <div className= "btn__animation btn__animation">
-                        <i className="caret left icon btn__animation btn__animation--arrow"></i>
-                    </div>
-                </div>
-
-                {open.userGoal &&  <UserGoalForm 
+                <InputForm 
                 content = {content_homePage}
                 state ={state}
-                checkInfoComplete = {checkInfoComplete}
-                />}
-            </div>
-           }
-            {state.userGoal.complete && state.userPersonalInfo.complete &&
+                updateUserData = {updateUserData}
+                stateType = 'userPersonalInfo'
+                />
+            }
+            {(state.userPersonalInfo.complete && !state.userGoal.complete) &&  
+            <InputForm 
+                content = {content_homePage}
+                state ={state}
+                updateUserData = {updateUserData}
+                stateType = 'userGoal'
+            />}
+            
+            {state.userPersonalInfo.complete && state.userGoal.complete &&
             <div className= 'item item__result'>
                 <RenderDailyCarlorieNeed state = {state}content = {content_homePage} />
             </div>
@@ -258,3 +197,60 @@ const HomePage = () => {
 
 export default HomePage;
 
+/*
+            {!state.userPersonalInfo.complete &&
+            <div className= 'item item__userInfo'>
+                <div className = 'item__userInfo__heading'>
+                    <h2 className = 'heading heading__s'>{content_homePage.userPersonalInfo.text.heading1}</h2>
+                </div>
+                <div className = 'item__userInfo__text'>
+                     <div className = 'paragraph paragraph--dark'>{content_homePage.userPersonalInfo.text.heading2}</div>
+                </div>
+                <div className = 'item__userInfo__btn u-font-btn-m'>
+                    <Button className = 'btn btn--green' 
+                    text = {state.userPersonalInfo.complete ? 
+                    content_homePage.userPersonalInfo.text.textAfter:
+                    content_homePage.userPersonalInfo.text.textbtn} 
+                    onClickButton = {() =>togglePopup('userPersonalInfo')}
+                    />  
+                    <div className= "btn__animation btn__animation">
+                        <i className="caret left icon btn__animation btn__animation--arrow"></i>
+                    </div>
+                    
+                </div>
+            </div>
+            }
+            {
+            open.userPersonalInfo &&  <UserInformationForm
+                            content = {content_homePage}
+                            state ={state}
+                            checkInfoComplete = {checkInfoComplete}
+                            />
+            }
+            {(state.userPersonalInfo.complete && !state.userGoal.complete) &&
+                <div className= 'item item__userGoal'>
+                <div className = 'item__userGoal__heading'>
+                    <h2 className = 'heading heading__s'>{content_homePage.userGoal.text.heading1}</h2>
+                </div>
+                <div className = 'item__userGoal__text'>
+                    <p className = 'paragraph paragraph--dark'>{content_homePage.userGoal.text.heading2}</p>
+                </div>
+                <div className = 'item__userGoal__btn u-font-btn-m'>
+                    <Button className = 'btn btn--green' 
+                    text = {state.userGoal.complete ? 
+                    content_homePage.userGoal.text.textAfter :
+                    content_homePage.userGoal.text.textbtn} 
+                    onClickButton = {() => togglePopup('userGoal')}/>
+                    <div className= "btn__animation btn__animation">
+                        <i className="caret left icon btn__animation btn__animation--arrow"></i>
+                    </div>
+                </div>
+
+                {open.userGoal &&  <UserGoalForm 
+                content = {content_homePage}
+                state ={state}
+                checkInfoComplete = {checkInfoComplete}
+                />}
+            </div>
+           }
+*/

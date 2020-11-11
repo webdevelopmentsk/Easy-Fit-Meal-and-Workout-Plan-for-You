@@ -3,9 +3,12 @@ export const content  = {
     name: 'Easy Fit'
   },
   landingPage:{
-    heading1: 'Create Your Own Fitness & Diet Plan',
-    heading2:'We offer a simple way to customize a routine that works for you!',
-    buttonExplore: 'Explore Easy Fit',
+    options: [
+      'Track what you eat and exercise',
+      'Customize meal and workout plans',
+      'Follow a calorie budget and reach your goals',
+    ],
+    buttonExplore:'Explore'
   },
   caloriesRemain:{
     heading: 'Calories Remaining',
@@ -17,63 +20,71 @@ export const content  = {
   homePage:{
     pageName: 'homePage',
     userPersonalInfo:{
-      text:{
-        heading1: "Let's get started",
-        heading2: "Specify your personal information.",
-        textbtn: 'Click Here',
-        textAfter: 'Change Your Information',
-      },
-      age:{name: 'Age',value: 'age'},
-      weight:{
-        name: 'Weight', 
-        value: 'weight', 
-        units: ['kg','lb']},
-      height:{name: 'Height', 
-              value: 'height', 
-              units: ['cm','inch']},
-      gender:{name: 'Gender',
-              value: 'gender',
-              options:['male', 'female']},
-      activity:{
-              name: 'Activity', value: 'activity', 
-              options:['Little to no exercise',
-                      'Light: exercise 1-3 times/week',
-                      'Moderate: exercise 4-5 times/week',
-                      'Active: Daily exercise or intense exercise 3-4 times/week',
-                      'Very Active: intense exercise 6-7 times/week']},
+      inputForm:[
+        {inputName:{text: 'Age', value: 'age'},
+         input:{type: 'number', min: 15, max:50},
+         units: {name: 'unitAge', list: ['years']},
+         select: '',
+        },
+        {inputName:{text: 'Weight', value: 'weight'},
+         input:{type: 'number', min: 40, max:300},
+         units: {name: 'unitWeight', list: ['kg','lb']},
+         select: '',
+        },
+        {inputName:{text: 'Height', value: 'height'},
+        input:{type: 'number', min: 40, max:250},
+        units: {name: 'unitHeight', list: ['cm','inch']},
+        select: '',
+        },
+        {inputName:{text: 'Gender', value: 'gender'},
+        input:'',
+        select: ['male','female'],
+        units: '',
+        },
+        {inputName:{text: 'Activity', value: 'activity'},
+        input:'',
+        select:['Little to no exercise',
+        'Light: exercise 1-3 times/week',
+        'Moderate: exercise 4-5 times/week',
+        'Active: Daily exercise or intense exercise 3-4 times/week',
+        'Very Active: intense exercise 6-7 times/week'],
+        units: '',}
+      ],
       submit:{
-              buttonText: 'Submit',
-              displayComplete: 'Complete! You are good to go!',
-              displayInComplete: 'Your personal information is incomplete.'}
+        buttonText: 'Submit',
+        incomplete: 'Please fill in all information!',
+        complete: 'Great! You are good to go!'
+      },
     },
     userGoal: {
-      text: {
-        heading1: "Let's Set Your Goal",
-        heading2: "Whether you want to lose weight, gain muscle or increase your endurance, it's important to tailor your workout to fit your goals.",
-        textbtn: 'Click Here',
-        textAfter: 'Change Your Goal',
-      },
-      goal:'Goal:',
-      target: 'Target:',
-      intensity: {
-        text: 'Intensity',
-        options: ['Slow', 'Fast'],
+      inputForm:[
+        {inputName:{text: 'Goal', value: 'goalType'},
+         input: '',
+         units: '',
+         select: ['lose-weight','maintain-weight', 'gain-weight'],
         },
-      suggestions:'Healthy weight-loss/gain rates are 1-2 pounds/week (0.5 to 1 kg)',
-      submit: {
+        {inputName:{text: 'Target', value: 'goalWeight'},
+        input:{type: 'number', min: 0, max:300},
+        units: {name: 'goalUnitWeight', list: ['cm','inch']},
+        select: '',
+        },
+        {inputName:{text: 'Intensity', value: 'goalSpeed'},
+        input:'',
+        units: '',
+        select: ['Slow ~ (0.5 kg/week) ','Medium ~ (0.75 kg/week)','Fast ~ (1 kg/week)'],
+        },
+      ],
+      submit:{
         buttonText: 'Submit',
-        displayComplete: 'Complete! You are good to go!',
-        displayInComplete: 'Your personal information is incomplete.'
+        incomplete: 'Please fill in all information!',
+        complete: 'Great! You are good to go!'
       },
-      options: [
-              {name:'Lose Weight', value: 'lose-weight'},
-              {name:'Maintain Weight', value: 'maintain-weight'},
-              {name:'Gain Weight', value: 'gain-weight'}
-             ],
     },
     results:{
       text: 'Results',
       image:'https://d50b62f6164e0c4a0279-11570554cb5edae3285603e6ab25c978.ssl.cf5.rackcdn.com/html_body_blocks/images/000/007/051/original/HowToStickToYourMealPlan_en0480002f5673756c159558dce0a778f1.jpg?1524197354',
+      textCurrentWeight: 'Current Weight',
+      textTargetWeight: 'Target',
       textGoal: 'Goal',
       textEstimatedTime: 'Estimated Time',
       timeUnit: 'Weeks',
@@ -81,7 +92,7 @@ export const content  = {
       energyUnit: 'Kcal'
     },
     articles:{
-      heading: 'Popular Mindfulness Articles Today',
+      heading: 'Top Health and Wellness Articles',
       searchText: 'Search Articles'
     },
     favoriteArticles:{
@@ -190,7 +201,7 @@ export const content  = {
           popup:{
             type: 'recipe',
             ingredients: 'Ingredients:',
-            preparation: 'Click Here To Cook',
+            preparation: 'How to Cook',
             tags: 'Health Lables'
           }, 
     }
@@ -247,7 +258,8 @@ export const content  = {
       },
       popup:{
         type: 'workout',
-        textAddToDiary: 'Add Exercise'
+        textAddToDiary: 'Add Exercise',
+        textSeeExercise: 'See Video'
       }, 
     }
   }

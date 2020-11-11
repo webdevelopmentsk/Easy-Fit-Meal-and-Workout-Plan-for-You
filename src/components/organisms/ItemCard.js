@@ -26,7 +26,7 @@ const ItemCard = props =>{
                 <div className="itemCard__heading">{props.item.label}</div>
                 <div className="itemCard__meta">
                 <div className="itemCard__meta__tag"><IconClock />{`${props.item.totalTime===0? 30: props.item.totalTime} ${props.content.units.time}`}</div>
-                <div className="itemCard__meta__tag"><IconPerson />{`${props.item.yield ? `${props.item.yield}  ${props.content.units.portion}`: props.item.suitableFor.map(gender => `${gender}`) }`}</div>
+                <div className="itemCard__meta__tag"><IconPerson />{`${props.item.yield ? `${Math.round(props.item.yield)}  ${props.content.units.portion}`: props.item.suitableFor.map(gender => `${gender}`) }`}</div>
                 <div className="itemCard__meta__tag"><IconBurn />{`${props.item.yield ? Math.round(props.item.calories/props.item.yield): Math.round(props.item.calories)}  ${props.content.units.calories}`}</div>
                 
                 {

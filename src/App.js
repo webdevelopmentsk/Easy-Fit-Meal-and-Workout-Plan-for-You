@@ -12,7 +12,6 @@ import LandingPage from './pages/LandingPage';
 import Navigation from './pages/Navigation';
 //data
 import { routes } from './data/routes';
-
 //style
 import './styles/sass/main.scss'
 
@@ -21,47 +20,49 @@ const App = () => {
   const [showNavigation, setShowNavigation] = useState(false)
   const [showLandingPage, setShowLandingPage] = useState(true);
   const toggleMainNavigation = () => setShowNavigation(!showNavigation); 
+  
   const onHeaderClick = () => {
     setShowNavigation(!showNavigation); 
     setShowLandingPage(false);
   };
 
   return (
-    <>
+
     <Provider>
-      <LandingPage 
-      onButtonExploreClick = {() => setShowLandingPage(false)} 
-      showLandingPage ={showLandingPage} 
-      path ={routes[0].link}
-      />
-      {
-        !showLandingPage &&
+      {showLandingPage ? 
+        <LandingPage 
+          onButtonExploreClick = {() => setShowLandingPage(false)} 
+          path ={routes[0].link}
+          />
+        :
         <>
+        {!showNavigation && 
           <TopPageMenu onClickMenu = {toggleMainNavigation} />
-          {showNavigation && 
-            <Navigation
-            routes ={routes} 
-            onHeaderClick = {onHeaderClick}
-            />
-          }
-          <Switch>
-            <Route
-              exact path= {routes[0].link}
-              component ={HomePage}
-            />
-            <Route
-              path= {routes[1].link}
-              component ={MealPlan}
-            />
-            <Route
-              path= {routes[2].link}
-              component ={WorkoutPlan}
-            />
-          </Switch>
-        </>
+        }
+
+        {showNavigation && 
+          <Navigation
+          routes ={routes} 
+          onHeaderClick = {onHeaderClick}
+          />
+        }
+        <Switch>
+          <Route
+            exact path= {routes[0].link}
+            component ={HomePage}
+          />
+          <Route
+            path= {routes[1].link}
+            component ={MealPlan}
+          />
+          <Route
+            path= {routes[2].link}
+            component ={WorkoutPlan}
+          />
+        </Switch>
+      </>
       }
     </Provider>
-    </>
   );
 };
 

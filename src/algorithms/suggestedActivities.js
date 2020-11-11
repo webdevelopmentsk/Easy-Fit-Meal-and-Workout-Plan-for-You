@@ -2,7 +2,7 @@ import { activities } from '../data/activities';
 
 const suggestedActivities = (type,value) => {
     
-    const items = activities.forEach(item =>
+    const items = activities.map(item =>
         {
             if(item.types.includes(type)) {return item.name}
         });

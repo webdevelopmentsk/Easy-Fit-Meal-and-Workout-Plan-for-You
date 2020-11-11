@@ -5,8 +5,8 @@
         display: flex;
         flex-wrap: wrap;
         margin: 1rem 2rem;
-        @include respond(phone-l){margin: 1rem 1rem;}
         justify-content: space-between;
+        
     }
     &__item{
         flex: 0 0 100%;
@@ -17,28 +17,16 @@
             transform: scale(1.1);
         }
 
-            @include respond(phone-l) {
-                flex: 0 0 100%;
-            }
-            @include respond(tab-land) {
-                flex: 0 0 50%;
-            }
-            @include respond(desktop) {
-                flex: 0 0 32%;
-            }
-
         &__image{
-            width: 15%;
+            width: 8rem;
             border-radius: 5px;
-            @include respond(phone-l) {width: 20%;}
-            @include respond(tab-port) {width: 20%;}
         }
         &__text{
+            width: 70%;
             font-size: $font-p;
             color: $darkHighlight;
             align-self: center;
             padding: 0 1.5rem;
-            width: 75%;
         }
     }
 }

@@ -4,21 +4,24 @@ export const initialState = {
     password: '',
     confirmPassword: '',
     userPersonalInfo:{
-        age: 18,
+        age: 0,
+        unitAge: 'years',
         gender: 'female',
-        height:168,
-        weight:55,
+        height:0,
+        weight:0,
         activity:'Little to no exercise',
         unitHeight:'cm',
         unitWeight:'kg',
-        complete: false
+        complete: false,
+        displayAllFields: true,
     },
     userGoal:{
         goalType:'lose-weight',
-        goalWeight: 50,
+        goalWeight: 0,
         goalUnitWeight:'kg',
-        goalSpeed: 1,
-        complete: false
+        goalSpeed: 'Slow ~ (0.5 kg/week)',
+        complete: false,
+        displayAllFields: true,
     },
     calTrack:{
         goalCal: 0,

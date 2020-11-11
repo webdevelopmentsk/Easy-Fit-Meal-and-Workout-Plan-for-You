@@ -17,7 +17,7 @@ const RenderListInDiary = props => {
     return(
     <div className = "renderListInDiary__container"> 
         {props.list && renderList}
-        <Button className = "btn btn--addInDiary" onClickButton = {toggleButtonAddItem} text ={props.content.addItem.text} />
+        <Button className = "btn btn--black btn--black--s" onClickButton = {toggleButtonAddItem} text ={props.content.addItem.text} />
         {
                     open && <UserAddItemForm 
                     type ={props.type}
