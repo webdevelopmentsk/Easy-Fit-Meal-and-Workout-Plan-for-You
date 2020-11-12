@@ -5,6 +5,7 @@ import IconPerson from '../atoms/IconPerson';
 import IconBurn from '../atoms/IconBurn';
 import IconFavorite from '../atoms/IconFavorite';
 import IconClose from '../atoms/IconClose';
+import RenderDiaryOptionList from '../molecules/RenderDiaryOptionList';
 
 const PopUpCardWorkout = props =>{
 
@@ -15,8 +16,7 @@ const PopUpCardWorkout = props =>{
         <div className ="popup">
             <div className ="popup_inner popUpCardItem__container">
                 <div className ="popUpCardItem__header">
-                <a className="btn btn--black" href= {props.item.url} target="_blank" rel="noopener noreferrer">{props.content.popup.textAddToDiary}</a>
-                <a className="btn btn--blush u-m-left-small" href= {props.item.url} target="_blank" rel="noopener noreferrer">{`${props.content.popup.textSeeExercise} ->`}</a>
+                <a className="btn btn--blush" href= {props.item.url} target="_blank" rel="noopener noreferrer">{`${props.content.popup.textSeeExercise} ->`}</a>
                     
                     <IconFavorite isLiked = {isLiked} onClickIcon = {props.onChangeItem} item = {props.item} type="favoriteExercises"/>
                     <IconClose onClickIcon = {props.togglePopup} />
@@ -40,6 +40,13 @@ const PopUpCardWorkout = props =>{
                                 </span>)}
                             </div>
                         <div className="popUpCardItem__content__info__item"><IconBurn />{`${Math.round(props.item.calories)}  ${props.content.units.calories}`}</div>
+                    </div>
+                    <div className ="popUpCardItem__content__addToDiary">
+                        <RenderDiaryOptionList 
+                        content ={props.contentDiary}
+                        item = {props.item}
+                        addItem ={props.addItem}
+                        />
                     </div>
                     <div className ="popUpCardItem__content__tag">
                                 {props.item.equipment.map((label,index)=> <div className="popUpCardItem__content__tag--item" key={index}><IconInfo /> {label}</div>)}

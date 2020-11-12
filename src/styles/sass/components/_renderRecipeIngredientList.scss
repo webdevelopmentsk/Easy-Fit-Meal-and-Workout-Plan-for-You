@@ -3,27 +3,30 @@
     &__container{
         align-self: center;
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         margin: 1rem 2rem;
-        justify-content: space-between;
         
     }
     &__item{
-        flex: 0 0 100%;
+        width: 100%;
         margin-top: 0.5rem;
         display: flex;
-
         :hover{
             transform: scale(1.1);
         }
 
         &__image{
-            width: 8rem;
+            width: 35%;
+            height: 6rem;
             border-radius: 5px;
+
+            &--content{
+                width: 100%;
+            }
         }
         &__text{
-            width: 70%;
-            font-size: $font-p;
+            width: 65%;
+            font-size: $font-default;
             color: $darkHighlight;
             align-self: center;
             padding: 0 1.5rem;

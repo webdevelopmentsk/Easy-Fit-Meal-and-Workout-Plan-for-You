@@ -39,25 +39,3 @@ export const dietPlan = async (item, meal) => {
     
     return recommended;
 };
-
-
-
-/*
-const onSelectMealPlan = async(item,type) =>{
-  await changeState(type,item)
-  console.log(type)
-  switch(item.parameter){
-    case 'diet':{
-       const response = await edamam.get('/search', 
-      {
-        params: {
-          q: state.randomIngredients.join('+')
-        },
-      });
-      response.data.hits && changeState('mealPlanRecipes',response.data.hits);
-    };break;
-    default:break;
-  }
-}
-
-*/

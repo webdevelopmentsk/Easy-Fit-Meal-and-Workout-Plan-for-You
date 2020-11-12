@@ -1,4 +1,4 @@
-.renderMealOptionList{
+.renderDiaryOptionList{
 
     &__container{
         display: flex;
@@ -10,8 +10,9 @@
 
     &__item{
         display: inline-block;
-        font-size: $font-p;
+        font-size: $font-default;
         margin-left: 0.5rem;
+        margin-top: 0.5rem;
     }
 
 }

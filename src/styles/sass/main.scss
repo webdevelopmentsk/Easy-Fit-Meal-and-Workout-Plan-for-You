@@ -5,7 +5,6 @@
 @import 'base';
 @import 'typography';
 @import 'utilities';
-@import 'layout';
 
 @import './components/button';
 @import './components/renderDailyCarlorieNeed';
@@ -32,8 +31,7 @@
 @import './components/renderArticleCardList';
 @import './components/articleCard';
 @import './components/randomQuoteCard';
-
-
-@import './components/navigation';  //-->to do
+@import './pages/appPages';
+@import './pages/navigation';
 
 

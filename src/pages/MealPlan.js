@@ -17,7 +17,7 @@ import { routesRecipeBar } from '../data/routes';
 import { Context } from '../context/Provider';
 //algorithms
 import { foodItemSearch } from '../algorithms/foodItemSearch';
-import { dietPlan } from '../algorithms/dietPlan';
+import { dietPlan } from '../algorithms/getRecipesFromPlan';
 import { searchRecipe } from '../algorithms/searchRecipe';
 
 
@@ -155,9 +155,9 @@ useEffect(() =>{
   changeState('mealPlanRecipes',{total:totalRecipes,rendered:renderedRecipes});
 },[state.mealPlanSelectedMeals]);
 
-const onUserFoodItemAdded = async(item) =>{
+const onUserFoodItemAdded = async(item,type,quantity) =>{
 
-  const results = await foodItemSearch(item);
+  const results = await foodItemSearch(item,quantity);
   changeState('userFoodItems',results);
 
 };

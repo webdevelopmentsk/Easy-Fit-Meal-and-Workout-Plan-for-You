@@ -9,11 +9,11 @@
         flex-direction: column;
         text-transform: uppercase;
         color: $darkHighlight;
-        font-size: $font-p;
+        font-size: $font-default;
         background-image: linear-gradient(105deg,$makeupTan 0%, $lightlyOffWhite 50%, transparent 50%),
         url(../../../assets/result.jpeg);
         background-size: cover;
-        
+        animation: moveInBottom $time-container ease;
 
     }
     &__subcontainer{

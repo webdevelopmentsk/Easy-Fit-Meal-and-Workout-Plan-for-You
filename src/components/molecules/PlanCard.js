@@ -14,7 +14,7 @@ const PlanCard = props => {
                     >
                     </div>
                 </div>
-                <div className="planCard__detail paragraph paragraph--dark">{option.text}</div>
+                <div className="planCard__detail">{option.text}</div>
             </div>
     )
 

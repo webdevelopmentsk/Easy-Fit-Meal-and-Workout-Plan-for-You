@@ -1,7 +1,28 @@
-Project Name: Easy Fit
+# Project Name: Easy Fit
 
-Project Description: 
-A website that design meal plan and workout plan for your goal (weight loss, weight gain or wight maintenance)
+> Track what you eat and exercise 
+> Get daily meal and workout plan 
+> Follow a calorie budget to reach your goal 
+
+(1) Keep track on what you eat and exercise. It calculates how many calories you've consumed/burned from food and workout. 
+(2) Customize your daily healthy meal plan (ex. classic plan, immune booster, high protein diet and simple plan) and get our recommended recipes 
+(3) Customize your daily workout plan (ex. full boday workout, yoga and flexibility routine) and get our recommended videos and instructions 
+(4) Get daily top articles related to health and mindfullness
+(5) Reach your goal (weight loss, weight gain or wight maintenance) by following our suggested calorie budget
+
+## Table of contents
+* [General info]
+* [Screenshots]
+
+## General info
+
+During COVID-19, physicians say they are seeing more people reporting unexpected weight gain. Stress eating, snacking out of boredom, challenges finding healthy food, and more time spent sedentary are contributing to weight management challenges. Therefore, setting up a healthy routine can be challenging. Easy-Fit helps users to shape their routines to eat better and exercise more. By simply setting a goal - such as lose 1 kg in a week - and then the program will calculate your daily calorie need. It gives you some ideas what to eat and exercise and monitor your daily food and fitness. If you follow the suggested calorie budget, you will be to reach your goal within the expected time. 
+
+## Screenshots
+ 
+![Landing Page](./src/assets/landingPage.png)
+
+
 
 Created By: Sawitree Kalakul
 GitHub: https://github.com/webdevelopmentsk

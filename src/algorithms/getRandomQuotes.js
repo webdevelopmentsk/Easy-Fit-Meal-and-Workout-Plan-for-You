@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-const getRandomQuote = async () => {
+const getRandomQuotes = async () => {
     let totalQuotes = [];
     let result = await $.ajax({
         url: "https://api.forismatic.com/api/1.0/",
@@ -10,5 +10,5 @@ const getRandomQuote = async () => {
     return await result;
 };
 
-export default getRandomQuote;
+export default getRandomQuotes;
 

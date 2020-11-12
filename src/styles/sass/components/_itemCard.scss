@@ -5,7 +5,8 @@
         border-radius: 5px;
         overflow: hidden;
         background-color: rgba($orange,0.3);
-        @include respond(phone-l) {width: 90%;}
+        @include respond(phone-l) {width: 
+            90%;}
         @include respond(tab-port) {width: 45%;}
         @include respond(tab-land) {width: 30%;}
         @include respond(desktop) {width: 30%;}

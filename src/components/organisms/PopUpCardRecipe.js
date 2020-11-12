@@ -6,7 +6,7 @@ import IconFavorite from '../atoms/IconFavorite';
 import IconClose from '../atoms/IconClose';
 
 import RenderRecipeIngredientList from './RenderRecipeIngredientList';
-import RenderMealOptionList from '../molecules/RenderMealOptionList';
+import RenderDiaryOptionList from '../molecules/RenderDiaryOptionList';
 
 const PopUpCardRecipe = props =>{
     
@@ -33,7 +33,7 @@ const PopUpCardRecipe = props =>{
                             </div>
 
                             <div className ="popUpCardItem__content__addToDiary">
-                                <RenderMealOptionList 
+                                <RenderDiaryOptionList 
                                 content ={props.contentDiary}
                                 item = {props.item}
                                 addItem ={props.addItem}

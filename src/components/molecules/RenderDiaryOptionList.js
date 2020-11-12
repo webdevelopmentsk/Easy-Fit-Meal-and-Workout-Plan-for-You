@@ -1,9 +1,9 @@
 import React from 'react';
 
-const RenderMealOptionList = props => {
+const RenderDiaryOptionList = props => {
 
     const renderOptions = props.content.options.map((option,index) => 
-    <button  className ="renderMealOptionList__item btn btn--black"
+    <button  className ="renderDiaryOptionList__item btn btn--black"
         key={index} 
         onClick={ () => props.addItem(props.item,option.value)}
         >
@@ -13,7 +13,7 @@ const RenderMealOptionList = props => {
 
     return (
 
-        <div className ="renderMealOptionList__container">
+        <div className ="renderDiaryOptionList__container">
             {props.content && renderOptions}
         </div>
 
@@ -21,6 +21,6 @@ const RenderMealOptionList = props => {
 
 }
 
-export default RenderMealOptionList;
+export default RenderDiaryOptionList;
 
 

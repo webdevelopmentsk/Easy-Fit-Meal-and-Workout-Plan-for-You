@@ -200,7 +200,7 @@ export const content  = {
           },
           popup:{
             type: 'recipe',
-            ingredients: 'Ingredients:',
+            ingredients: 'Ingredients',
             preparation: 'How to Cook',
             tags: 'Health Lables'
           }, 

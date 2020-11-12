@@ -50,6 +50,7 @@ const AutoCompleteInput = props =>{
     const suggestionSelected = item =>{
         setText(item);
         setSuggestions('');
+        
         if(props.showQuantity){
             item && quantity && props.onSearchSubmit(item,props.type,quantity); 
             setQuantity('');
