@@ -81,7 +81,7 @@ const HomePage = () => {
     
     
     useEffect(() =>{ //Get articles and a random quote
-        //setArticles();
+        setArticles();
         setQuotes();
     },[])
     
