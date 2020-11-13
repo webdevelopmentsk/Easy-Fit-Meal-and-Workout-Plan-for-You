@@ -1,8 +1,7 @@
 # Project Name: Easy Fit
 
+You can visit: https://easy-fit.vercel.app
 > (1) Track what you eat and exercise (2) Get daily meal and workout plan (3) Follow a calorie budget to reach your goal 
-> Go To: https://easy-fit.vercel.app
-
 
 ## Table of contents
 * [General info](#general-info)
@@ -37,8 +36,8 @@ TODOs:
 ## Screenshots
  
 ![Landing Page](./src/assets/landingPage.png)
-![Home Page](./src/assets/homepage-top.png)
-![Home Page](./src/assets/homepage-bottom.png)
+![Home Page](./src/assets/homePage-top.png)
+![Home Page](./src/assets/homePage-bottom.png)
 ![Meal Plan](./src/assets/mealPlan-top.png)
 ![Meal Plan](./src/assets/mealPlan-bottom-1.png)
 ![Meal Plan](./src/assets/mealPlan-bottom-2.png)
