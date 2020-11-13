@@ -9,7 +9,15 @@
         flex-wrap: wrap;
         justify-content: flex-end;
 
-        animation: displayQuoteBackground 20s infinite ease-in-out;
+        &__food{
+            animation: displayFood 20s infinite ease-in-out;
+        }
+        &__home{
+            animation: displayHome 20s infinite ease-in-out;
+        }
+        &__workout{
+            animation: displayWorkout 20s infinite ease-in-out;
+        }
 
         @include respond(phone-l) {
             height: 100%;
@@ -19,19 +27,16 @@
 
     &__content{
         margin-top: 2rem;
-        width: 55%;
+        width: 80%;
 
-            @include respond(phone-l) {
-                width: 60%;
-            }
             @include respond(tab-port) {
                 margin-top: 0;
-                width: 100%;
+                width: 80%;
                 margin-bottom: 1rem;
             }
             @include respond(tab-land) {
                 margin-top: 1rem;
-                width: 100%;
+                width: 80%;
                 margin-bottom: 1rem;
             }
             @include respond(desktop) {
@@ -41,7 +46,9 @@
             font-family: inherit;
             font-size: 1.6rem;
             margin-bottom: 1rem;
-            text-align: end;
+            text-align: center;
+            background-color: rgba($white,0.5);
+            padding: 0.5rem;
             @include respond(phone-l) {
                 margin-bottom: 2rem;
             }
@@ -54,10 +61,13 @@
             }
         }
         &__author{
+            padding: 0.2rem;
+            display: inline-block;
+            margin-top: 1rem;
             font-size: 1.3rem;
             font-family: inherit;
-            text-align: end;
             font-style: italic;
+            background-color: rgba($white,0.5);
         }
     }
 }

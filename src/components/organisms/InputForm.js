@@ -9,9 +9,12 @@ const InputForm = props => {
     const checkInfoComplete = () =>{
         let isComplete = true;
 
-        //for (let key in userData) {
-            //if(userData[key] <= 0 || userData[key] === '') {isComplete = false;}
-        //};
+        for (let key in userData) {
+
+            if(userData[key] === ''){isComplete = false;}
+            else if(userData[`${key}Min`] && parseInt(userData[key]) <= parseInt(userData[`${key}Min`])){isComplete = false; }
+            else if(userData[`${key}Max`] && parseInt(userData[key]) >= parseInt(userData[`${key}Max`])){isComplete = false; }
+        };
  
          if(isComplete){
             userData.complete = true;
@@ -46,7 +49,9 @@ const InputForm = props => {
                         }
                         {userData.displayAllFields && feild.input !== '' && 
                             <input className = "inputForm__input" 
-                            type ={feild.input.type} 
+                            type ={feild.input.type}
+                            min ={feild.input.min}
+                            max ={feild.input.max} 
                             onChange = {e => setUserData({...userData, [feild.inputName.value] : e.target.value})}
                             id={feild.inputName.value} />
                         }
@@ -100,11 +105,11 @@ const InputForm = props => {
                     )
                 })
             }
-                <div className = "inputForm__field u-font-btn-m">
-                    <Button className = "btn btn--green" text = {props.content[props.stateType].submit.buttonText} onClickButton = {checkInfoComplete}/>
-                </div>
                 <div className = "inputForm__field">
                     {displayStatus && <div className = 'inputForm__status'>{displayStatus}</div>}
+                </div>
+                <div className = "inputForm__field u-font-btn-m">
+                    <Button className = "btn btn--green" text = {props.content[props.stateType].submit.buttonText} onClickButton = {checkInfoComplete}/>
                 </div>
             </div>
         </div>

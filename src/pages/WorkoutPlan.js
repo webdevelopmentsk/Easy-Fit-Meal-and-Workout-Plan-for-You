@@ -18,6 +18,8 @@ import { Context } from '../context/Provider';
 
 //Routers
 import {Switch, Route} from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import { routes } from '../data/routes';
 
 const WorkoutPlan = () => {
 
@@ -113,25 +115,28 @@ const WorkoutPlan = () => {
       newList.splice(index,1);
       changeState(type,newList);
     };
-      const onUserExerciseItemSelect = async(item,type,quantity) =>{
+    const onUserExerciseItemSelect = async(item,type,quantity) =>{
+      const totalCalBurned = caloriesBurned(item,state,type,quantity)
+      let data = {
+          label: item,
+          time: quantity,
+          timeUnit: 'mins',
+          calories: totalCalBurned,
+          unitEnergy: 'Kcal',
+          displayItem: `${item}  ${quantity}  mins  ${totalCalBurned}  Kcal`
+      }
+      let newList = [...state[type],data];
+      changeState(type,newList)
+    };
+    
+    const onClickSelectExerciseItem = async (item,type) =>{
+      //let newList = [...state[type],item];
+      //changeState(type,newList)
+    };
 
-        const totalCalBurned = caloriesBurned(item,state,type,quantity)
-        let data = {
-            label: item,
-            time: quantity,
-            timeUnit: 'mins',
-            calories: totalCalBurned,
-            unitEnergy: 'Kcal',
-            displayItem: `${item}  ${quantity}  mins  ${totalCalBurned}  Kcal`
-        }
-        let newList = [...state[type],data];
-        changeState(type,newList)
-      };
-      
-      const onClickSelectExerciseItem = async (item,type) =>{
-        //let newList = [...state[type],item];
-        //changeState(type,newList)
-      };
+    const resetUserItems = async (searchItemType) =>{
+      changeState(searchItemType,[]);
+    }
 
     //CalTotalCalories from Exercise
     useEffect(()=>{
@@ -189,14 +194,25 @@ const WorkoutPlan = () => {
               onUserItemAdded = {onUserExerciseItemSelect}
               searchItemType = 'userExerciseItems'
               onClickSelectItem ={onClickSelectExerciseItem} 
+              resetUserItems ={resetUserItems}
           />
           </div>
+          <div className ='subContainer subContainer__linkToPage'>
+            {routes.map((route,index) => index !== 2 && 
+            <Link key={index} className = "pageMenuBar__link" to={route.link}
+            ><i className= {`${route.icon} pageMenuBar__link__icon subContainer__linkToPage__icon`}/>
+            <span className = "pageMenuBar__link__name"> {route.name}</span>
+            </Link>)
+            }
+          </div>
+
           <div className = "subContainer subContainer__caloriesRemain">
                 <RenderCaloriesRemain/>
           </div>
           <div className = "subContainer subContainer__randomQuotes">
                 <RandomQuoteCard 
                   items = {randomQuote}
+                  showImage = 'workout'
                 />
           </div>
           <div className ="subContainer subContainer__pageMenuBar">

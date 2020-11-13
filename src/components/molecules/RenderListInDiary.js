@@ -8,7 +8,11 @@ const RenderListInDiary = props => {
     
     const [open, setOpen] = useState(false);
     const toggleButtonAddItem = () => setOpen(!open);
-
+    const resetPreviousList = () =>{
+        props.resetUserItems(props.searchItemType);
+        setOpen(!open);
+    }
+  
     const renderList = props.list.map((item,index) => 
     <div className = "renderListInDiary__item" key={index}>
         <div className = "renderListInDiary__item__text" >{item.displayItem}</div>
@@ -17,7 +21,9 @@ const RenderListInDiary = props => {
     return(
     <div className = "renderListInDiary__container"> 
         {props.list && renderList}
-        <Button className = "btn btn--black btn--black--s" onClickButton = {toggleButtonAddItem} text ={props.content.addItem.text} />
+        <Button className = "btn btn--black btn--black--s" 
+        onClickButton = {resetPreviousList} 
+        text ={props.content.addItem.text} />
         {
                     open && <UserAddItemForm 
                     type ={props.type}

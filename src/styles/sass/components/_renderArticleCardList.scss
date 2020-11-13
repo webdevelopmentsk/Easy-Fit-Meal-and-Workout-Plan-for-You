@@ -11,9 +11,8 @@
     &__heading{
         width: 100%;
         display: flex;
-        justify-content: start;
-
         &--text{
+            text-align: center;
             @include respond(tab-port){margin-left: 2.5rem;}
         }
     }

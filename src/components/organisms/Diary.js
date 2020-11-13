@@ -25,6 +25,7 @@ const Diary = props => {
                             onUserItemAdded ={props.onUserItemAdded}
                             searchItemType = {props.searchItemType}
                             onClickSelectItem = {props.onClickSelectItem}
+                            resetUserItems ={props.resetUserItems}
                             />
                             :null}
                         </div>

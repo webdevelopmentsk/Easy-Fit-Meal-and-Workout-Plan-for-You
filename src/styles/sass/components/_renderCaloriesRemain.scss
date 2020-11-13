@@ -12,6 +12,7 @@
     padding: 1rem;
     background-color: $blush;
     justify-content: space-evenly;
+    animation: moveInBottom $time-container ease;
     
     @include respond(tab-port){justify-content: space-between;}
     @include respond(tab-land){justify-content: space-evenly;}

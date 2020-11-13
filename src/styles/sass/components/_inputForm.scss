@@ -11,6 +11,14 @@
        margin-bottom: 1rem;
        justify-content: center;
     }
+    &__status{
+        width: 90%;
+        margin-top: 1rem;
+        border-radius: 4px;
+        background-color: $darkHighlight;
+        padding: 1rem;
+        color: $white;
+    }
     &__label{
         width: 6rem;
 

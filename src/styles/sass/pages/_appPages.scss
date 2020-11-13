@@ -4,9 +4,10 @@
     display: grid;
     gap: 2rem 0;
     grid-template-columns: 1fr;
-    grid-template-rows:  0.001fr 0.001fr 0.01fr 0.001fr 0.001fr 0.001fr;
+    grid-template-rows:  0.001fr 0.001fr 0.01fr 0.01fr 0.001fr 0.001fr 0.001fr;
     grid-template-areas:
       "subContainer__pageInput"
+      "subContainer__linkToPage"
       "subContainer__caloriesRemain"
       "subContainer__randomQuotes"
       "subContainer__pageMenuBar"
@@ -18,9 +19,10 @@
         width: 95%;
         margin: 3rem auto;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows:  0.01 0.01fr 0.01fr 0.01fr 0.01fr;
+        grid-template-rows:  0.01 0.01fr  0.01fr 0.01fr 0.01fr 0.01fr;
         grid-template-areas:
         "subContainer__pageInput subContainer__randomQuotes"
+        "subContainer__linkToPage subContainer__randomQuotes"
         "subContainer__caloriesRemain subContainer__randomQuotes"
         "subContainer__pageMenuBar subContainer__pageMenuBar"
         "subContainer__cards subContainer__cards"
@@ -39,6 +41,22 @@
         &__pageInput{
             grid-area: subContainer__pageInput;
 
+        }
+        &__linkToPage{
+            grid-area: subContainer__linkToPage;
+            border-radius: 4px;
+            display: flex;flex-wrap: wrap;
+            justify-content: center;
+            background-color: $darkHighlight;
+            padding: 0;
+
+            :hover, :focus, :active{
+                color: $black;
+                background-color: $orange;
+            }
+            &__icon{
+                //animation: moveInLeft 2s infinite ease-in;
+            }
         }
         &__caloriesRemain{
             grid-area: subContainer__caloriesRemain;

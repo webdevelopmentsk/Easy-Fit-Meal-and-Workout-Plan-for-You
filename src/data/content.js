@@ -11,7 +11,7 @@ export const content  = {
     buttonExplore:'Explore'
   },
   caloriesRemain:{
-    heading: 'Calories Remaining',
+    heading: "Calories Remaining",
     text1: 'Goal',
     text2: 'Food',
     text3: 'Exercise',
@@ -52,7 +52,7 @@ export const content  = {
       ],
       submit:{
         buttonText: 'Submit',
-        incomplete: 'Please fill in all information!',
+        incomplete: 'Please fill in all information! Some numbers might be out of acceptable ranges.',
         complete: 'Great! You are good to go!'
       },
     },
@@ -65,7 +65,7 @@ export const content  = {
         },
         {inputName:{text: 'Target', value: 'goalWeight'},
         input:{type: 'number', min: 0, max:300},
-        units: {name: 'goalUnitWeight', list: ['cm','inch']},
+        units: {name: 'goalUnitWeight', list: ['kg','lb']},
         select: '',
         },
         {inputName:{text: 'Intensity', value: 'goalSpeed'},
@@ -76,7 +76,7 @@ export const content  = {
       ],
       submit:{
         buttonText: 'Submit',
-        incomplete: 'Please fill in all information!',
+        incomplete: 'Please fill in all information! Some numbers might be out of acceptable ranges.',
         complete: 'Great! You are good to go!'
       },
     },
@@ -88,7 +88,7 @@ export const content  = {
       textGoal: 'Goal',
       textEstimatedTime: 'Estimated Time',
       timeUnit: 'Weeks',
-      textCalories: 'Daily Calorie Need',
+      textCalories: 'Daily Caloric Need',
       energyUnit: 'Kcal'
     },
     articles:{

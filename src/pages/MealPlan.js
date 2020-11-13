@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 //Routers
 import {Switch, Route} from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import { routes } from '../data/routes';
 
 import RenderCaloriesRemain from '../components/molecules/RenderCaloriesRemain';
 import SearchRecipe from '../components/organisms/SearchRecipe';
@@ -19,7 +21,6 @@ import { Context } from '../context/Provider';
 import { foodItemSearch } from '../algorithms/foodItemSearch';
 import { dietPlan } from '../algorithms/getRecipesFromPlan';
 import { searchRecipe } from '../algorithms/searchRecipe';
-
 
 
 const MealPlan = () => {
@@ -156,7 +157,7 @@ useEffect(() =>{
 },[state.mealPlanSelectedMeals]);
 
 const onUserFoodItemAdded = async(item,type,quantity) =>{
-
+  console.log(type)
   const results = await foodItemSearch(item,quantity);
   changeState('userFoodItems',results);
 
@@ -168,7 +169,11 @@ const onClickSelectFoodItem = async (item,type) =>{
   changeState(type,newList);
 };
 
-const getRandomQuote = async () => {
+const resetUserItems = async (searchItemType) =>{
+  changeState(searchItemType,[]);
+}
+
+const setQuotes = async () => {
   let totalQuotes = []
   for( let i=0; i < 2; i++){
     let result = await $.ajax({
@@ -182,7 +187,7 @@ const getRandomQuote = async () => {
 }
 
 useEffect(() =>{ //Get Random Quote
-  getRandomQuote();
+  setQuotes();
 },[])
 
 
@@ -196,13 +201,24 @@ useEffect(() =>{ //Get Random Quote
                 onUserItemAdded = {onUserFoodItemAdded}
                 searchItemType = 'userFoodItems'
                 onClickSelectItem ={onClickSelectFoodItem} 
+                resetUserItems ={resetUserItems}
               />
           </div>
+
+          <div className ='subContainer subContainer__linkToPage'>
+            {routes.map((route,index) => index !== 1 && 
+            <Link key={index} className = "pageMenuBar__link" to={route.link}
+            ><i className= {`${route.icon} pageMenuBar__link__icon subContainer__linkToPage__icon`}/>
+            <span className = "pageMenuBar__link__name"> {route.name}</span>
+            </Link>)
+            }
+          </div>
+
           <div className = "subContainer subContainer__caloriesRemain">
                 <RenderCaloriesRemain/>
           </div>
           <div className = "subContainer subContainer__randomQuotes">
-                <RandomQuoteCard items = {randomQuote}/>
+                <RandomQuoteCard items = {randomQuote} showImage ="food"/>
           </div>
           <div className = "subContainer subContainer__pageMenuBar">
             <PageMenuBar routes ={routesRecipeBar} />

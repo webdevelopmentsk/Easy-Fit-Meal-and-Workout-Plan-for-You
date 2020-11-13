@@ -5,7 +5,7 @@ import { Context } from '../context/Provider';
 
 //functions
 import dailyCalorieIntake  from '../algorithms/dailyCalorieIntake';
-import getNews from '../algorithms/getNews';
+import getArticles from '../algorithms/getArticles';
 //Components
 import RenderDailyCarlorieNeed from '../components/molecules/RenderDailyCarlorieNeed';
 import RenderCaloriesRemain from '../components/molecules/RenderCaloriesRemain';
@@ -13,6 +13,8 @@ import RenderArticleCardList from '../components/molecules/RenderArticleCardList
 import RandomQuoteCard from '../components/molecules/RandomQuoteCard';
 import InputForm from '../components/organisms/InputForm';
 import { routesArticleBar } from '../data/routes';
+import { Link } from 'react-router-dom'
+import { routes } from '../data/routes';
 
 const HomePage = () => {
 
@@ -46,23 +48,25 @@ const HomePage = () => {
     };
 
     useEffect(()=>{//Get goalCal
+        let isMounted = true;
+
         if(state.userPersonalInfo.complete && state.userPersonalInfo.complete){
             let [dailyCalIntake,weeks] = dailyCalorieIntake(state);
             let data = state.calTrack;
             data.goalCal = dailyCalIntake;
             data.weeks = weeks;
-            changeState('calTrack',data);
+            if (isMounted) changeState('calTrack',data);
         }
 
     },[state.userGoal]);
 
-    const getArticles = async() => {
-        let articles_homePage = await getNews(content_homePage.pageName);
+    const setArticles = async() => {
+        let articles_homePage = await getArticles(content_homePage.pageName);
         changeState('articles_homePage',articles_homePage);
     };
 
     
-    const getRandomQuote = async () => {
+    const setQuotes = async () => {
         let totalQuotes = []
         for( let i=0; i < 2; i++){
           let result = await $.ajax({
@@ -77,8 +81,8 @@ const HomePage = () => {
     
     
     useEffect(() =>{ //Get articles and a random quote
-        //getArticles();
-        getRandomQuote();
+        //setArticles();
+        setQuotes();
     },[])
     
 
@@ -146,24 +150,31 @@ const HomePage = () => {
             </div>
             }
         </div>
+        <div className ='subContainer subContainer__linkToPage'>
+            {routes.map((route,index) => index !== 0 && 
+            <Link key={index} className = "pageMenuBar__link" to={route.link}
+            ><i className= {`${route.icon} pageMenuBar__link__icon subContainer__linkToPage__icon`}/>
+            <span className = "pageMenuBar__link__name"> {route.name}</span>
+            </Link>)
+            }
+        </div>
 
         <div className = 'subContainer subContainer__caloriesRemain'>
             <RenderCaloriesRemain />
         </div>
         <div className = 'subContainer subContainer__randomQuotes'>
-                <RandomQuoteCard items = {randomQuote}/>
+            {randomQuote &&  <RandomQuoteCard items = {randomQuote} showImage ="home"/>}
         </div>
 
         <div className = "subContainer subContainer__pageMenuBar">
             <div className ="pageMenuBar">
             {routesArticleBar.map((item,index)=>{
                 return(
-                    <div className = "item pageMenuBar__link" 
+                    <div className = "pageMenuBar__link" 
                     key ={index} 
                     onClick={() => onPageMenuBarClick(item.compName)}
-                    > <i className= {item.icon}></i>
-                    </div>
-                )
+                    > <i className= {`${item.icon} pageMenuBar__link__icon`}/><span className = "pageMenuBar__link__name">{item.name}</span>
+                    </div>)
             })
             }
             </div>

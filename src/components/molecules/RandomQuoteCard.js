@@ -4,7 +4,7 @@ import React from 'react';
 const RandomQuoteCard = props =>{
 
     return(
-        <div className = 'randomQuoteCard__container'>
+        <div className = {`randomQuoteCard__container randomQuoteCard__container__${props.showImage}`}>
 
             {
                 props.items.map((item,index) => {

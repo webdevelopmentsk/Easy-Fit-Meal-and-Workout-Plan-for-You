@@ -18,10 +18,9 @@ const ItemCard = props =>{
 
     return(
         <div className = "itemCard__wrapper">
-        <div className= "itemCard__container">
+        <div className= "itemCard__container" onClick={togglePopup}>
             <img className="itemCard__image" 
-                alt={props.item.label} src={props.item.image} 
-                href="#" onClick={togglePopup} />
+                alt={props.item.label} src={props.item.image} />
             <div className ="itemCard__content ">
                 <div className="itemCard__heading">{props.item.label}</div>
                 <div className="itemCard__meta">

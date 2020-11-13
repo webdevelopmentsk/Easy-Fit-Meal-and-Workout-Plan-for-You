@@ -1,17 +1,37 @@
 .pageMenuBar{
     width: 100%;
     border-radius: 4px;
-    display: flex;
-    background-color: $blush;
+    display: flex;flex-wrap: wrap;
+    justify-content: center;
+    background-color: $darkHighlight;
+    padding: 0;
     :hover, :focus, :active{
         color: $black;
-        background-color: transparent;
+        background-color: $orange;
     }
     &__link{
-    color: $darkHighlight;
-    font-size: $font-logo-icon;
-    padding: 1rem;
-    align-items: center;
+    font-size: $font-s;
+    color:$white;
+    display: flex;
+    padding: 1rem 1rem;
+    width: 100%;
+    border-bottom: $white 1px solid;
+        @include respond(tab-port) {
+            width: 30%; 
+            border-bottom: none; 
+            &:not(:last-child){border-right: $white 1px solid;}
+            flex-grow: 1;
+        }
+
+        &__icon{
+            flex: 1 1 10%;
+            text-align: center !important;
+        }
+        &__name{
+            font-family: 'Nanum Gothic', sans-serif;
+            flex: 1 1 90%;
+            margin-left: 0.5rem;
+        }
     }
 
 }

@@ -3,13 +3,34 @@
     80%{transform: translateY(-1rem);}
     100%{opacity: 1; transform: translateY(0rem);}
 }
+@keyframes moveInLeft{
+    0%{opacity: 0; transform: translateX(-1rem);}
+    80%{transform: translateX(0.5rem);}
+    100%{opacity: 1; transform: translateX(0rem);}
+}
 
-@keyframes displayQuoteBackground{
+@keyframes displayFood{
     0%{background-image:linear-gradient(rgba($white,0.01), rgba($white,0.2)),
-        url("../../assets/randomQuoteCard-BG-0.jpg");}
+        url("../../assets/food-0.jpg");}
     50%{background-image:linear-gradient(rgba($white,0.01), rgba($white,0.2)),
-        url("../../assets/randomQuoteCard-BG-1.jpg");}
+        url("../../assets/food-1.jpg");}
     100%{background-image:linear-gradient(rgba($white,0.01), rgba($white,0.2)),
-        url("../../assets/randomQuoteCard-BG-2.jpg");}
+        url("../../assets/food-2.jpg");}
+}
+@keyframes displayHome{
+    0%{background-image:linear-gradient(rgba($white,0.01), rgba($white,0.2)),
+        url("../../assets/home-0.jpg");}
+    50%{background-image:linear-gradient(rgba($white,0.01), rgba($white,0.2)),
+        url("../../assets/home-1.jpg");}
+    100%{background-image:linear-gradient(rgba($white,0.01), rgba($white,0.2)),
+        url("../../assets/home-2.jpg");}
+}
+@keyframes displayWorkout{
+    0%{background-image:linear-gradient(rgba($white,0.01), rgba($white,0.2)),
+        url("../../assets/workout-0.jpg");}
+    50%{background-image:linear-gradient(rgba($white,0.01), rgba($white,0.2)),
+        url("../../assets/workout-1.jpg");}
+    100%{background-image:linear-gradient(rgba($white,0.01), rgba($white,0.2)),
+        url("../../assets/workout-2.jpg");}
 }
 

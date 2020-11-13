@@ -14,6 +14,12 @@ export const initialState = {
         unitWeight:'kg',
         complete: false,
         displayAllFields: true,
+        ageMin: 12,
+        ageMax: 60,
+        weightMin: 40,
+        weightMax: 300,
+        heightMin: 40,
+        heightMax: 250
     },
     userGoal:{
         goalType:'lose-weight',
@@ -22,6 +28,8 @@ export const initialState = {
         goalSpeed: 'Slow ~ (0.5 kg/week)',
         complete: false,
         displayAllFields: true,
+        weightMin: 40,
+        heightMax: 300,
     },
     calTrack:{
         goalCal: 0,
