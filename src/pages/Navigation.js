@@ -16,7 +16,7 @@ const Navigation = ({routes,onHeaderClick}) => {
     return (
         <div className = "navigation">
             <div className = "navigation__background">
-                <video className = "navigation__background--content" autoPlay muted loop>
+                <video className = "navigation__background--content" autoPlay muted loop playsInline>
                 <source src = {bgVideo} type="video/mp4" />
                 </video>
             </div>
